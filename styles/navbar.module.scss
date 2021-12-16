@@ -1,0 +1,55 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbarLogoContainer {
+  margin-right: 20px;
+  .navbarLogo {
+    font-family: WhiteOnBlack;
+    font-size: 23px;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.navbarSearchBarContainer {
+  input {
+    padding: 3px 0 0 20px;
+    font-size: 18px;
+    width: 560px;
+    height: 50px;
+    border: 1px solid transparent;
+    border-radius: 60px;
+    background-color: #292929;
+    color: #555555;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.navbarSignIn {
+  margin-left: 20px;
+  button {
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: bold;
+    width: 140px;
+    height: 50px;
+    border: 1px solid transparent;
+    border-radius: 60px;
+    background-color: #292929;
+    color: #dbdbdb;
+    cursor: pointer;
+    &:hover {
+      background-color: #363636;
+    }
+  }
+}
+
+@font-face {
+  font-family: WhiteOnBlack;
+  src: url("../public/fonts/White\ On\ Black.ttf");
+}
