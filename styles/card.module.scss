@@ -10,7 +10,7 @@
 }
 
 .cardImgContainer {
- margin: 30px;
+  margin: 30px;
 }
 
 .cardContent {
@@ -35,5 +35,31 @@
   }
   .cardContentScore {
     color: #78bf58;
+  }
+}
+
+@media (max-width: 890px) {
+  .container {
+    flex-direction: column;
+  }
+  .cardImgContainer {
+    margin: 30px 0 5px 0;
+  }
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .cardContentScore {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@media (max-width: 470px) {
+  .cardImgContainer {
+    margin: 30px 0 5px 0;
+    width: 266px;
+    height: 155px;
   }
 }

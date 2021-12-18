@@ -6,7 +6,12 @@ const Card = () => {
   return (
     <div className={styles.container}>
       <div className={styles.cardImgContainer}>
-        <Image src={img} width={374} height={218}/>
+        <Image
+          src={img}
+          width={374}
+          height={221}
+          className={styles.cardImg}
+        />
       </div>
       <div className={styles.cardContent}>
         <p className={styles.cardContentTitle}>Cyberpunk 2077</p>

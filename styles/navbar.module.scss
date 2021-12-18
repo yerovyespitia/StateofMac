@@ -53,3 +53,58 @@
   font-family: WhiteOnBlack;
   src: url("../public/fonts/White\ On\ Black.ttf");
 }
+
+@media (max-width: 950px) {
+  .navbar {
+    margin: 0 20px;
+    flex-direction: column;
+  }
+  .navbarLogoContainer {
+    margin-right: 0;
+    .navbarLogo {
+      font-size: 25px;
+    }
+  }
+  .breakLine {
+    display: none;
+  }
+  .navbarSearchBarContainer {
+    margin-bottom: 20px;
+  }
+  .navbarSearchBarContainer {
+    width: 90%;
+    input {
+      width: 100%;
+    }
+  }
+  .navbarSignIn {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 667px) {
+  .navbarSearchBarContainer {
+    width: 100%;
+    input {
+      width: 100%;
+      height: 60px;
+      border-radius: 10px;
+    }
+  }
+  .navbarSignIn {
+    margin-left: 0;
+    width: 100%;
+    button {
+      font-size: 22px;
+      width: 100%;
+      height: 60px;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: 470px) {
+  .navbar {
+    margin: 0 10px;
+  }
+}

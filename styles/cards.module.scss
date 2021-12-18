@@ -29,3 +29,24 @@
     }
   }
 }
+
+@media (max-width: 890px) {
+  .cardsContainer {
+    grid-template-columns: repeat(1, minmax(430px, 630px));
+    margin: 20px;
+  }
+  .cardsFilterButton {
+    width: 100%;
+    justify-content: center;
+    button {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 470px) {
+  .cardsContainer {
+    grid-template-columns: repeat(1, minmax(300px, 430px));
+    margin: 20px 10px;
+  }
+}
