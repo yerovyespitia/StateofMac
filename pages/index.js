@@ -1,10 +1,12 @@
+import Head from "next/head";
 import Cards from "../components/Cards";
-import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      <Head>
+        <title>State of Gaming on Mac</title>
+      </Head>
       <Cards />
     </div>
   );

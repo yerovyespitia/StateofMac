@@ -16,7 +16,9 @@ const Navbar = () => {
         <input type="text" name="search" placeholder="Search games" />
       </div>
       <div className={styles.navbarSignIn}>
-        <button>Sign In</button>
+        <Link href={"/signin"}>
+          <button>Sign In</button>
+        </Link>
       </div>
     </div>
   );
