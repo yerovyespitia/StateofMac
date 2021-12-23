@@ -19,6 +19,7 @@
     font-family: "Roboto";
     font-weight: bold;
     font-size: 22px;
+    text-transform: capitalize;
     background-color: #292929;
     color: #dbdbdb;
     border: 1px solid transparent;
@@ -27,6 +28,27 @@
     &:hover {
       background-color: #363636;
     }
+  }
+}
+
+.cardFilterButtonOption {
+  display: none;
+  justify-content: center;
+  text-align: center;
+  background-color: #292929;
+  color: #dbdbdb;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  width: 260px;
+  height: 410px;
+  .cardFilterButtonOptions {
+    font-size: 22px;
+    font-family: "Roboto";
+    font-weight: bold;
+    padding-bottom: 60px;
+    text-transform: capitalize;
+    color: #dbdbdb;
+    list-style-type: none;
   }
 }
 
