@@ -11,7 +11,7 @@ const contactGame = () => {
   return (
     <div className={styles.contactGame}>
       <Head>
-        <title>Devs Contact</title>
+        <title>Devs Contact of {id} | State of Gaming on Mac</title>
       </Head>
       <div className={styles.contactGameTitle}>
         <h1>
@@ -29,13 +29,13 @@ const contactGame = () => {
           <span className={styles.contactGameInfoLogo}>
             <Image src={twitter}></Image>
           </span>
-          Lead Game Developer
+          Game Publisher
         </div>
         <div className={styles.contactGameInfoCard}>
           <span className={styles.contactGameInfoLogo}>
             <Image src={twitter}></Image>
           </span>
-          Game Publisher
+          Lead Game Developer
         </div>
         <div className={styles.contactGameInfoCard}>
           <span className={styles.contactGameInfoLogo}>

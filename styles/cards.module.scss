@@ -66,9 +66,15 @@
   }
 }
 
+@media (max-width: 667px) {
+  .cardsContainer {
+    margin: 0 10px 20px 10px;
+  }
+}
+
 @media (max-width: 470px) {
   .cardsContainer {
     grid-template-columns: repeat(1, minmax(300px, 430px));
-    margin: 20px 10px;
+    gap: 10px;
   }
 }

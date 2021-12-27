@@ -1,0 +1,145 @@
+.gamesContainer {
+  margin: 40px;
+  .gamesImgContainer {
+    text-align: center;
+  }
+  .gamesContactContainer {
+    text-align: center;
+    font-family: "Oxygen";
+    h1 {
+      color: white;
+      margin-bottom: 0;
+    }
+    p {
+      font-size: 20px;
+      font-weight: bold;
+      color: #78bf58;
+    }
+  }
+
+  .gamesCommentsContainer {
+    margin-top: 50px;
+  }
+
+  .gamesCommentsButtonsContainer {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    span {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      margin-left: 5px;
+    }
+    .devsContactButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 260px;
+      height: 60px;
+      font-family: "Roboto";
+      font-weight: bold;
+      font-size: 22px;
+      text-transform: capitalize;
+      background-color: #292929;
+      color: #dbdbdb;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: #363636;
+      }
+    }
+    .filterButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 60px;
+      font-family: "Roboto";
+      font-weight: bold;
+      font-size: 22px;
+      text-transform: capitalize;
+      background-color: #292929;
+      color: #dbdbdb;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left: 15px;
+      &:hover {
+        background-color: #363636;
+      }
+    }
+  }
+}
+
+.gamesUser {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  p {
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 23px;
+    color: white;
+    margin: 0;
+  }
+  .gameUserInfo {
+    margin-left: 15px;
+  }
+  .gamesReports {
+    font-size: 18px;
+    color: #b7b7b7;
+  }
+  background-color: #292929;
+  border-radius: 15px;
+  height: 95px;
+  margin-top: 15px;
+  padding-left: 40px;
+}
+
+.gamesUserComments {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  p {
+    font-family: "Roboto";
+    margin: 5px;
+  }
+  .gamesDate {
+    font-weight: 500;
+    color: #b7b7b7;
+  }
+  .gamesTitle {
+    font-size: 24px;
+    color: white;
+  }
+  .gamesComment {
+    font-size: 20px;
+    color: #e6e6e6;
+  }
+  .gamesThrough {
+    font-size: 18px;
+    font-weight: bold;
+    color: #5897BF;
+  }
+  .gamesScore{
+    font-size: 18px;
+    font-weight: bold;
+    color: #78BF58;
+  }
+  .gamesPlatform {
+    font-size: 18px;
+    font-weight: bold;
+    color: #52C98E;
+  }
+  .gamesMac {
+    font-size: 18px;
+    font-weight: bold;
+    color: #C9A452;
+  }
+  background-color: #292929;
+  border-radius: 15px;
+  padding: 40px;
+  margin-top: 15px;
+}
