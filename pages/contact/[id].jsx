@@ -29,25 +29,19 @@ const contactGame = () => {
           <span className={styles.contactGameInfoLogo}>
             <Image src={twitter}></Image>
           </span>
+          Game Developer
+        </div>
+        <div className={styles.contactGameInfoCard}>
+          <span className={styles.contactGameInfoLogo}>
+            <Image src={twitter}></Image>
+          </span>
           Game Publisher
         </div>
         <div className={styles.contactGameInfoCard}>
           <span className={styles.contactGameInfoLogo}>
             <Image src={twitter}></Image>
           </span>
-          Lead Game Developer
-        </div>
-        <div className={styles.contactGameInfoCard}>
-          <span className={styles.contactGameInfoLogo}>
-            <Image src={twitter}></Image>
-          </span>
-          Game Director
-        </div>
-        <div className={styles.contactGameInfoCard}>
-          <span className={styles.contactGameInfoLogo}>
-            <Image src={twitter}></Image>
-          </span>
-          Senior Game Developer
+          Game Programmer
         </div>
       </div>
     </div>

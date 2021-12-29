@@ -22,7 +22,7 @@
     font-weight: 600;
   }
   .cardContentTitle {
-    font-family: "Roboto";
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 30px;
     color: white;
@@ -38,7 +38,7 @@
   }
 }
 
-@media (max-width: 890px) {
+@media (max-width: 950px) {
   .container {
     flex-direction: column;
   }

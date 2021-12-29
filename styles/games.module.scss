@@ -5,7 +5,7 @@
   }
   .gamesContactContainer {
     text-align: center;
-    font-family: "Oxygen";
+    font-family: "Roboto", sans-serif;
     h1 {
       color: white;
       margin-bottom: 0;
@@ -18,13 +18,12 @@
   }
 
   .gamesCommentsContainer {
-    margin-top: 50px;
+    margin: 30px 20%;
   }
 
   .gamesCommentsButtonsContainer {
     display: flex;
-    justify-content: right;
-    align-items: center;
+    justify-content: flex-end;
     span {
       display: flex;
       justify-content: right;
@@ -37,7 +36,7 @@
       align-items: center;
       width: 260px;
       height: 60px;
-      font-family: "Roboto";
+      font-family: "Roboto", sans-serif;
       font-weight: bold;
       font-size: 22px;
       text-transform: capitalize;
@@ -56,7 +55,7 @@
       align-items: center;
       width: 200px;
       height: 60px;
-      font-family: "Roboto";
+      font-family: "Roboto", sans-serif;
       font-weight: bold;
       font-size: 22px;
       text-transform: capitalize;
@@ -78,7 +77,7 @@
   justify-content: left;
   align-items: center;
   p {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 23px;
     color: white;
@@ -103,10 +102,12 @@
   flex-direction: column;
   justify-content: center;
   p {
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
     margin: 5px;
   }
   .gamesDate {
+    font-size: 15px;
     font-weight: 500;
     color: #b7b7b7;
   }
@@ -116,30 +117,47 @@
   }
   .gamesComment {
     font-size: 20px;
+    font-weight: 400;
     color: #e6e6e6;
   }
   .gamesThrough {
-    font-size: 18px;
     font-weight: bold;
-    color: #5897BF;
+    color: #5897bf;
   }
-  .gamesScore{
-    font-size: 18px;
+  .gamesScore {
     font-weight: bold;
-    color: #78BF58;
+    color: #78bf58;
+  }
+  .gamesSelect {
+    font-weight: bold;
+    color: #c052c9;
   }
   .gamesPlatform {
-    font-size: 18px;
     font-weight: bold;
-    color: #52C98E;
+    color: #52c98e;
   }
   .gamesMac {
-    font-size: 18px;
     font-weight: bold;
-    color: #C9A452;
+    color: #c9a452;
   }
   background-color: #292929;
   border-radius: 15px;
   padding: 40px;
   margin-top: 15px;
+}
+
+@media (max-width: 1445px) {
+  .gamesContainer {
+    .gamesCommentsContainer {
+      margin: 30px 12%;
+    }
+  }
+}
+
+@media (max-width: 975px) {
+  .gamesContainer {
+    .gamesCommentsContainer {
+      margin: 0;
+    }
+  }
 }

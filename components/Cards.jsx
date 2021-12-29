@@ -6,15 +6,10 @@ const Cards = () => {
     <div className={styles.cardsContainer}>
       <div className={styles.cardsFilterButton}>
         <button>Recently Added</button>
-      </div>
-      <div className={styles.cardFilterButtonOption}>
-        <ul>
-          <li className={styles.cardFilterButtonOptions}>first option</li>
-          <li className={styles.cardFilterButtonOptions}>second option</li>
-          <li className={styles.cardFilterButtonOptions}>third option</li>
-          <li className={styles.cardFilterButtonOptions}>fourth option</li>
-          <li className={styles.cardFilterButtonOptions}>fifth option</li>
-        </ul>
+        <button className={styles.cardsActive}>Lack Reports</button>
+        <button className={styles.cardsActive}>More Populars</button>
+        <button className={styles.cardsActive}>Better Rated</button>
+        <button className={styles.cardsActive}>Worst Rated</button>
       </div>
       <Card />
       <Card />

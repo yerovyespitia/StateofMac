@@ -8,13 +8,14 @@
 
 .signin h1 {
   text-align: center;
-  font-family: "WhiteOnBlack";
+  font-family: 'Roboto', sans-serif;
   font-size: 36px;
   color: white;
+  margin: 0;
 }
 
 .signin p {
-  font-family: "Sathu";
+  font-family: 'Roboto', sans-serif;
   font-size: 30px;
   color: white;
 }
@@ -39,9 +40,4 @@
 .signin .logo {
   font-size: 30px;
   margin-right: 5px;
-}
-
-@font-face {
-  font-family: WhiteOnBlack;
-  src: url("../public/fonts/White\ On\ Black.ttf");
 }

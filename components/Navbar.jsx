@@ -4,18 +4,15 @@ import styles from "../styles/navbar.module.scss";
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
-      <div className={styles.navbarLogoContainer}>
+      <div className={styles.navbarButton}>
         <Link href={"/"}>
-          <h1 className={styles.navbarLogo}>
-            State of <br className={styles.breakLine} />
-            gaming on Mac
-          </h1>
+          <button>Home</button>
         </Link>
       </div>
       <div className={styles.navbarSearchBarContainer}>
         <input type="text" name="search" placeholder="Search games" />
       </div>
-      <div className={styles.navbarSignIn}>
+      <div className={styles.navbarButton}>
         <Link href={"/signin"}>
           <button>Sign In</button>
         </Link>
