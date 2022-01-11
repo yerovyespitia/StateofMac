@@ -15,7 +15,7 @@ const gamesName = () => {
   return (
     <div className={styles.gamesContainer}>
       <Head>
-        <title>{id} | State of Gaming on Mac</title>
+        <title>{id} | State of Mac</title>
       </Head>
       <div className={styles.gamesImgContainer}>
         <Image src={wallpaper} />

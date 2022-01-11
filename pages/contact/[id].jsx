@@ -11,7 +11,7 @@ const contactGame = () => {
   return (
     <div className={styles.contactGame}>
       <Head>
-        <title>Devs Contact of {id} | State of Gaming on Mac</title>
+        <title>Devs Contact of {id} | State of Mac</title>
       </Head>
       <div className={styles.contactGameTitle}>
         <h1>

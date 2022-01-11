@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>State of Gaming on Mac</title>
+        <title>State of Mac</title>
       </Head>
       <Cards />
     </div>
