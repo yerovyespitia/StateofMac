@@ -13,8 +13,8 @@ const Navbar = () => {
         <input type="text" name="search" placeholder="Search games" />
       </div>
       <div className={styles.navbarButton}>
-        <Link href={"/signin"}>
-          <button>Sign In</button>
+        <Link href={"/login"}>
+          <button>Login</button>
         </Link>
       </div>
     </div>
