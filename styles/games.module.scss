@@ -43,7 +43,7 @@
       background-color: #292929;
       color: #dbdbdb;
       border: 1px solid transparent;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       &:hover {
         background-color: #363636;
@@ -62,7 +62,7 @@
       background-color: #292929;
       color: #dbdbdb;
       border: 1px solid transparent;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
       margin-left: 15px;
       &:hover {
@@ -80,7 +80,7 @@
   }
 }
 
-@media (max-width: 975px) {
+@media (max-width: 1153px) {
   .gamesContainer {
     .gamesCommentsContainer {
       margin: 0;

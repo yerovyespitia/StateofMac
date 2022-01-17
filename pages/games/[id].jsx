@@ -1,12 +1,12 @@
-import { useRouter } from "next/router";
 import styles from "../../styles/games.module.scss";
 import Image from "next/image";
-import wallpaper from "../../public/images/wallpaper.png";
 import Head from "next/head";
-import infoIcon from "../../public/images/info-icon.png";
-import settingsIcon from "../../public/images/settings-icon.png";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import wallpaper from "../../public/images/wallpaper.png";
+import infoIcon from "../../public/images/info-icon.png";
 import Comment from "../../components/Comment";
+import settingsIcon from "../../public/images/settings-icon.png";
 
 const gamesName = () => {
   const router = useRouter();
@@ -26,9 +26,9 @@ const gamesName = () => {
       </div>
       <div className={styles.gamesCommentsContainer}>
         <div className={styles.gamesCommentsButtonsContainer}>
-          <Link href={"/contact/Cyberpunk 2077"}>
+          <Link href={"https://twitter.com/"}>
             <button className={styles.devsContactButton}>
-              Devs Contact
+              Social Media
               <span>
                 <Image src={infoIcon} />
               </span>

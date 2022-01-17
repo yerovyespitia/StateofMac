@@ -1,73 +1,76 @@
-.gamesUser {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  p {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 23px;
-    color: white;
-    margin: 0;
-  }
-  .gameUserInfo {
-    margin-left: 15px;
-  }
-  .gamesReports {
-    font-size: 18px;
-    color: #b7b7b7;
-  }
-  background-color: #292929;
-  border-radius: 15px;
-  height: 95px;
-  margin-top: 15px;
-  padding-left: 40px;
-}
-
-.gamesUserComments {
+.comment {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: "Roboto", sans-serif;
+  background-color: #292929;
+  border-radius: 8px;
+  padding: 40px;
+  margin-top: 15px;
   p {
-    font-family: "Roboto", sans-serif;
-    font-size: 18px;
+    font-size: 17px;
     margin: 5px;
   }
-  .gamesDate {
+  .commentInfo {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+  .commentDate {
     font-size: 15px;
     font-weight: 500;
     color: #b7b7b7;
   }
-  .gamesTitle {
-    font-size: 24px;
+  .commentTitle {
+    font-size: 23px;
     color: white;
   }
-  .gamesComment {
+  .commentDescription {
     font-size: 20px;
     font-weight: 400;
     color: #e6e6e6;
   }
-  .gamesThrough {
+  .commentPlayedThrough {
     font-weight: bold;
     color: #5897bf;
   }
-  .gamesScore {
+  .commentScore {
     font-weight: bold;
     color: #78bf58;
   }
-  .gamesSelect {
+  .commentSelect {
     font-weight: bold;
     color: #c052c9;
   }
-  .gamesPlatform {
+  .commentPlatform {
     font-weight: bold;
     color: #52c98e;
   }
-  .gamesMac {
+  .commentMac {
     font-weight: bold;
     color: #c9a452;
   }
-  background-color: #292929;
-  border-radius: 15px;
-  padding: 40px;
-  margin-top: 15px;
+}
+
+.commentUser {
+  margin-bottom: 10px;
+  .author {
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+  }
+  .authorReports {
+    font-size: 16px;
+    color: #b7b7b7;
+  }
+}
+
+@media (max-width: 913px) {
+  .comment {
+    .commentInfo {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+  }
 }
