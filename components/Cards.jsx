@@ -1,7 +1,16 @@
-import Card from "./Card";
 import styles from "../styles/cards.module.scss";
+import Card from "./Card";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Cards = () => {
+  const [games, setGames] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/games")
+      .then((res) => setGames(res.data));
+  }, []);
+
   return (
     <div className={styles.cardsContainer}>
       <div className={styles.cardsFilterButton}>
@@ -11,16 +20,9 @@ const Cards = () => {
         <button className={styles.cardsActive}>Better Rated</button>
         <button className={styles.cardsActive}>Worst Rated</button>
       </div>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {games.map((g, i) => (
+        <Card game={g} key={i} />
+      ))}
     </div>
   );
 };

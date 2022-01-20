@@ -1,28 +1,28 @@
 import styles from "../styles/card.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import img from "../public/images/img.png";
+import moment from "moment";
 
-const Card = () => {
+const Card = ({ game }) => {
   return (
     <>
-      <Link href="/games/Cyberpunk 2077">
+      <Link href={`/games/${game.title}`}>
         <div className={styles.container}>
           <div className={styles.cardImgContainer}>
             <Image
-              src={img}
+              src={game.wallpaper}
               width={374}
               height={221}
               className={styles.cardImg}
             />
           </div>
           <div className={styles.cardContent}>
-            <p className={styles.cardContentTitle}>Cyberpunk 2077</p>
+            <p className={styles.cardContentTitle}>{game.title}</p>
             <p className={styles.cardContentUpdated}>
-              Updated November 2, 2021
+              Updated {moment(game.updatedAt).format("MMM Do YYYY")}
             </p>
-            <p className={styles.cardContentReports}>250 reports</p>
-            <p className={styles.cardContentScore}>Perfect</p>
+            <p className={styles.cardContentReports}>Reports {game.reports}</p>
+            <p className={styles.cardContentScore}>{game.state}</p>
           </div>
         </div>
       </Link>

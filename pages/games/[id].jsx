@@ -1,32 +1,58 @@
-import styles from "../../styles/games.module.scss";
-import Image from "next/image";
-import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import wallpaper from "../../public/images/wallpaper.png";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../../styles/games.module.scss";
+import settingsIcon from "../../public/images/settings-icon.png";
 import infoIcon from "../../public/images/info-icon.png";
 import Comment from "../../components/Comment";
-import settingsIcon from "../../public/images/settings-icon.png";
 
-const gamesName = () => {
-  const router = useRouter();
-  const { id } = router.query;
+export async function getStaticPaths() {
+  const res = await fetch(`http://localhost:3001/api/games/`);
+  const data = await res.json();
+  const paths = data.map((id) => {
+    return {
+      params: { id: id.title.toString() },
+    };
+  });
+  return {
+    paths,
+    fallback: false,
+  };
+}
 
+export const getStaticProps = async (context) => {
+  const id = context.params.id
+  const res = await fetch(`http://localhost:3001/api/games/${id}`)
+  const data = await res.json()
+  
+  return {
+    props: {
+      game: data
+    }
+  }
+}
+
+const gamesName = ({game}) => {
   return (
     <div className={styles.gamesContainer}>
       <Head>
-        <title>{id} | State of Mac</title>
+        <title>{game.title} | State of Mac</title>
       </Head>
       <div className={styles.gamesImgContainer}>
-        <Image src={wallpaper} />
+        <Image
+          src={game.wallpaper}
+          width={1454}
+          height={813}
+          className={styles.gamesImg}
+        />
       </div>
       <div className={styles.gamesContactContainer}>
-        <h1>{id}</h1>
-        <p>Runs perfectly, maybe need some tweaks</p>
+        <h1>{game.title}</h1>
+        {game.state === "Unknown" && <p>Hasn’t been rated</p>}
       </div>
       <div className={styles.gamesCommentsContainer}>
         <div className={styles.gamesCommentsButtonsContainer}>
-          <Link href={"https://twitter.com/"}>
+          <Link href={`${game.socialMedia}`}>
             <button className={styles.devsContactButton}>
               Social Media
               <span>
