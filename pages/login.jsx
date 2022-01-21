@@ -20,11 +20,13 @@ const login = () => {
               className={styles.loginInput}
               type="text"
               placeholder="Username"
+              required
             />
             <input
               className={styles.loginInput}
               type="password"
               placeholder="Password"
+              required
             />
             <button className={styles.loginButton}>Login</button>
           </form>
