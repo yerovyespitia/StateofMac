@@ -90,3 +90,14 @@
     }
   }
 }
+
+@media (max-width: 667px) {
+  .gamesContainer {
+    margin: 15px;
+    .gamesImgContainer {
+      .gamesImg {
+        border-radius: 15px;
+      }
+    }
+  }
+}
