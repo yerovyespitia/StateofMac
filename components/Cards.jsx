@@ -3,19 +3,23 @@ import Card from "./Card";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import expand from "../public/images/expand.png";
+import expand from "../public/images/expand.svg";
+import { useSelector } from "react-redux";
 
 const Cards = () => {
   const [games, setGames] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
-  const options = ["Recently Added", "Lack Reports", "With More Reports"];
   const [selected, setSelected] = useState("Recently Added");
+  const options = ["Recently Added", "Lack Reports", "More Populars"];
+  const gamesFiltered = useSelector((state) => state.games.value);
+
   const handleFilterButtons = () => {
     setShowButtons(!showButtons);
   };
+
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/games")
+      .get("http://localhost:3001/api/games/")
       .then((res) => setGames(res.data));
   }, []);
 
@@ -43,9 +47,22 @@ const Cards = () => {
           </>
         )}
       </div>
-      {games.map((g, i) => (
-        <Card game={g} key={i} />
-      ))}
+      {games
+        .filter((g) => {
+          if (gamesFiltered.searchGame === "") {
+            return <Card game={g} key={g} />;
+          } else if (
+            g.title
+              .toLowerCase()
+              .includes(gamesFiltered.searchGame.toLowerCase())
+          ) {
+            return <Card game={g} key={g} />;
+          }
+          return false;
+        })
+        .map((g, i) => (
+          <Card game={g} key={i} />
+        ))}
     </div>
   );
 };

@@ -1,7 +1,15 @@
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { search } from "../redux/gamesSlice";
 import styles from "../styles/navbar.module.scss";
 
 const Navbar = () => {
+  const games = useSelector((state) => state.games.value);
+  const dispatch = useDispatch();
+  const handleOnChange = (e) => {
+    dispatch(search({ searchGame: e.target.value }));
+  };
   return (
     <div className={styles.navbar}>
       <div className={styles.navbarButton}>
@@ -10,7 +18,13 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={styles.navbarSearchBarContainer}>
-        <input type="text" name="search" placeholder="Search games" />
+        <input
+          type="text"
+          name="search"
+          placeholder="Search games"
+          value={games.searchGame}
+          onChange={handleOnChange}
+        />
       </div>
       <div className={styles.navbarButton}>
         <Link href={"/login"}>

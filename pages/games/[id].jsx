@@ -2,8 +2,8 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../../styles/games.module.scss";
-import settingsIcon from "../../public/images/settings-icon.png";
-import infoIcon from "../../public/images/info-icon.png";
+import settingsIcon from "../../public/images/settings-icon.svg";
+import infoIcon from "../../public/images/info-icon.svg";
 import Comment from "../../components/Comment";
 
 export async function getStaticPaths() {
@@ -21,18 +21,18 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async (context) => {
-  const id = context.params.id
-  const res = await fetch(`http://localhost:3001/api/games/${id}`)
-  const data = await res.json()
-  
+  const id = context.params.id;
+  const res = await fetch(`http://localhost:3001/api/games/${id}`);
+  const data = await res.json();
+
   return {
     props: {
-      game: data
-    }
-  }
-}
+      game: data,
+    },
+  };
+};
 
-const gamesName = ({game}) => {
+const gamesName = ({ game }) => {
   return (
     <div className={styles.gamesContainer}>
       <Head>
@@ -48,7 +48,24 @@ const gamesName = ({game}) => {
       </div>
       <div className={styles.gamesContactContainer}>
         <h1>{game.title}</h1>
-        {game.state === "Unknown" && <p>Hasn’t been rated</p>}
+        {game.state === "Unknown" && (
+          <p style={{ color: "#7E7E7E" }}>Hasn't been rated</p>
+        )}
+        {game.state === "Perfect" && (
+          <p style={{ color: "#78BF58" }}>
+            Runs perfectly, maybe need some tweaks
+          </p>
+        )}
+        {game.state === "Playable" && (
+          <p style={{ color: "#C98452" }}>
+            Runs with some issues but overall a good experience
+          </p>
+        )}
+        {game.state === "Unplayable" && (
+          <p style={{ color: "#C95252" }}>
+            Often crashes, won't start, too many issues
+          </p>
+        )}
       </div>
       <div className={styles.gamesCommentsContainer}>
         <div className={styles.gamesCommentsButtonsContainer}>
@@ -56,14 +73,14 @@ const gamesName = ({game}) => {
             <button className={styles.devsContactButton}>
               Social Media
               <span>
-                <Image src={infoIcon} />
+                <Image className={styles.iconColor} src={infoIcon} />
               </span>
             </button>
           </Link>
           <button className={styles.filterButton}>
             Filter
             <span>
-              <Image src={settingsIcon} />
+              <Image className={styles.iconColor} src={settingsIcon} />
             </span>
           </button>
         </div>

@@ -30,25 +30,13 @@
     font-weight: 400;
     color: #e6e6e6;
   }
-  .commentPlayedThrough {
-    font-weight: bold;
-    color: #5897bf;
-  }
-  .commentScore {
-    font-weight: bold;
-    color: #78bf58;
-  }
-  .commentSelect {
-    font-weight: bold;
-    color: #c052c9;
-  }
-  .commentPlatform {
-    font-weight: bold;
-    color: #52c98e;
-  }
+  .commentPlayedThrough,
+  .commentScore,
+  .commentSelect,
+  .commentPlatform,
   .commentMac {
     font-weight: bold;
-    color: #c9a452;
+    color: #338DC6;
   }
 }
 

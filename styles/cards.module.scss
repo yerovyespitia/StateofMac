@@ -25,8 +25,10 @@
     border: 1px solid transparent;
     cursor: pointer;
     .expandIcon {
+      width: 15px;
       margin-left: 5px;
-      margin-bottom: 5px;
+      filter: invert(98%) sepia(2%) saturate(33%) hue-rotate(315deg)
+        brightness(92%) contrast(89%);
     }
     &:first-child {
       margin-bottom: 5px;

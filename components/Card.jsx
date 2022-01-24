@@ -22,7 +22,26 @@ const Card = ({ game }) => {
               Updated {moment(game.updatedAt).format("MMM Do YYYY")}
             </p>
             <p className={styles.cardContentReports}>Reports {game.reports}</p>
-            <p className={styles.cardContentScore}>{game.state}</p>
+            {game.state === "Unknown" && (
+              <p className={styles.gameState} style={{ color: "#7E7E7E" }}>
+                Hasn't been rated
+              </p>
+            )}
+            {game.state === "Perfect" && (
+              <p className={styles.gameState} style={{ color: "#78BF58" }}>
+                Runs perfectly, maybe need some tweaks
+              </p>
+            )}
+            {game.state === "Playable" && (
+              <p className={styles.gameState} style={{ color: "#C98452" }}>
+                Runs with some issues but overall a good experience
+              </p>
+            )}
+            {game.state === "Unplayable" && (
+              <p className={styles.gameState} style={{ color: "#C95252" }}>
+                Often crashes, won't start, too many issues
+              </p>
+            )}
           </div>
         </div>
       </Link>
