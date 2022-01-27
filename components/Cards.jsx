@@ -10,7 +10,12 @@ const Cards = () => {
   const [games, setGames] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("Recently Added");
-  const options = ["Recently Added", "Lack Reports", "More Populars"];
+  const options = [
+    "All Games",
+    "Recently Added",
+    "Lack Reports",
+    "More Populars",
+  ];
   const gamesFiltered = useSelector((state) => state.games.value);
 
   const handleFilterButtons = () => {
