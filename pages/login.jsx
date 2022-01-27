@@ -8,10 +8,10 @@ import { userLogin } from "../redux/userSlice";
 import Router from 'next/router'
 
 const login = () => {
-  const userRef = useRef();
-  const passwordRef = useRef();
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
+  const userRef = useRef();
+  const passwordRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
