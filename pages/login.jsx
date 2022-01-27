@@ -2,26 +2,30 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/login.module.scss";
 import axios from "axios";
-import { useRef, useContext } from "react";
-import { Context } from "../redux context/Context";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../redux/userSlice";
+import Router from 'next/router'
 
 const login = () => {
   const userRef = useRef();
   const passwordRef = useRef();
-  const { dispatch, isFetching } = useContext(Context);
+  const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
+    dispatch(userLogin({ user: null, isFetching: true, error: false }));
     try {
       const res = await axios.post("http://localhost:3001/api/auth/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      res.data && window.location.replace("/");
+      dispatch(userLogin({ user: res.data, isFetching: false, error: false }));
+      Router.push('/')
     } catch (error) {
-      dispatch({ type: "LOGIN_FAILURE" });
+      dispatch(userLogin({ user: null, isFetching: false, error: true }));
+      console.log(error);
     }
   };
   return (
@@ -50,7 +54,7 @@ const login = () => {
             <button
               className={styles.loginButton}
               type="submit"
-              disabled={isFetching}
+              disabled={user.isFetching}
             >
               Login
             </button>

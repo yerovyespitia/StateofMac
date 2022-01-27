@@ -1,20 +1,18 @@
 import Link from "next/link";
-import { useContext } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { Context } from "../redux context/Context";
-import { search } from "../redux/gamesSlice";
 import styles from "../styles/navbar.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { search } from "../redux/gamesSlice";
+import { userLogin } from "../redux/userSlice";
 
 const Navbar = () => {
   const games = useSelector((state) => state.games.value);
-  const { user, dispatch } = useContext(Context);
-  // const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+  const dispatch = useDispatch();
   const handleOnChange = (e) => {
     dispatch(search({ searchGame: e.target.value }));
   };
   const handleLogOut = () => {
-    dispatch({ type: "LOGOUT" });
+    dispatch(userLogin({ user: null, isFetching: false, error: false }));
   };
   return (
     <div className={styles.navbar}>
@@ -32,14 +30,14 @@ const Navbar = () => {
           onChange={handleOnChange}
         />
       </div>
-      {!user && (
+      {!user.user && (
         <div className={styles.navbarButton}>
           <Link href={"/login"}>
             <button>Login</button>
           </Link>
         </div>
       )}
-      {user && (
+      {user.user && (
         <div className={styles.navbarButton}>
           <button onClick={handleLogOut}>Logout</button>
         </div>

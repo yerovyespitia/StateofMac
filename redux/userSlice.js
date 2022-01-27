@@ -3,14 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    value: { user: null, isFetching: false, error: false },
+    value: {
+      user:
+        typeof window !== "undefined"
+          ? JSON.parse(localStorage.getItem("user"))
+          : null,
+      isFetching: false,
+      error: false,
+    },
   },
   reducers: {
-    login: (state, action) => {
+    userLogin: (state, action) => {
       state.value = action.payload;
     },
   },
 });
 
-export const { login } = userSlice.actions;
+export const { userLogin } = userSlice.actions;
 export default userSlice.reducer;
