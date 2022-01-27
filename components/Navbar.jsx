@@ -30,16 +30,15 @@ const Navbar = () => {
           onChange={handleOnChange}
         />
       </div>
-      {!user.user && (
+      {user.user ? (
+        <div className={styles.navbarButton}>
+          <button onClick={handleLogOut} suppressHydrationWarning={true}>Logout</button>
+        </div>
+      ) : (
         <div className={styles.navbarButton}>
           <Link href={"/login"}>
-            <button>Login</button>
+            <button suppressHydrationWarning={true}>Login</button>
           </Link>
-        </div>
-      )}
-      {user.user && (
-        <div className={styles.navbarButton}>
-          <button onClick={handleLogOut}>Logout</button>
         </div>
       )}
     </div>

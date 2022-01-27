@@ -2,12 +2,18 @@ import styles from "../styles/card.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import { search } from "../redux/gamesSlice";
 
 const Card = ({ game }) => {
+  const dispatch = useDispatch();
+  const handleOnClick = () => {
+    dispatch(search({ searchGame: "" }));
+  };
   return (
     <>
       <Link href={`/games/${game.title}`}>
-        <div className={styles.container}>
+        <div className={styles.container} onClick={handleOnClick}>
           <div className={styles.cardImgContainer}>
             <Image
               src={game.wallpaper}

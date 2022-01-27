@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/userSlice";
-import Router from 'next/router'
+import Router from "next/router";
 
 const login = () => {
   const user = useSelector((state) => state.user.value);
@@ -22,10 +22,9 @@ const login = () => {
         password: passwordRef.current.value,
       });
       dispatch(userLogin({ user: res.data, isFetching: false, error: false }));
-      Router.push('/')
+      res.data && Router.push("/");
     } catch (error) {
       dispatch(userLogin({ user: null, isFetching: false, error: true }));
-      console.log(error);
     }
   };
   return (
