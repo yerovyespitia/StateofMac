@@ -14,14 +14,11 @@
   .commentInfo {
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
-  }
-  .commentDate {
-    font-size: 15px;
     font-weight: 500;
-    color: #b7b7b7;
+    margin-top: 10px;
   }
   .commentTitle {
+    font-weight: bold;
     font-size: 23px;
     color: white;
   }
@@ -35,20 +32,28 @@
   .commentSelect,
   .commentPlatform,
   .commentMac {
-    font-weight: bold;
-    color: #338DC6;
+    color: white;
   }
 }
 
 .commentUser {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
   .author {
     font-weight: 500;
     font-size: 20px;
-    color: white;
+    color: #52A2D5;
   }
   .authorReports {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #b358bf;
+  }
+  .commentDate {
+    font-size: 15px;
+    font-weight: 500;
     color: #b7b7b7;
   }
 }

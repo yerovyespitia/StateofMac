@@ -22,6 +22,31 @@
 
   .gamesCommentsContainer {
     margin: 30px 20%;
+    .addNewReport {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      background-color: #292929;
+      margin-top: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      h2 {
+        margin: 0;
+        color: #dbdbdb;
+      }
+      span {
+        transform: translateY(4px);
+        margin-left: 5px;
+      }
+      .addColor {
+        filter: invert(98%) sepia(2%) saturate(33%) hue-rotate(315deg)
+          brightness(92%) contrast(89%);
+      }
+      &:hover {
+        background-color: #363636;
+      }
+    }
   }
 
   .gamesCommentsButtonsContainer {
