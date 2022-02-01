@@ -7,9 +7,12 @@ import infoIcon from "../../public/images/info-icon.svg";
 import Comment from "../../components/Comment";
 import { useSelector } from "react-redux";
 import addIcon from "../../public/images/add-icon.svg";
+import { useState } from "react";
+import axios from "axios";
+import Router from "next/router";
 
 export async function getStaticPaths() {
-  const res = await fetch(`http://localhost:3001/api/games/`);
+  const res = await fetch(`http://localhost:3001/api/games?page=1&limit=12`);
   const data = await res.json();
   const paths = data.map((id) => {
     return {
@@ -25,7 +28,9 @@ export async function getStaticPaths() {
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const res = await fetch(`http://localhost:3001/api/games/${id}`);
-  const res2 = await fetch(`http://localhost:3001/api/comments/${id}`);
+  const res2 = await fetch(
+    `http://localhost:3001/api/comments/${id}?page=1&limit=12`
+  );
   const data = await res.json();
   const data2 = await res2.json();
 
@@ -39,6 +44,47 @@ export const getStaticProps = async (context) => {
 
 const gamesName = ({ game, comments }) => {
   const user = useSelector((state) => state.user.value);
+  const [addReportActive, setAddReportActive] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [runThrough, setRunThrough] = useState("");
+  const [state, setState] = useState("");
+  const [launcher, setLauncher] = useState("");
+  const [macUsed, setMacUsed] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newComment = {
+      username: user.user.username,
+      title,
+      description,
+      runThrough,
+      state,
+      launcher,
+      macUsed,
+    };
+    try {
+      axios.post(
+        `http://localhost:3001/api/comments/${game.title}`,
+        newComment
+      );
+      setAddReportActive(!addReportActive);
+      Router.reload(window.location.pathname);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleCancel = () => {
+    setAddReportActive(!addReportActive);
+    setTitle("");
+    setDescription("");
+    setRunThrough("");
+    setState("");
+    setLauncher("");
+    setMacUsed("");
+  };
+
   return (
     <div className={styles.gamesContainer}>
       <Head>
@@ -64,12 +110,17 @@ const gamesName = ({ game, comments }) => {
         )}
         {game.state === "Playable" && (
           <p style={{ color: "#C98452" }}>
-            Runs with some issues but overall a good experience
+            Runs with some issues but still a good experience
           </p>
         )}
         {game.state === "Unplayable" && (
           <p style={{ color: "#C95252" }}>
-            Often crashes, won't start, too many issues
+            Often crashes, doesn't start, too many issues
+          </p>
+        )}
+        {game.state === "Tied" && (
+          <p style={{ color: "#BBC952" }}>
+            The community is divided about this game
           </p>
         )}
       </div>
@@ -90,8 +141,11 @@ const gamesName = ({ game, comments }) => {
             </span>
           </button>
         </div>
-        {user.user && (
-          <div className={styles.addNewReport}>
+        {user && (
+          <div
+            className={styles.addNewReportButton}
+            onClick={() => setAddReportActive(!addReportActive)}
+          >
             <h2>
               Add a New Report
               <span>
@@ -100,15 +154,102 @@ const gamesName = ({ game, comments }) => {
             </h2>
           </div>
         )}
-        {comments.comments.map((c, i) => (
+        {addReportActive && (
+          <form className={styles.addNewReport} onSubmit={handleSubmit}>
+            <div className={styles.addNewReportTitle}>
+              <input
+                type="text"
+                name="search"
+                placeholder="Title"
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div className={styles.addNewReportOptions}>
+              <select onChange={(e) => setRunThrough(e.target.value)}>
+                <option
+                  value=""
+                  disabled
+                  selected="true"
+                  defaultValue={"Game Run Through"}
+                >
+                  Game Run Through
+                </option>
+                <option value="A Native Port">A Native Port</option>
+                <option value="Rosetta 2">Rosetta 2</option>
+                <option value="Crossover">Crossover</option>
+                <option value="Parallels">Parallels</option>
+                <option value="VMware">VMware</option>
+                <option value="PlayCover">PlayCover</option>
+                <option value="A Console Emulator">A Console Emulator</option>
+                <option value="Other">Other</option>
+              </select>
+              <select onChange={(e) => setState(e.target.value)}>
+                <option
+                  value=""
+                  disabled
+                  selected="true"
+                  defaultValue={"State of the Game"}
+                >
+                  State of the Game
+                </option>
+                <option value="Perfect">Perfect</option>
+                <option value="Playable">Playable</option>
+                <option value="Unplayable">Unplayable</option>
+              </select>
+              <select onChange={(e) => setLauncher(e.target.value)}>
+                <option
+                  value=""
+                  disabled
+                  selected="true"
+                  defaultValue={"Launcher"}
+                >
+                  Launcher
+                </option>
+                <option value="Steam Launcher">Steam Launcher</option>
+                <option value="Epic Games Launcher">Epic Games Launcher</option>
+                <option value="Rockstar Games Launcher">
+                  Rockstar Games Launcher
+                </option>
+                <option value="Riot Client">Riot Client</option>
+                <option value="Battle.net">Battle.net</option>
+                <option value="Other">Other</option>
+                <option value="None">None</option>
+              </select>
+              <select onChange={(e) => setMacUsed(e.target.value)}>
+                <option value="" disabled selected="true" defaultValue={"Mac"}>
+                  Mac
+                </option>
+                <option value="MacBook Pro M1 2020">MacBook Pro M1 2020</option>
+                <option value="MacBook Air M1 2020">MacBook Air M1 2020</option>
+                <option value="Mac mini M1 2020">Mac mini M1 2020</option>
+                <option value="iMac M1 2021">iMac M1 2021</option>
+                <option value="MacBook Pro M1 Pro 2021">
+                  MacBook Pro M1 Pro 2021
+                </option>
+                <option value="MacBook Pro M1 Max 2021">
+                  MacBook Max M1 Pro 2021
+                </option>
+              </select>
+            </div>
+            <div className={styles.addNewReportDescription}>
+              <textarea
+                name="description"
+                id="textarea"
+                cols="30"
+                rows="10"
+                placeholder="Description"
+                onChange={(e) => setDescription(e.target.value)}
+              ></textarea>
+            </div>
+            <div className={styles.addNewReportOptionButton}>
+              <button type="submit">Send</button>
+              <button onClick={handleCancel}>Cancel</button>
+            </div>
+          </form>
+        )}
+        {comments.map((c, i) => (
           <Comment comment={c} key={i} />
         ))}
-        {/* <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment /> */}
       </div>
     </div>
   );

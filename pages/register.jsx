@@ -1,9 +1,12 @@
 import axios from "axios";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styles from "../styles/register.module.scss";
+import Router from "next/router";
 
 const register = () => {
+  const user = useSelector((state) => state.user.value);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +25,10 @@ const register = () => {
       setError(true);
     }
   };
+
+  useEffect(() => {
+    user.user && Router.push("/");
+  }, []);
   return (
     <div>
       <Head>
@@ -63,11 +70,10 @@ const register = () => {
             </button>
           </form>
         </div>
-        {error && (
-          <span className={styles.error}>
-            Something went wrong. Please try again.
-          </span>
+        {error && password.length > 8 && (
+          <span className={styles.error}>You're password must be at least 8 characters long</span>
         )}
+        {error && <span className={styles.error}>Something must be wrong</span>}
       </div>
     </div>
   );

@@ -17,8 +17,9 @@
 }
 
 .cardContent {
+  padding-right: 30px;
   p {
-    margin: 3px 0;
+    margin: 5px 0;
   }
   p:not(:first-child) {
     font-size: 20px;

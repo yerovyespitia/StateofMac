@@ -8,25 +8,27 @@ const Comment = ({ comment }) => {
         <div className={styles.commentUser}>
           <div className={styles.commentUserLeft}>
             <p className={styles.author}>
-              {comment.username}{" "}
-              <span className={styles.authorReports}>→ 250 reports</span>
+              {comment.comment.username}
+              <span className={styles.authorReports}> → 250 reports</span>
             </p>
           </div>
           <div className={styles.commentUserRight}>
             <p className={styles.commentDate}>
-              {moment(comment.createdAt).format("l")}
+              {moment(comment.comment.date).format("ll")}
             </p>
           </div>
         </div>
-        <p className={styles.commentTitle}>{comment.title}</p>
-        <p className={styles.commentDescription}>{comment.description}</p>
+        <p className={styles.commentTitle}>{comment.comment.title}</p>
+        <p className={styles.commentDescription}>
+          {comment.comment.description}
+        </p>
         <div className={styles.commentInfo}>
-          <p className={styles.commentPlayedThrough}>
-            ● {comment.playedThrough}
+          <p className={styles.commentRunThrough}>
+            ● {comment.comment.runThrough}
           </p>
-          <p className={styles.commentScore}>● {comment.state}</p>
-          <p className={styles.commentPlatform}>● {comment.launcher}</p>
-          <p className={styles.commentMac}>● {comment.macUsed}</p>
+          <p className={styles.commentScore}>● {comment.comment.state}</p>
+          <p className={styles.commentPlatform}>● {comment.comment.launcher}</p>
+          <p className={styles.commentMac}>● {comment.comment.macUsed}</p>
         </div>
       </div>
     </>

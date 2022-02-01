@@ -5,7 +5,7 @@ import moment from "moment";
 import { useDispatch } from "react-redux";
 import { search } from "../redux/gamesSlice";
 
-const Card = ({ game }) => {
+const Card = ({ game, reports }) => {
   const dispatch = useDispatch();
   const handleOnClick = () => {
     dispatch(search({ searchGame: "" }));
@@ -25,9 +25,11 @@ const Card = ({ game }) => {
           <div className={styles.cardContent}>
             <p className={styles.cardContentTitle}>{game.title}</p>
             <p className={styles.cardContentUpdated}>
-              Updated {moment(game.updatedAt).format("MMM Do YYYY")}
+              Updated {moment(reports.updatedAt).format("ll")}
             </p>
-            <p className={styles.cardContentReports}>Reports {game.reports}</p>
+            <p className={styles.cardContentReports}>
+              Reports {reports.reports}
+            </p>
             {game.state === "Unknown" && (
               <p className={styles.gameState} style={{ color: "#7E7E7E" }}>
                 Hasn't been rated
@@ -45,7 +47,12 @@ const Card = ({ game }) => {
             )}
             {game.state === "Unplayable" && (
               <p className={styles.gameState} style={{ color: "#C95252" }}>
-                Often crashes, won't start, too many issues
+                Often crashes, doesn't start, too many issues
+              </p>
+            )}
+            {game.state === "Tied" && (
+              <p className={styles.gameState} style={{ color: "#BBC952" }}>
+                The community is divided about this game
               </p>
             )}
           </div>

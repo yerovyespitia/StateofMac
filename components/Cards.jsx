@@ -8,14 +8,10 @@ import { useSelector } from "react-redux";
 
 const Cards = () => {
   const [games, setGames] = useState([]);
+  const [reports, setReports] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
-  const [selected, setSelected] = useState("Recently Added");
-  const options = [
-    "All Games",
-    "Recently Added",
-    "Lack Reports",
-    "More Populars",
-  ];
+  const [selected, setSelected] = useState("All Games");
+  const options = ["All Games"];
   const gamesFiltered = useSelector((state) => state.games.value);
 
   const handleFilterButtons = () => {
@@ -24,8 +20,13 @@ const Cards = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/games/")
+      .get(`http://localhost:3001/api/games`, {
+        params: { limit: 12, page: 1 },
+      })
       .then((res) => setGames(res.data));
+    axios
+      .get("http://localhost:3001/api/comments/Cuphead/ru")
+      .then((res) => setReports(res.data));
   }, []);
 
   return (
@@ -53,20 +54,20 @@ const Cards = () => {
         )}
       </div>
       {games
-        .filter((g) => {
+        .filter((g, i) => {
           if (gamesFiltered.searchGame === "") {
-            return <Card game={g} key={g} />;
+            return <Card game={g} key={i} />;
           } else if (
             g.title
               .toLowerCase()
               .includes(gamesFiltered.searchGame.toLowerCase())
           ) {
-            return <Card game={g} key={g} />;
+            return <Card game={g} key={i} />;
           }
           return false;
         })
         .map((g, i) => (
-          <Card game={g} key={i} />
+          <Card game={g} reports={reports} key={i} />
         ))}
     </div>
   );

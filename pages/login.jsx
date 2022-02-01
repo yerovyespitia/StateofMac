@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/login.module.scss";
 import axios from "axios";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/userSlice";
 import Router from "next/router";
@@ -27,6 +27,9 @@ const login = () => {
       dispatch(userLogin({ user: null, isFetching: false, error: true }));
     }
   };
+  useEffect(() => {
+    user.user && Router.push("/");
+  }, []);
   return (
     <div>
       <Head>
