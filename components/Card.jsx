@@ -2,18 +2,12 @@ import styles from "../styles/card.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import moment from "moment";
-import { useDispatch } from "react-redux";
-import { search } from "../redux/gamesSlice";
 
-const Card = ({ game, reports }) => {
-  const dispatch = useDispatch();
-  const handleOnClick = () => {
-    dispatch(search({ searchGame: "" }));
-  };
+const Card = ({ game }) => {
   return (
     <>
       <Link href={`/games/${game.title}`}>
-        <div className={styles.container} onClick={handleOnClick}>
+        <div className={styles.container}>
           <div className={styles.cardImgContainer}>
             <Image
               src={game.wallpaper}
@@ -25,10 +19,10 @@ const Card = ({ game, reports }) => {
           <div className={styles.cardContent}>
             <p className={styles.cardContentTitle}>{game.title}</p>
             <p className={styles.cardContentUpdated}>
-              Updated {moment(reports.updatedAt).format("ll")}
+              Updated {moment(game.updatedAt).format("ll")}
             </p>
             <p className={styles.cardContentReports}>
-              Reports {reports.reports}
+              Reports {game.reports}
             </p>
             {game.state === "Unknown" && (
               <p className={styles.gameState} style={{ color: "#7E7E7E" }}>

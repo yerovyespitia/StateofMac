@@ -12,7 +12,9 @@ const Navbar = () => {
     dispatch(search({ searchGame: e.target.value }));
   };
   const handleLogOut = () => {
-    dispatch(userLogin({ user: null, isFetching: false, error: false }));
+    dispatch(
+      userLogin({ user: null, isFetching: false, error: false, login: false })
+    );
   };
   return (
     <div className={styles.navbar}>
@@ -32,7 +34,9 @@ const Navbar = () => {
       </div>
       {user.user ? (
         <div className={styles.navbarButton}>
-          <button onClick={handleLogOut} suppressHydrationWarning={true}>Logout</button>
+          <button onClick={handleLogOut} suppressHydrationWarning={true}>
+            Logout
+          </button>
         </div>
       ) : (
         <div className={styles.navbarButton}>

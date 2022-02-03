@@ -21,10 +21,19 @@ const login = () => {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
-      dispatch(userLogin({ user: res.data, isFetching: false, error: false }));
+      dispatch(
+        userLogin({
+          user: res.data,
+          isFetching: false,
+          error: false,
+          login: true,
+        })
+      );
       res.data && Router.push("/");
     } catch (error) {
-      dispatch(userLogin({ user: null, isFetching: false, error: true }));
+      dispatch(
+        userLogin({ user: null, isFetching: false, error: true, login: false })
+      );
     }
   };
   useEffect(() => {

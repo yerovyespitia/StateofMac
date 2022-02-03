@@ -70,9 +70,6 @@ const register = () => {
             </button>
           </form>
         </div>
-        {error && password.length > 8 && (
-          <span className={styles.error}>You're password must be at least 8 characters long</span>
-        )}
         {error && <span className={styles.error}>Something must be wrong</span>}
       </div>
     </div>

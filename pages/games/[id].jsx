@@ -12,7 +12,7 @@ import axios from "axios";
 import Router from "next/router";
 
 export async function getStaticPaths() {
-  const res = await fetch(`http://localhost:3001/api/games?page=1&limit=12`);
+  const res = await fetch(`http://localhost:3001/api/games?page=1&limit=0`);
   const data = await res.json();
   const paths = data.map((id) => {
     return {
@@ -51,6 +51,7 @@ const gamesName = ({ game, comments }) => {
   const [state, setState] = useState("");
   const [launcher, setLauncher] = useState("");
   const [macUsed, setMacUsed] = useState("");
+  const isUserActive = user.user ? true : false;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,7 +85,6 @@ const gamesName = ({ game, comments }) => {
     setLauncher("");
     setMacUsed("");
   };
-
   return (
     <div className={styles.gamesContainer}>
       <Head>
@@ -141,13 +141,13 @@ const gamesName = ({ game, comments }) => {
             </span>
           </button>
         </div>
-        {user && (
+        {isUserActive && (
           <div
             className={styles.addNewReportButton}
             onClick={() => setAddReportActive(!addReportActive)}
           >
             <h2>
-              Add a New Report
+              Add a New Reportfsds
               <span>
                 <Image className={styles.addColor} src={addIcon} />
               </span>
@@ -247,9 +247,8 @@ const gamesName = ({ game, comments }) => {
             </div>
           </form>
         )}
-        {comments.map((c, i) => (
-          <Comment comment={c} key={i} />
-        ))}
+        {comments[0].comment &&
+          comments.map((c, i) => <Comment comment={c} key={i} />)}
       </div>
     </div>
   );

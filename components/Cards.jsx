@@ -1,33 +1,62 @@
 import styles from "../styles/cards.module.scss";
 import Card from "./Card";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import expand from "../public/images/expand.svg";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Cards = () => {
   const [games, setGames] = useState([]);
-  const [reports, setReports] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("All Games");
+  const [pagination, setPagination] = useState(1);
+  const [cardsLimit] = useState(3);
+  const gamesArray = [];
   const options = ["All Games"];
   const gamesFiltered = useSelector((state) => state.games.value);
+  const [prevSearchGame, setPrevSearchGame] = useState("");
+  const [loadMore, setLoadMore] = useState(false);
 
   const handleFilterButtons = () => {
     setShowButtons(!showButtons);
   };
 
+  const handleOnClick = () => {
+    setPagination((pagination += 1));
+    setLoadMore(true);
+  };
+
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/games`, {
-        params: { limit: 12, page: 1 },
+      .get(`http://localhost:3001/api/games?`, {
+        params: {
+          page: pagination,
+          limit: cardsLimit,
+          searchGame: gamesFiltered.searchGame,
+        },
       })
-      .then((res) => setGames(res.data));
-    axios
-      .get("http://localhost:3001/api/comments/Cuphead/ru")
-      .then((res) => setReports(res.data));
-  }, []);
+      .then((res) => {
+        if (gamesFiltered.searchGame != "") {
+          setPrevSearchGame(gamesFiltered.searchGame);
+          if (!loadMore) {
+            setGames(res.data);
+            setPagination(1);
+          } else {
+            gamesArray.push(...games, ...res.data);
+            setGames(gamesArray);
+          }
+          setLoadMore(false);
+        } else if (prevSearchGame != "" && gamesFiltered.searchGame === "") {
+          setGames(res.data);
+          setPrevSearchGame("");
+          setPagination(1);
+        } else {
+          gamesArray.push(...games, ...res.data);
+          setGames(gamesArray);
+        }
+      });
+  }, [pagination, gamesFiltered]);
 
   return (
     <div className={styles.cardsContainer}>
@@ -53,22 +82,13 @@ const Cards = () => {
           </>
         )}
       </div>
-      {games
-        .filter((g, i) => {
-          if (gamesFiltered.searchGame === "") {
-            return <Card game={g} key={i} />;
-          } else if (
-            g.title
-              .toLowerCase()
-              .includes(gamesFiltered.searchGame.toLowerCase())
-          ) {
-            return <Card game={g} key={i} />;
-          }
-          return false;
-        })
-        .map((g, i) => (
-          <Card game={g} reports={reports} key={i} />
-        ))}
+      {games.map((g, i) => (
+        <Card game={g} key={i} />
+      ))}
+      {games.length < 1 && <div>fhdlsljds</div>}
+      <button className={styles.buttonLoadMore} onClick={handleOnClick}>
+        Load More Games
+      </button>
     </div>
   );
 };
