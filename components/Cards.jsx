@@ -5,6 +5,7 @@ import expand from "../public/images/expand.svg";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import NotFound from "./NotFound";
 
 const Cards = () => {
   const [games, setGames] = useState([]);
@@ -85,10 +86,13 @@ const Cards = () => {
       {games.map((g, i) => (
         <Card game={g} key={i} />
       ))}
-      {games.length < 1 && <div>fhdlsljds</div>}
-      <button className={styles.buttonLoadMore} onClick={handleOnClick}>
-        Load More Games
-      </button>
+      {games.length < 1 ? (
+        <NotFound />
+      ) : (
+        <button className={styles.buttonLoadMore} onClick={handleOnClick}>
+          Load More Games
+        </button>
+      )}
     </div>
   );
 };

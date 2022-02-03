@@ -37,15 +37,13 @@
   .cardContentReports {
     color: #b358bf;
   }
-  .gameState {
-    margin-bottom: 30px;
-  }
 }
 
 @media (max-width: 950px) {
   .cardContent {
     text-align: center;
     padding-right: 0px;
+    margin-bottom: 30px;
   }
   .container {
     flex-direction: column;

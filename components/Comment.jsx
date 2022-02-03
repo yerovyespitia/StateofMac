@@ -9,7 +9,7 @@ const Comment = ({ comment }) => {
           <div className={styles.commentUserLeft}>
             <p className={styles.author}>
               {comment.comment.username}
-              <span className={styles.authorReports}> → 250 reports</span>
+              {/* <span className={styles.authorReports}> → 250 reports</span> */}
             </p>
           </div>
           <div className={styles.commentUserRight}>

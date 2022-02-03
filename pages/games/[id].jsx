@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import addIcon from "../../public/images/add-icon.svg";
 import { useState } from "react";
 import axios from "axios";
-import Router from "next/router";
+import GameState from "../../components/GameState";
 
 export async function getStaticPaths() {
   const res = await fetch(`http://localhost:3001/api/games?page=1&limit=0`);
@@ -29,7 +29,7 @@ export const getStaticProps = async (context) => {
   const id = context.params.id;
   const res = await fetch(`http://localhost:3001/api/games/${id}`);
   const res2 = await fetch(
-    `http://localhost:3001/api/comments/${id}?page=1&limit=12`
+    `http://localhost:3001/api/comments/${id}?page=1&limit=25`
   );
   const data = await res.json();
   const data2 = await res2.json();
@@ -51,7 +51,6 @@ const gamesName = ({ game, comments }) => {
   const [state, setState] = useState("");
   const [launcher, setLauncher] = useState("");
   const [macUsed, setMacUsed] = useState("");
-  const isUserActive = user.user ? true : false;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,10 +69,8 @@ const gamesName = ({ game, comments }) => {
         newComment
       );
       setAddReportActive(!addReportActive);
-      Router.reload(window.location.pathname);
-    } catch (error) {
-      console.log(error);
-    }
+      window.location.replace("/");
+    } catch (error) {}
   };
 
   const handleCancel = () => {
@@ -85,6 +82,7 @@ const gamesName = ({ game, comments }) => {
     setLauncher("");
     setMacUsed("");
   };
+
   return (
     <div className={styles.gamesContainer}>
       <Head>
@@ -100,29 +98,7 @@ const gamesName = ({ game, comments }) => {
       </div>
       <div className={styles.gamesContactContainer}>
         <h1>{game.title}</h1>
-        {game.state === "Unknown" && (
-          <p style={{ color: "#7E7E7E" }}>Hasn't been rated</p>
-        )}
-        {game.state === "Perfect" && (
-          <p style={{ color: "#78BF58" }}>
-            Runs perfectly, maybe need some tweaks
-          </p>
-        )}
-        {game.state === "Playable" && (
-          <p style={{ color: "#C98452" }}>
-            Runs with some issues but still a good experience
-          </p>
-        )}
-        {game.state === "Unplayable" && (
-          <p style={{ color: "#C95252" }}>
-            Often crashes, doesn't start, too many issues
-          </p>
-        )}
-        {game.state === "Tied" && (
-          <p style={{ color: "#BBC952" }}>
-            The community is divided about this game
-          </p>
-        )}
+        <GameState game={game.state} />
       </div>
       <div className={styles.gamesCommentsContainer}>
         <div className={styles.gamesCommentsButtonsContainer}>
@@ -141,13 +117,13 @@ const gamesName = ({ game, comments }) => {
             </span>
           </button>
         </div>
-        {isUserActive && (
+        {user.user && (
           <div
             className={styles.addNewReportButton}
             onClick={() => setAddReportActive(!addReportActive)}
           >
             <h2>
-              Add a New Reportfsds
+              Add a New Report
               <span>
                 <Image className={styles.addColor} src={addIcon} />
               </span>
