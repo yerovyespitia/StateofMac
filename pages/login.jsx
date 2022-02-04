@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/login.module.scss";
-import axios from "axios";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/userSlice";
 import Router from "next/router";
+import axios from "axios";
 
 const login = () => {
   const user = useSelector((state) => state.user.value);
@@ -36,9 +36,11 @@ const login = () => {
       );
     }
   };
+
   useEffect(() => {
     user.user && Router.push("/");
   }, []);
+
   return (
     <div>
       <Head>

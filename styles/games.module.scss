@@ -60,25 +60,6 @@
       align-items: center;
       margin-left: 5px;
     }
-    .devsContactButton {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 260px;
-      height: 60px;
-      font-family: "Roboto", sans-serif;
-      font-weight: bold;
-      font-size: 22px;
-      text-transform: capitalize;
-      background-color: #292929;
-      color: #dbdbdb;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      cursor: pointer;
-      &:hover {
-        background-color: #363636;
-      }
-    }
     .iconColor {
       filter: invert(98%) sepia(2%) saturate(33%) hue-rotate(315deg)
         brightness(92%) contrast(89%);

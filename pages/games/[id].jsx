@@ -1,9 +1,7 @@
-import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../../styles/games.module.scss";
-import settingsIcon from "../../public/images/settings-icon.svg";
-import infoIcon from "../../public/images/info-icon.svg";
+// import settingsIcon from "../../public/images/settings-icon.svg";
 import Comment from "../../components/Comment";
 import { useSelector } from "react-redux";
 import addIcon from "../../public/images/add-icon.svg";
@@ -101,22 +99,14 @@ const gamesName = ({ game, comments }) => {
         <GameState game={game.state} />
       </div>
       <div className={styles.gamesCommentsContainer}>
-        <div className={styles.gamesCommentsButtonsContainer}>
-          <Link href={`${game.socialMedia}`}>
-            <button className={styles.devsContactButton}>
-              Social Media
-              <span>
-                <Image className={styles.iconColor} src={infoIcon} />
-              </span>
-            </button>
-          </Link>
+        {/* <div className={styles.gamesCommentsButtonsContainer}>
           <button className={styles.filterButton}>
             Filter
             <span>
               <Image className={styles.iconColor} src={settingsIcon} />
             </span>
           </button>
-        </div>
+        </div> */}
         {user.user && (
           <div
             className={styles.addNewReportButton}
