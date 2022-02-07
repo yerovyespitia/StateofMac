@@ -15,7 +15,7 @@ const register = () => {
     e.preventDefault();
     setError(false);
     try {
-      const res = await axios.post("http://localhost:3001/api/auth/register", {
+      const res = await axios.post(`${process.env.API_URL}api/auth/register`, {
         username,
         email,
         password,
@@ -35,13 +35,7 @@ const register = () => {
         <title>Register | State of Mac</title>
       </Head>
       <div className={styles.register}>
-        <h1>State of Mac</h1>
-        <div className={styles.registerJoin}>
-          <p>
-            Join us today and help us to create the biggest mac gaming community
-            around the world
-          </p>
-        </div>
+        <h1>Register</h1>
         <div className={styles.registerForm}>
           <form className={styles.registerForm} onSubmit={handleSubmit}>
             <input

@@ -17,7 +17,7 @@ const login = () => {
     e.preventDefault();
     dispatch(userLogin({ user: null, isFetching: true, error: false }));
     try {
-      const res = await axios.post("http://localhost:3001/api/auth/login", {
+      const res = await axios.post(`${process.env.API_URL}api/auth/login`, {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
@@ -47,7 +47,7 @@ const login = () => {
         <title>Login | State of Mac</title>
       </Head>
       <div className={styles.login}>
-        <h1>State of Mac</h1>
+        <h1>Login</h1>
         <div className={styles.loginForm}>
           <form className={styles.loginForm} onSubmit={handleSubmit}>
             <input

@@ -30,7 +30,7 @@ const Cards = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/games?`, {
+      .get(`${process.env.API_URL}api/games?`, {
         params: {
           page: pagination,
           limit: cardsLimit,

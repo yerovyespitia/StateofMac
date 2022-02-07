@@ -10,7 +10,7 @@ import axios from "axios";
 import GameState from "../../components/GameState";
 
 export async function getStaticPaths() {
-  const res = await fetch(`http://localhost:3001/api/games?page=1&limit=0`);
+  const res = await fetch(`${process.env.API_URL}api/games?page=1&limit=0`);
   const data = await res.json();
   const paths = data.map((id) => {
     return {
@@ -25,9 +25,9 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const res = await fetch(`http://localhost:3001/api/games/${id}`);
+  const res = await fetch(`${process.env.API_URL}api/games/${id}`);
   const res2 = await fetch(
-    `http://localhost:3001/api/comments/${id}?page=1&limit=25`
+    `${process.env.API_URL}api/comments/${id}?page=1&limit=25`
   );
   const data = await res.json();
   const data2 = await res2.json();
@@ -63,7 +63,7 @@ const gamesName = ({ game, comments }) => {
     };
     try {
       axios.post(
-        `http://localhost:3001/api/comments/${game.title}`,
+        `${process.env.API_URL}api/comments/${game.title}`,
         newComment
       );
       setAddReportActive(!addReportActive);
