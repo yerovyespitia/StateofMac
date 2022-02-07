@@ -20,12 +20,12 @@ const GameState = (props) => {
       )}
       {props.game === "Unplayable" && (
         <p className={styles.gameState} id={styles.unplayable}>
-          Often crashes, doesn't start, too many issues
+          Often crashes, it doesn't start, too many issues
         </p>
       )}
       {props.game === "Tied" && (
         <p className={styles.gameState} id={styles.tied}>
-          The community is divided about this game
+          There're mixed opinions about the perfomance of this game
         </p>
       )}
     </>

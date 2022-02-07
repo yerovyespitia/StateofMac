@@ -12,7 +12,7 @@ const Cards = () => {
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("All Games");
   const [pagination, setPagination] = useState(1);
-  const [cardsLimit] = useState(15);
+  const [cardsLimit] = useState(30);
   const gamesArray = [];
   const options = ["All Games"];
   const gamesFiltered = useSelector((state) => state.games.value);
