@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NotFound from "./NotFound";
+import { nanoid } from "nanoid";
 
 const Cards = () => {
   const [games, setGames] = useState([]);
@@ -83,8 +84,8 @@ const Cards = () => {
           </>
         )}
       </div>
-      {games.map((g, i) => (
-        <Card game={g} key={i} />
+      {games.map((g) => (
+        <Card game={g} key={nanoid()} />
       ))}
       {games.length < 1 ? (
         <NotFound />
