@@ -7,7 +7,7 @@ import GameState from "./GameState";
 const Card = ({ game }) => {
   return (
     <>
-      <Link href={`/games/${game.title}`}>
+      <Link href={`/games/${game.title}`} passHref>
         <div className={styles.container}>
           <div className={styles.cardImgContainer}>
             <Image

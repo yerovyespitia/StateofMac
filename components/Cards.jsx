@@ -83,8 +83,8 @@ const Cards = () => {
           </>
         )}
       </div>
-      {games.map((g, i) => (
-        <Card game={g} key={i} />
+      {games.map((g) => (
+        <Card game={g} key={i._id} />
       ))}
       {games.length < 1 ? (
         <NotFound />

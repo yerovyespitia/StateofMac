@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.navbarButton}>
-        <Link href={"/"}>
+        <Link href={"/"} passHref>
           <button>Home</button>
         </Link>
       </div>
@@ -40,7 +40,7 @@ const Navbar = () => {
         </div>
       ) : (
         <div className={styles.navbarButton}>
-          <Link href={"/login"}>
+          <Link href={"/login"} passHref>
             <button suppressHydrationWarning={true}>Login</button>
           </Link>
         </div>
