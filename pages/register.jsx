@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import styles from "../styles/register.module.scss";
 import Router from "next/router";
 
-const register = () => {
+const Register = () => {
   const user = useSelector((state) => state.user.value);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -70,4 +70,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;

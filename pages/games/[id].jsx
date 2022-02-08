@@ -40,7 +40,7 @@ export const getStaticProps = async (context) => {
   };
 };
 
-const gamesName = ({ game, comments }) => {
+const GameName = ({ game, comments }) => {
   const user = useSelector((state) => state.user.value);
   const [addReportActive, setAddReportActive] = useState(false);
   const [title, setTitle] = useState("");
@@ -92,6 +92,7 @@ const gamesName = ({ game, comments }) => {
           width={1454}
           height={813}
           className={styles.gamesImg}
+          alt="wallpaper"
         />
       </div>
       <div className={styles.gamesContactContainer}>
@@ -115,7 +116,11 @@ const gamesName = ({ game, comments }) => {
             <h2>
               Add a New Report
               <span>
-                <Image className={styles.addColor} src={addIcon} />
+                <Image
+                  className={styles.addColor}
+                  src={addIcon}
+                  alt="add icon"
+                />
               </span>
             </h2>
           </div>
@@ -220,4 +225,4 @@ const gamesName = ({ game, comments }) => {
   );
 };
 
-export default gamesName;
+export default GameName;

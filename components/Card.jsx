@@ -15,6 +15,7 @@ const Card = ({ game }) => {
               width={374}
               height={221}
               className={styles.cardImg}
+              alt="wallpaper"
             />
           </div>
           <div className={styles.cardContent}>

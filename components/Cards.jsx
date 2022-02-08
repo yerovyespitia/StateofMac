@@ -65,7 +65,7 @@ const Cards = () => {
         <button onClick={handleFilterButtons}>
           {selected}
           <span className={styles.expandIcon}>
-            <Image src={expand} />
+            <Image src={expand} alt="expand icon" />
           </span>
         </button>
         {showButtons && (

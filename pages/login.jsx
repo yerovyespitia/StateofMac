@@ -7,19 +7,19 @@ import { userLogin } from "../redux/userSlice";
 import Router from "next/router";
 import axios from "axios";
 
-const login = () => {
+const Login = () => {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
-  const userRef = useRef();
-  const passwordRef = useRef();
+  const useUserRef = useRef();
+  const usePasswordRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(userLogin({ user: null, isFetching: true, error: false }));
     try {
       const res = await axios.post(`${process.env.API_URL}api/auth/login`, {
-        username: userRef.current.value,
-        password: passwordRef.current.value,
+        username: useUserRef.current.value,
+        password: usePasswordRef.current.value,
       });
       dispatch(
         userLogin({
@@ -54,14 +54,14 @@ const login = () => {
               className={styles.loginInput}
               type="text"
               placeholder="Username"
-              ref={userRef}
+              ref={useUserRef}
               required
             />
             <input
               className={styles.loginInput}
               type="password"
               placeholder="Password"
-              ref={passwordRef}
+              ref={usePasswordRef}
               required
             />
             <button
@@ -81,4 +81,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
