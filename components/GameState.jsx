@@ -5,7 +5,7 @@ const GameState = (props) => {
     <>
       {props.game === "Unknown" && (
         <p className={styles.gameState} id={styles.unknown}>
-          Hasn't been rated
+          {"Hasn't been rated"}
         </p>
       )}
       {props.game === "Perfect" && (
@@ -20,12 +20,12 @@ const GameState = (props) => {
       )}
       {props.game === "Unplayable" && (
         <p className={styles.gameState} id={styles.unplayable}>
-          Often crashes, it doesn't start, too many issues
+          {"Often crashes, it doesn't start, too many issues"}
         </p>
       )}
       {props.game === "Tied" && (
         <p className={styles.gameState} id={styles.tied}>
-          There're mixed opinions about the perfomance of this game
+          {"There're mixed opinions about the perfomance of this game"}
         </p>
       )}
     </>
