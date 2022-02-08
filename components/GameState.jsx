@@ -25,7 +25,7 @@ const GameState = (props) => {
       )}
       {props.game === "Tied" && (
         <p className={styles.gameState} id={styles.tied}>
-          There&apos;re mixed opinions about the perfomance of this game
+          There&apos;re mixed opinions about the perfomance
         </p>
       )}
     </>

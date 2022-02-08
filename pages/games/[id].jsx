@@ -8,6 +8,7 @@ import addIcon from "../../public/images/add-icon.svg";
 import { useState } from "react";
 import axios from "axios";
 import GameState from "../../components/GameState";
+import { useRouter } from 'next/router'
 
 export async function getStaticPaths() {
   const res = await fetch(`${process.env.API_URL}api/games?page=1&limit=0`);
@@ -43,6 +44,8 @@ export const getStaticProps = async (context) => {
 };
 
 const GameName = ({ game, comments }) => {
+  const router = useRouter()
+  const { id } = router.query
   const user = useSelector((state) => state.user.value);
   const [addReportActive, setAddReportActive] = useState(false);
   const [title, setTitle] = useState("");
@@ -86,7 +89,7 @@ const GameName = ({ game, comments }) => {
   return (
     <div className={styles.gamesContainer}>
       <Head>
-        <title>{game.title} | State of Mac</title>
+        <title>{id} | State of Mac</title>
       </Head>
       <div className={styles.gamesImgContainer}>
         <Image
