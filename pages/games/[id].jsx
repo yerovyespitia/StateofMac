@@ -25,12 +25,14 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const res = await fetch(`${process.env.API_URL}api/games/${id}`);
-  const res2 = await fetch(
-    `${process.env.API_URL}api/comments/${id}?page=1&limit=25`
-  );
-  const data = await res.json();
-  const data2 = await res2.json();
+  const [res, res2] = await Promise.all([
+    fetch(`${process.env.API_URL}api/games/${id}`),
+    fetch(`${process.env.API_URL}api/comments/${id}?page=1&limit=25`),
+  ]);
+  const [data, data2] = await Promise.all([
+    res.json(),
+    res2.json()
+  ])
 
   return {
     props: {
