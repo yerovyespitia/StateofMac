@@ -1,6 +1,6 @@
 # State of Mac
 
-##To start using State of Mac you have to:
+## To start using State of Mac you have to:
 
 1. Create an account.
 2. Log in.
