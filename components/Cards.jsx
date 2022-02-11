@@ -61,7 +61,7 @@ const Cards = () => {
   }, [pagination, gamesFiltered]);
 
   return (
-    <div className={styles.cardsContainer}>
+    <main className={styles.cardsContainer}>
       <div className={styles.cardsFilterButton}>
         <button onClick={handleFilterButtons}>
           {selected}
@@ -94,7 +94,7 @@ const Cards = () => {
           Load More Games
         </button>
       )}
-    </div>
+    </main>
   );
 };
 

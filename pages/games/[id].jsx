@@ -70,7 +70,7 @@ const GameName = () => {
   };
 
   return (
-    <div className={styles.gamesContainer}>
+    <main className={styles.gamesContainer}>
       <Head>
         <title>{id} | State of Mac</title>
       </Head>
@@ -205,7 +205,7 @@ const GameName = () => {
           <Comment comment={c} key={i} />
         ))}
       </div>
-    </div>
+    </main>
   );
 };
 
