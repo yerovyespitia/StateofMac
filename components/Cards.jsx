@@ -91,7 +91,7 @@ const Cards = () => {
         <NotFound />
       ) : (
         <button className={styles.buttonLoadMore} onClick={handleOnClick}>
-          Load More Games
+          Load More
         </button>
       )}
     </main>
