@@ -1,8 +1,11 @@
+// next / react & redux / styles / external libraries / images / components
 import Link from "next/link";
-import styles from "../styles/navbar.module.scss";
+
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../redux/gamesSlice";
 import { userLogin } from "../redux/userSlice";
+
+import styles from "../styles/navbar.module.scss";
 
 const Navbar = () => {
   const games = useSelector((state) => state.games.value);

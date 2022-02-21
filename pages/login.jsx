@@ -1,10 +1,14 @@
+// next / react & redux / styles / external libraries / images / components
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../styles/login.module.scss";
+import Router from "next/router";
+
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/userSlice";
-import Router from "next/router";
+
+import styles from "../styles/login.module.scss";
+
 import axios from "axios";
 
 const Login = () => {
@@ -74,7 +78,9 @@ const Login = () => {
           </form>
         </div>
         <div className={styles.register}>
-          <Link href={"/register"}>Register if you don&apos;t have an account.</Link>
+          <Link href={"/register"}>
+            Register if you don&apos;t have an account.
+          </Link>
         </div>
       </div>
     </div>

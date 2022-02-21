@@ -1,9 +1,13 @@
-import axios from "axios";
+// next / react & redux / styles / external libraries / images / components
 import Head from "next/head";
+import Router from "next/router";
+
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+
 import styles from "../styles/register.module.scss";
-import Router from "next/router";
+
+import axios from "axios";
 
 const Register = () => {
   const user = useSelector((state) => state.user.value);

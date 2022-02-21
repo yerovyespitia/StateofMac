@@ -1,11 +1,15 @@
-import "../styles/globals.scss";
-import Layout from "../components/Layout";
-import { Provider } from "react-redux";
-import store from "../redux/store";
-import * as gtag from "../lib/gtag";
-import { useEffect } from "react";
+// next / react & redux / styles / external libraries / images / components
 import Script from "next/script";
 import { useRouter } from "next/router";
+
+import { useEffect } from "react";
+import { Provider } from "react-redux";
+import store from "../redux/store";
+
+import "../styles/globals.scss";
+
+import * as gtag from "../lib/gtag";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

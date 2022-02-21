@@ -1,12 +1,18 @@
-import styles from "../styles/cards.module.scss";
-import Card from "./Card";
+// next / react & redux / styles / external libraries / images / components
 import Image from "next/image";
-import expand from "../public/images/expand.svg";
-import { useSelector } from "react-redux";
+
 import { useEffect, useState } from "react";
-import axios from "axios";
-import NotFound from "./NotFound";
+import { useSelector } from "react-redux";
+
+import styles from "../styles/cards.module.scss";
+
 import { nanoid } from "nanoid";
+import axios from "axios";
+
+import expand from "../public/images/expand.svg";
+
+import Card from "./Card";
+import NotFound from "./NotFound";
 
 const Cards = () => {
   const [games, setGames] = useState([]);

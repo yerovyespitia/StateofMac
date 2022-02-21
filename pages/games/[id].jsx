@@ -1,15 +1,20 @@
-import Head from "next/head";
+// next / react & redux / styles / external libraries / images / components
 import Image from "next/image";
-import styles from "../../styles/games.module.scss";
-// import settingsIcon from "../../public/images/settings-icon.svg";
-import Comment from "../../components/Comment";
-import { useSelector } from "react-redux";
-import addIcon from "../../public/images/add-icon.svg";
-import { useState } from "react";
-import axios from "axios";
-import GameState from "../../components/GameState";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { NextSeo } from "next-seo";
+
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
+import styles from "../../styles/games.module.scss";
+
+import axios from "axios";
+
+// import settingsIcon from "../../public/images/settings-icon.svg";
+
+import Comment from "../../components/Comment";
+import GameState from "../../components/GameState";
+import addIcon from "../../public/images/add-icon.svg";
 
 const GameName = () => {
   const router = useRouter();
@@ -23,7 +28,6 @@ const GameName = () => {
   const [runThrough, setRunThrough] = useState("");
   const [state, setState] = useState("");
   const [launcher, setLauncher] = useState("");
-  const [macUsed, setMacUsed] = useState("");
 
   useEffect(async () => {
     const res = await axios.get(`${process.env.API_URL}api/games/${id}`);
@@ -71,9 +75,19 @@ const GameName = () => {
 
   return (
     <main className={styles.gamesContainer}>
-      <Head>
-        <title>{id} | State of Mac</title>
-      </Head>
+      <NextSeo
+        title={id + " | State of Mac"}
+        description={`Find if ${id} runs on Apple Silicon.`}
+        openGraph={{
+          title: id,
+          description: "Find the best way to run your favorite game on Mac.",
+          site_name: "State of Mac",
+        }}
+        twitter={{
+          handle: "@yerovyespitia",
+          cardType: "summary_large_image",
+        }}
+      />
       <div className={styles.gamesImgContainer}>
         {game.wallpaper && (
           <Image
@@ -81,7 +95,7 @@ const GameName = () => {
             width={1454}
             height={813}
             className={styles.gamesImg}
-            alt="wallpaper"
+            alt={game.title}
           />
         )}
       </div>

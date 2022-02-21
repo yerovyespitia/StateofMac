@@ -1,7 +1,11 @@
-import styles from "../styles/card.module.scss";
-import Image from "next/image";
+// next / react & redux / styles / external libraries / images / components
 import Link from "next/link";
+import Image from "next/image";
+
+import styles from "../styles/card.module.scss";
+
 import moment from "moment";
+
 import GameState from "./GameState";
 
 const Card = ({ game }) => {
