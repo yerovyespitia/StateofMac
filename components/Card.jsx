@@ -35,7 +35,7 @@ const Card = ({ game }) => {
             initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
-              transition: { duration: 2, staggerChildren: 0.5 },
+              transition: { duration: 1, staggerChildren: 0.5 },
             }}
             className={styles.cardContent}
           >

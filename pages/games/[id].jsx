@@ -17,11 +17,11 @@ import Comment from "../../components/Comment";
 import GameState from "../../components/GameState";
 import addIcon from "../../public/images/add-icon.svg";
 
-const GameName = () => {
+const GameName = ({ game }) => {
   const router = useRouter();
   const { id } = router.query;
   const user = useSelector((state) => state.user.value);
-  const [game, setGame] = useState([]);
+  // const [game, setGame] = useState([]);
   const [comments, setComments] = useState([]);
   const [addReportActive, setAddReportActive] = useState(false);
   const [title, setTitle] = useState("");
@@ -30,10 +30,10 @@ const GameName = () => {
   const [state, setState] = useState("");
   const [launcher, setLauncher] = useState("");
 
-  useEffect(async () => {
-    const res = await axios.get(`${process.env.API_URL}api/games/${id}`);
-    setGame(res.data);
-  }, []);
+  // useEffect(async () => {
+  //   const res = await axios.get(`${process.env.API_URL}api/games/${id}`);
+  //   setGame(res.data);
+  // }, []);
 
   useEffect(async () => {
     const res = await axios.get(
@@ -100,7 +100,7 @@ const GameName = () => {
         animate={{ translateX: 0, translateY: 0 }}
         className={styles.gamesContactContainer}
       >
-        <h1>{id}</h1>
+        <h1>{game.title}</h1>
         <GameState game={game.state} />
       </motion.div>
       <div className={styles.gamesCommentsContainer}>
@@ -224,3 +224,30 @@ const GameName = () => {
 };
 
 export default GameName;
+
+export const getStaticPaths = async () => {
+  const res = await fetch(`${process.env.API_URL}api/games?page=1&limit=0`);
+  const data = await res.json();
+
+  const paths = data.map((id) => {
+    return {
+      params: { id: id.title.toString() },
+    };
+  });
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
+  const gameRes = await fetch(`${process.env.API_URL}api/games/${id}`);
+  const game = await gameRes.json();
+
+  return {
+    props: {
+      game,
+    },
+  };
+};

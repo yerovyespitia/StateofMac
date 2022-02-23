@@ -1,9 +1,12 @@
 module.exports = {
   images: {
     domains: ["res.cloudinary.com"],
+    loader: 'akamai',
+    path: '',
   },
   env: {
     API_URL: process.env.API_URL,
-    GOOGLE_ID: process.env.GOOGLE_ID
+    GOOGLE_ID: process.env.GOOGLE_ID,
   },
+  future: { webpack5: true },
 };
