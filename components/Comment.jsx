@@ -2,11 +2,16 @@
 import styles from "../styles/comment.module.scss";
 
 import moment from "moment";
+import { motion } from "framer-motion";
 
 const Comment = ({ comment }) => {
   return (
     <>
-      <div className={styles.comment}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 1 } }}
+        className={styles.comment}
+      >
         <div className={styles.commentUser}>
           <div className={styles.commentUserLeft}>
             <p className={styles.author}>
@@ -32,7 +37,7 @@ const Comment = ({ comment }) => {
           <p className={styles.commentPlatform}>● {comment.comment.launcher}</p>
           <p className={styles.commentMac}>● {comment.comment.macUsed}</p>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

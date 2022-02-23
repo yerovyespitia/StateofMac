@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import styles from "../../styles/games.module.scss";
 
 import axios from "axios";
+import { motion } from "framer-motion";
 
 // import settingsIcon from "../../public/images/settings-icon.svg";
 
@@ -79,7 +80,11 @@ const GameName = () => {
         title={id + " | State of Mac"}
         description={`Find if ${id} runs on Apple Silicon.`}
       />
-      <div className={styles.gamesImgContainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 1 } }}
+        className={styles.gamesImgContainer}
+      >
         {game.wallpaper && (
           <Image
             src={game.wallpaper}
@@ -89,11 +94,15 @@ const GameName = () => {
             alt={game.title}
           />
         )}
-      </div>
-      <div className={styles.gamesContactContainer}>
+      </motion.div>
+      <motion.div
+        initial={{ translateX: -1000, translateY: -700 }}
+        animate={{ translateX: 0, translateY: 0 }}
+        className={styles.gamesContactContainer}
+      >
         <h1>{id}</h1>
         <GameState game={game.state} />
-      </div>
+      </motion.div>
       <div className={styles.gamesCommentsContainer}>
         {/* <div className={styles.gamesCommentsButtonsContainer}>
           <button className={styles.filterButton}>
