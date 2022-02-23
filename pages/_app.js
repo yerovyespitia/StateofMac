@@ -1,6 +1,7 @@
 // next / react & redux / styles / external libraries / images / components
 import Script from "next/script";
 import { useRouter } from "next/router";
+import { DefaultSeo } from "next-seo";
 
 import { useEffect } from "react";
 import { Provider } from "react-redux";
@@ -25,6 +26,19 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <DefaultSeo
+        title={"State of Mac"}
+        description={`Find if favorite game runs on Apple Silicon.`}
+        openGraph={{
+          title: "State of Mac",
+          description: "Find the best way to run your favorite game on Mac.",
+          site_name: "State of Mac",
+        }}
+        twitter={{
+          handle: "@yerovyespitia",
+          cardType: "summary_large_image",
+        }}
+      />
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}

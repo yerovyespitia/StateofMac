@@ -1,7 +1,7 @@
 // next / react & redux / styles / external libraries / images / components
-import Head from "next/head";
 import Link from "next/link";
 import Router from "next/router";
+import { NextSeo } from "next-seo";
 
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,9 +47,7 @@ const Login = () => {
 
   return (
     <div>
-      <Head>
-        <title>Login | State of Mac</title>
-      </Head>
+      <NextSeo title={"Login | State of Mac"} />
       <div className={styles.login}>
         <h1>Login</h1>
         <div className={styles.loginForm}>

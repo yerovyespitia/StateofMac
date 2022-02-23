@@ -1,6 +1,6 @@
 // next / react & redux / styles / external libraries / images / components
-import Head from "next/head";
 import Router from "next/router";
+import { NextSeo } from "next-seo";
 
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -35,9 +35,7 @@ const Register = () => {
   }, []);
   return (
     <div>
-      <Head>
-        <title>Register | State of Mac</title>
-      </Head>
+      <NextSeo title={"Register | State of Mac"} />
       <div className={styles.register}>
         <h1>Register</h1>
         <div className={styles.registerForm}>

@@ -78,15 +78,6 @@ const GameName = () => {
       <NextSeo
         title={id + " | State of Mac"}
         description={`Find if ${id} runs on Apple Silicon.`}
-        openGraph={{
-          title: id,
-          description: "Find the best way to run your favorite game on Mac.",
-          site_name: "State of Mac",
-        }}
-        twitter={{
-          handle: "@yerovyespitia",
-          cardType: "summary_large_image",
-        }}
       />
       <div className={styles.gamesImgContainer}>
         {game.wallpaper && (
