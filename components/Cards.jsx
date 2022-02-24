@@ -20,7 +20,7 @@ const Cards = () => {
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("All Games");
   const [pagination, setPagination] = useState(1);
-  const [cardsLimit] = useState(15);
+  const [cardsLimit] = useState(12);
   const gamesArray = [];
   const options = ["All Games"];
   const gamesFiltered = useSelector((state) => state.games.value);
@@ -70,12 +70,16 @@ const Cards = () => {
   return (
     <main className={styles.cardsContainer}>
       <div className={styles.cardsFilterButton}>
-        <button onClick={handleFilterButtons}>
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={handleFilterButtons}
+        >
           {selected}
           <span className={styles.expandIcon}>
             <Image src={expand} alt="expand icon" />
           </span>
-        </button>
+        </motion.button>
         {showButtons && (
           <>
             {options.map((option) => (

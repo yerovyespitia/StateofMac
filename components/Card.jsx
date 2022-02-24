@@ -12,11 +12,16 @@ import GameState from "./GameState";
 const Card = ({ game }) => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0, translateX: -500 }}
       animate={{
-        opacity: 1,
-        transition: { duration: 0.5 },
+        translateX: 0,
+        transition: {
+          delayChildren: 0.3,
+          staggerChildren: 0.2,
+        },
       }}
+      whileInView={{ opacity: 1, transition: { duration: 0.7 } }}
+      viewport={{ once: true }}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.9 }}
     >

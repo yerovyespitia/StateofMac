@@ -6,7 +6,6 @@ import { search } from "../redux/gamesSlice";
 import { userLogin } from "../redux/userSlice";
 
 import styles from "../styles/navbar.module.scss";
-
 import { motion } from "framer-motion";
 
 const Navbar = () => {
@@ -30,13 +29,15 @@ const Navbar = () => {
 
   return (
     <motion.div
-      initial={{ translateX: -100 }}
-      animate={{ translateX: 0, transition: { duration: 0.5 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       className={styles.navbar}
     >
       <div className={styles.navbarButton}>
         <Link href={"/"} passHref>
-          <button onClick={handleOnClick}>Home</button>
+          <motion.button whileTap={{ scale: 0.9 }} onClick={handleOnClick}>
+            Home
+          </motion.button>
         </Link>
       </div>
       <div className={styles.navbarSearchBarContainer}>
@@ -50,16 +51,24 @@ const Navbar = () => {
       </div>
       {user.user ? (
         <div className={styles.navbarButton}>
-          <button onClick={handleLogOut} suppressHydrationWarning={true}>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={handleLogOut}
+            suppressHydrationWarning={true}
+          >
             Logout
-          </button>
+          </motion.button>
         </div>
       ) : (
         <div className={styles.navbarButton}>
           <Link href={"/login"} passHref>
-            <button onClick={handleOnClick} suppressHydrationWarning={true}>
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={handleOnClick}
+              suppressHydrationWarning={true}
+            >
               Login
-            </button>
+            </motion.button>
           </Link>
         </div>
       )}

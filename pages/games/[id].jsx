@@ -1,9 +1,8 @@
 // next / react & redux / styles / external libraries / images / components
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { search } from "../../redux/gamesSlice";
 
@@ -18,11 +17,8 @@ import Comment from "../../components/Comment";
 import GameState from "../../components/GameState";
 import addIcon from "../../public/images/add-icon.svg";
 
-const GameName = ({ game }) => {
-  const router = useRouter();
-  const { id } = router.query;
+const GameName = ({ game, comments }) => {
   const user = useSelector((state) => state.user.value);
-  const [comments, setComments] = useState([]);
   const [addReportActive, setAddReportActive] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -31,17 +27,6 @@ const GameName = ({ game }) => {
   const [launcher, setLauncher] = useState("");
   const dispatch = useDispatch();
   dispatch(search({ searchGame: "" }));
-
-  useEffect(async () => {
-    const res = await axios.get(
-      `${process.env.API_URL}api/comments/${id}?page=1&limit=25`
-    );
-    if (!res.data[0]._id) {
-      setComments([]);
-    } else {
-      setComments(res.data);
-    }
-  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,7 +40,10 @@ const GameName = ({ game }) => {
       macUsed,
     };
     try {
-      await axios.post(`${process.env.API_URL}api/comments/${id}`, newComment);
+      await axios.post(
+        `${process.env.API_URL}api/comments/${game.title}`,
+        newComment
+      );
       setAddReportActive(!addReportActive);
       window.location.replace("/");
     } catch (error) {}
@@ -98,7 +86,12 @@ const GameName = ({ game }) => {
         animate={{ translateX: 0, translateY: 0 }}
         className={styles.gamesContactContainer}
       >
-        <h1>{game.title}</h1>
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1 } }}
+        >
+          {game.title}
+        </motion.h1>
         <GameState game={game.state} />
       </motion.div>
       <div className={styles.gamesCommentsContainer}>
@@ -213,9 +206,8 @@ const GameName = ({ game }) => {
             </div>
           </form>
         )}
-        {comments.map((c, i) => (
-          <Comment comment={c} key={i} />
-        ))}
+        {comments[0]._id != null &&
+          comments.map((c, i) => <Comment comment={c} key={i} />)}
       </div>
     </main>
   );
@@ -242,10 +234,15 @@ export const getStaticProps = async (context) => {
   const id = context.params.id;
   const gameRes = await fetch(`${process.env.API_URL}api/games/${id}`);
   const game = await gameRes.json();
+  const commentRes = await fetch(
+    `${process.env.API_URL}api/comments/${game.title}?page=1&limit=25`
+  );
+  const comments = await commentRes.json();
 
   return {
     props: {
       game,
+      comments,
     },
   };
 };
