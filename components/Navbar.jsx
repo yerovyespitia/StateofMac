@@ -7,23 +7,36 @@ import { userLogin } from "../redux/userSlice";
 
 import styles from "../styles/navbar.module.scss";
 
+import { motion } from "framer-motion";
+
 const Navbar = () => {
   const games = useSelector((state) => state.games.value);
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
+
   const handleOnChange = (e) => {
     dispatch(search({ searchGame: e.target.value }));
   };
+
   const handleLogOut = () => {
     dispatch(
       userLogin({ user: null, isFetching: false, error: false, login: false })
     );
   };
+
+  const handleOnClick = () => {
+    dispatch(search({ searchGame: "" }));
+  };
+
   return (
-    <div className={styles.navbar}>
+    <motion.div
+      initial={{ translateX: -100 }}
+      animate={{ translateX: 0, transition: { duration: 0.5 } }}
+      className={styles.navbar}
+    >
       <div className={styles.navbarButton}>
         <Link href={"/"} passHref>
-          <button>Home</button>
+          <button onClick={handleOnClick}>Home</button>
         </Link>
       </div>
       <div className={styles.navbarSearchBarContainer}>
@@ -44,11 +57,13 @@ const Navbar = () => {
       ) : (
         <div className={styles.navbarButton}>
           <Link href={"/login"} passHref>
-            <button suppressHydrationWarning={true}>Login</button>
+            <button onClick={handleOnClick} suppressHydrationWarning={true}>
+              Login
+            </button>
           </Link>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { search } from "../../redux/gamesSlice";
 
 import styles from "../../styles/games.module.scss";
 
@@ -21,7 +22,6 @@ const GameName = ({ game }) => {
   const router = useRouter();
   const { id } = router.query;
   const user = useSelector((state) => state.user.value);
-  // const [game, setGame] = useState([]);
   const [comments, setComments] = useState([]);
   const [addReportActive, setAddReportActive] = useState(false);
   const [title, setTitle] = useState("");
@@ -29,11 +29,8 @@ const GameName = ({ game }) => {
   const [runThrough, setRunThrough] = useState("");
   const [state, setState] = useState("");
   const [launcher, setLauncher] = useState("");
-
-  // useEffect(async () => {
-  //   const res = await axios.get(`${process.env.API_URL}api/games/${id}`);
-  //   setGame(res.data);
-  // }, []);
+  const dispatch = useDispatch();
+  dispatch(search({ searchGame: "" }));
 
   useEffect(async () => {
     const res = await axios.get(
@@ -77,12 +74,13 @@ const GameName = ({ game }) => {
   return (
     <main className={styles.gamesContainer}>
       <NextSeo
-        title={id + " | State of Mac"}
-        description={`Find if ${id} runs on Apple Silicon.`}
+        title={game.title + " | State of Mac"}
+        description={`Find if ${game.title} runs on Apple Silicon.`}
       />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1 } }}
+        whileHover={{ scale: 1.02 }}
         className={styles.gamesImgContainer}
       >
         {game.wallpaper && (

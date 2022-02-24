@@ -8,6 +8,7 @@ import styles from "../styles/cards.module.scss";
 
 import { nanoid } from "nanoid";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 import expand from "../public/images/expand.svg";
 
@@ -96,9 +97,14 @@ const Cards = () => {
       {games.length < 1 ? (
         <NotFound />
       ) : (
-        <button className={styles.buttonLoadMore} onClick={handleOnClick}>
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.9 }}
+          className={styles.buttonLoadMore}
+          onClick={handleOnClick}
+        >
           Load More
-        </button>
+        </motion.button>
       )}
     </main>
   );
