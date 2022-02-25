@@ -2,7 +2,8 @@
 import Image from "next/image";
 
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { skeletonLoading } from "../redux/loadingSlice";
 
 import styles from "../styles/cards.module.scss";
 
@@ -26,6 +27,7 @@ const Cards = () => {
   const gamesFiltered = useSelector((state) => state.games.value);
   const [prevSearchGame, setPrevSearchGame] = useState("");
   const [loadMore, setLoadMore] = useState(false);
+  const dispatch = useDispatch();
 
   const handleFilterButtons = () => {
     setShowButtons(!showButtons);
@@ -35,6 +37,12 @@ const Cards = () => {
     setPagination((pagination += 1));
     setLoadMore(true);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(skeletonLoading({ loading: false }));
+    }, 4000);
+  }, []);
 
   useEffect(() => {
     axios

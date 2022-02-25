@@ -2,14 +2,20 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { useSelector } from "react-redux";
+
 import styles from "../styles/card.module.scss";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import moment from "moment";
 import { motion } from "framer-motion";
 
 import GameState from "./GameState";
+import Skeleton from "react-loading-skeleton";
 
 const Card = ({ game }) => {
+  const skeleton = useSelector((state) => state.skeleton.value);
+
   return (
     <motion.div
       initial={{ opacity: 0, translateX: -500 }}
@@ -28,13 +34,23 @@ const Card = ({ game }) => {
       <Link href={`/games/${game.title}`} passHref>
         <div className={styles.container}>
           <div className={styles.cardImgContainer}>
-            <Image
-              src={game.wallpaper}
-              width={374}
-              height={221}
-              className={styles.cardImg}
-              alt={game.title}
-            />
+            {skeleton.loading ? (
+              <Skeleton
+                width={280}
+                height={191}
+                baseColor="#292929"
+                highlightColor="#363636"
+                className={styles.cardImg}
+              />
+            ) : (
+              <Image
+                src={game.wallpaper}
+                width={374}
+                height={221}
+                className={styles.cardImg}
+                alt={game.title}
+              />
+            )}
           </div>
           <motion.div
             initial={{ opacity: 0 }}
@@ -44,11 +60,27 @@ const Card = ({ game }) => {
             }}
             className={styles.cardContent}
           >
-            <p className={styles.cardContentTitle}>{game.title}</p>
-            <p className={styles.cardContentUpdated}>
-              Updated {moment(game.updatedAt).format("ll")}
+            <p className={styles.cardContentTitle}>
+              {skeleton.loading ? (
+                <Skeleton baseColor="#292929" highlightColor="#363636" />
+              ) : (
+                game.title
+              )}
             </p>
-            <p className={styles.cardContentReports}>Reports {game.reports}</p>
+            <p className={styles.cardContentUpdated}>
+              {skeleton.loading ? (
+                <Skeleton baseColor="#292929" highlightColor="#363636" />
+              ) : (
+                "Updated " + moment(game.updatedAt).format("ll")
+              )}
+            </p>
+            <p className={styles.cardContentReports}>
+              {skeleton.loading ? (
+                <Skeleton baseColor="#292929" highlightColor="#363636" />
+              ) : (
+                "Reports " + game.reports
+              )}
+            </p>
             <GameState game={game.state} />
           </motion.div>
         </div>
