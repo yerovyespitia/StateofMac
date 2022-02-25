@@ -17,33 +17,37 @@ import Card from "./Card";
 import NotFound from "./NotFound";
 
 const Cards = () => {
+  const dispatch = useDispatch();
+  const gamesFiltered = useSelector((state) => state.games.value);
   const [games, setGames] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("All Games");
   const [pagination, setPagination] = useState(1);
   const [cardsLimit] = useState(12);
-  const gamesArray = [];
-  const options = ["All Games"];
-  const gamesFiltered = useSelector((state) => state.games.value);
   const [prevSearchGame, setPrevSearchGame] = useState("");
   const [loadMore, setLoadMore] = useState(false);
-  const dispatch = useDispatch();
+  const options = ["All Games"];
+  const gamesArray = [];
 
+  // Filter game cards
   const handleFilterButtons = () => {
     setShowButtons(!showButtons);
   };
 
+  // Show more game cards
   const handleOnClick = () => {
     setPagination((pagination += 1));
     setLoadMore(true);
   };
 
+  // Stop skeleton loading animation
   useEffect(() => {
     setTimeout(() => {
       dispatch(skeletonLoading({ loading: false }));
     }, 4000);
   }, []);
 
+  // Fetch game cards and search games
   useEffect(() => {
     axios
       .get(`${process.env.API_URL}api/games?`, {
@@ -78,6 +82,7 @@ const Cards = () => {
   return (
     <main className={styles.cardsContainer}>
       <div className={styles.cardsFilterButton}>
+        {/* Filter Button */}
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -88,6 +93,8 @@ const Cards = () => {
             <Image src={expand} alt="expand icon" />
           </span>
         </motion.button>
+
+        {/* Filter Button Options */}
         {showButtons && (
           <>
             {options.map((option) => (
@@ -103,9 +110,13 @@ const Cards = () => {
           </>
         )}
       </div>
+
+      {/* Game Cards */}
       {games.map((g) => (
         <Card game={g} key={nanoid()} />
       ))}
+
+      {/* Not Found Text & Load More Button */}
       {games.length < 1 ? (
         <NotFound />
       ) : (

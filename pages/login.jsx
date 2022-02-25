@@ -10,6 +10,7 @@ import { userLogin } from "../redux/userSlice";
 import styles from "../styles/login.module.scss";
 
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const user = useSelector((state) => state.user.value);
@@ -48,7 +49,11 @@ const Login = () => {
   return (
     <div>
       <NextSeo title={"Login | State of Mac"} />
-      <div className={styles.login}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.8 } }}
+        className={styles.login}
+      >
         <h1>Login</h1>
         <div className={styles.loginForm}>
           <form className={styles.loginForm} onSubmit={handleSubmit}>
@@ -80,7 +85,7 @@ const Login = () => {
             Register if you don&apos;t have an account.
           </Link>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

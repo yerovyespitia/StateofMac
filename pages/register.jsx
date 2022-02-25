@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import styles from "../styles/register.module.scss";
 
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const Register = () => {
   const user = useSelector((state) => state.user.value);
@@ -36,7 +37,11 @@ const Register = () => {
   return (
     <div>
       <NextSeo title={"Register | State of Mac"} />
-      <div className={styles.register}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.8 } }}
+        className={styles.register}
+      >
         <h1>Register</h1>
         <div className={styles.registerForm}>
           <form className={styles.registerForm} onSubmit={handleSubmit}>
@@ -67,7 +72,7 @@ const Register = () => {
           </form>
         </div>
         {error && <span className={styles.error}>Something must be wrong</span>}
-      </div>
+      </motion.div>
     </div>
   );
 };

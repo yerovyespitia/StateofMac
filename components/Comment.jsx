@@ -20,23 +20,23 @@ const Comment = ({ comment }) => {
             </p>
           </div>
           <div className={styles.commentUserRight}>
-            <p className={styles.commentDate}>
+            <time className={styles.commentDate}>
               {moment(comment.comment.date).format("ll")}
-            </p>
+            </time>
           </div>
         </div>
         <p className={styles.commentTitle}>{comment.comment.title}</p>
-        <p className={styles.commentDescription}>
+        <article className={styles.commentDescription}>
           {comment.comment.description}
-        </p>
-        <div className={styles.commentInfo}>
+        </article>
+        <article className={styles.commentInfo}>
           <p className={styles.commentRunThrough}>
             ● {comment.comment.runThrough}
           </p>
           <p className={styles.commentScore}>● {comment.comment.state}</p>
           <p className={styles.commentPlatform}>● {comment.comment.launcher}</p>
           <p className={styles.commentMac}>● {comment.comment.macUsed}</p>
-        </div>
+        </article>
       </motion.div>
     </>
   );

@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <motion.div
+    <motion.nav
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className={styles.navbar}
@@ -72,7 +72,7 @@ const Navbar = () => {
           </Link>
         </div>
       )}
-    </motion.div>
+    </motion.nav>
   );
 };
 

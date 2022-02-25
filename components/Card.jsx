@@ -17,7 +17,7 @@ const Card = ({ game }) => {
   const skeleton = useSelector((state) => state.skeleton.value);
 
   return (
-    <motion.div
+    <motion.main
       initial={{ opacity: 0, translateX: -500 }}
       animate={{
         translateX: 0,
@@ -34,10 +34,11 @@ const Card = ({ game }) => {
       <Link href={`/games/${game.title}`} passHref>
         <div className={styles.container}>
           <div className={styles.cardImgContainer}>
+            {/* Skeleton Img & Img */}
             {skeleton.loading ? (
               <Skeleton
-                width={280}
-                height={191}
+                width={285}
+                height={203}
                 baseColor="#292929"
                 highlightColor="#363636"
                 className={styles.cardImg}
@@ -52,6 +53,8 @@ const Card = ({ game }) => {
               />
             )}
           </div>
+
+          {/* Skeleton Info & Game Card Info  */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{
@@ -85,7 +88,7 @@ const Card = ({ game }) => {
           </motion.div>
         </div>
       </Link>
-    </motion.div>
+    </motion.main>
   );
 };
 
