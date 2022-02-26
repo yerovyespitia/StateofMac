@@ -19,6 +19,7 @@ import NotFound from "./NotFound";
 const Cards = () => {
   const dispatch = useDispatch();
   const gamesFiltered = useSelector((state) => state.games.value);
+  const skeleton = useSelector((state) => state.skeleton.value);
   const [games, setGames] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("All Games");
@@ -117,9 +118,9 @@ const Cards = () => {
       ))}
 
       {/* Not Found Text & Load More Button */}
-      {games.length < 1 ? (
-        <NotFound />
-      ) : (
+      {(games.length < 1 && !skeleton.loading) && <NotFound />}
+
+      {!games.length < 1 && (
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.9 }}
