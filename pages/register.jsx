@@ -5,7 +5,7 @@ import { NextSeo } from "next-seo";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import styles from "../styles/register.module.scss";
+import styles from "../styles/signin.module.scss";
 
 import axios from "axios";
 import { motion } from "framer-motion";
@@ -40,33 +40,33 @@ const Register = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 0.8 } }}
-        className={styles.register}
+        className={styles.container}
       >
         <h1>Register</h1>
-        <div className={styles.registerForm}>
-          <form className={styles.registerForm} onSubmit={handleSubmit}>
+        <div className={styles.containerForm}>
+          <form className={styles.containerForm} onSubmit={handleSubmit}>
             <input
-              className={styles.registerInput}
+              className={styles.containerInput}
               type="text"
               placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
               required
             />
             <input
-              className={styles.registerInput}
+              className={styles.containerInput}
               type={"email"}
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
             <input
-              className={styles.registerInput}
+              className={styles.containerInput}
               type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <button className={styles.registerButton} type="submit">
+            <button className={styles.containerButton} type="submit">
               Register
             </button>
           </form>

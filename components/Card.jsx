@@ -17,15 +17,7 @@ const Card = ({ game }) => {
   const skeleton = useSelector((state) => state.skeleton.value);
 
   return (
-    <motion.main
-      initial={{ opacity: 0, translateX: -500 }}
-      animate={{
-        translateX: 0,
-        transition: {
-          delayChildren: 0.3,
-          staggerChildren: 0.2,
-        },
-      }}
+    <motion.div
       whileInView={{ opacity: 1, transition: { duration: 0.7 } }}
       viewport={{ once: true }}
       whileHover={{ scale: 1.02 }}
@@ -38,7 +30,7 @@ const Card = ({ game }) => {
             {skeleton.loading ? (
               <Skeleton
                 width={285}
-                height={203}
+                height={221}
                 baseColor="#292929"
                 highlightColor="#363636"
                 className={styles.cardImg}
@@ -88,7 +80,7 @@ const Card = ({ game }) => {
           </motion.div>
         </div>
       </Link>
-    </motion.main>
+    </motion.div>
   );
 };
 

@@ -8,8 +8,9 @@ import { skeletonLoading } from "../redux/loadingSlice";
 import styles from "../styles/cards.module.scss";
 
 import { nanoid } from "nanoid";
-import axios from "axios";
 import { motion } from "framer-motion";
+import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import expand from "../public/images/expand.svg";
 
@@ -19,7 +20,6 @@ import NotFound from "./NotFound";
 const Cards = () => {
   const dispatch = useDispatch();
   const gamesFiltered = useSelector((state) => state.games.value);
-  const skeleton = useSelector((state) => state.skeleton.value);
   const [games, setGames] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("All Games");
@@ -112,24 +112,20 @@ const Cards = () => {
         )}
       </div>
 
-      {/* Game Cards */}
-      {games.map((g) => (
-        <Card game={g} key={nanoid()} />
-      ))}
+      {/* Game Cards & Automatic Infinite Scroll */}
+      <InfiniteScroll
+        style={{ overflow: "visible" }}
+        dataLength={games.length}
+        next={handleOnClick}
+        hasMore={true}
+      >
+        {games.map((g) => (
+          <Card game={g} key={nanoid()} />
+        ))}
+      </InfiniteScroll>
 
       {/* Not Found Text & Load More Button */}
-      {(games.length < 1 && !skeleton.loading) && <NotFound />}
-
-      {!games.length < 1 && (
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.9 }}
-          className={styles.buttonLoadMore}
-          onClick={handleOnClick}
-        >
-          Load More
-        </motion.button>
-      )}
+      {games.length < 1 && <NotFound />}
     </main>
   );
 };

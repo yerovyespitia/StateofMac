@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/userSlice";
 
-import styles from "../styles/login.module.scss";
+import styles from "../styles/signin.module.scss";
 
 import axios from "axios";
 import { motion } from "framer-motion";
@@ -52,27 +52,27 @@ const Login = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 0.8 } }}
-        className={styles.login}
+        className={styles.container}
       >
         <h1>Login</h1>
-        <div className={styles.loginForm}>
-          <form className={styles.loginForm} onSubmit={handleSubmit}>
+        <div className={styles.containerForm}>
+          <form className={styles.containerForm} onSubmit={handleSubmit}>
             <input
-              className={styles.loginInput}
+              className={styles.containerInput}
               type="text"
               placeholder="Username"
               ref={useUserRef}
               required
             />
             <input
-              className={styles.loginInput}
+              className={styles.containerInput}
               type="password"
               placeholder="Password"
               ref={usePasswordRef}
               required
             />
             <button
-              className={styles.loginButton}
+              className={styles.containerButton}
               type="submit"
               disabled={user.isFetching}
             >
