@@ -45,7 +45,7 @@ const Cards = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(skeletonLoading({ loading: false }));
-    }, 4000);
+    }, 2000);
   }, []);
 
   // Fetch game cards and search games

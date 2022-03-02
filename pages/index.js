@@ -21,18 +21,3 @@ export default function Home() {
     </div>
   );
 }
-
-// export const getServerSideProps = async (context) => {
-//   const { page = 0, limit = 15, searchGame = "" } = context.query;
-//   const res = await fetch(`${process.env.API_URL}api/games?page=1&limit=15`);
-//   const games = await res.json();
-
-//   return {
-//     props: {
-//       games,
-//       page,
-//       limit,
-//       searchGame,
-//     },
-//   };
-// };
