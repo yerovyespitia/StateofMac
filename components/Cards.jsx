@@ -24,7 +24,7 @@ const Cards = () => {
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("All Games");
   const [pagination, setPagination] = useState(1);
-  const [cardsLimit] = useState(12);
+  const [cardsLimit] = useState(10);
   const [prevSearchGame, setPrevSearchGame] = useState("");
   const [loadMore, setLoadMore] = useState(false);
   const options = ["All Games"];
@@ -45,7 +45,7 @@ const Cards = () => {
   useEffect(() => {
     setTimeout(() => {
       dispatch(skeletonLoading({ loading: false }));
-    }, 2000);
+    }, 1500);
   }, []);
 
   // Fetch game cards and search games
