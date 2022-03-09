@@ -1,7 +1,6 @@
 // next / react & redux / styles / external libraries / images / components
 
 import Image from "next/image";
-import ReactLoading from "react-loading";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { skeletonLoading } from "../redux/loadingSlice";
@@ -133,17 +132,7 @@ const Cards = () => {
       </InfiniteScroll>
 
       {/* Not Found Text */}
-      {loadMore === false && games.length < 1 ? (
-        <NotFound />
-      ) : (
-        <ReactLoading
-          className={styles.reactLoading}
-          type={"spinningBubbles"}
-          color={"#fff"}
-          height={"10%"}
-          width={"10%"}
-        />
-      )}
+      {loadMore === false && games.length < 1 && <NotFound />}
     </main>
   );
 };
