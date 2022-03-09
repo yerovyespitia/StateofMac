@@ -1,6 +1,7 @@
 // next / react & redux / styles / external libraries / images / components
-import Image from "next/image";
 
+import Image from "next/image";
+import ReactLoading from "react-loading";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { skeletonLoading } from "../redux/loadingSlice";
@@ -24,7 +25,6 @@ const Cards = () => {
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("All Games");
   const [pagination, setPagination] = useState(1);
-  const [cardsLimit] = useState(10);
   const [prevSearchGame, setPrevSearchGame] = useState("");
   const [loadMore, setLoadMore] = useState(false);
   const options = ["All Games"];
@@ -36,7 +36,7 @@ const Cards = () => {
   };
 
   // Show more game cards
-  const handleOnClick = () => {
+  const loadMoreGames = async () => {
     setPagination((pagination += 1));
     setLoadMore(true);
   };
@@ -54,7 +54,7 @@ const Cards = () => {
       .get(`${process.env.API_URL}api/games?`, {
         params: {
           page: pagination,
-          limit: cardsLimit,
+          limit: 10,
           searchGame: gamesFiltered.searchGame,
         },
       })
@@ -100,7 +100,7 @@ const Cards = () => {
           <>
             {options.map((option) => (
               <button
-                onClick={(e) => {
+                onClick={() => {
                   setSelected(option);
                   setShowButtons(!showButtons);
                 }}
@@ -116,16 +116,34 @@ const Cards = () => {
       <InfiniteScroll
         style={{ overflow: "visible" }}
         dataLength={games.length}
-        next={handleOnClick}
+        next={loadMoreGames}
         hasMore={true}
+        // loader={
+        //   <ReactLoading
+        //     type={"spinningBubbles"}
+        //     color={"#fff"}
+        //     height={"10%"}
+        //     width={"10%"}
+        //   />
+        // }
       >
         {games.map((g) => (
           <Card game={g} key={nanoid()} />
         ))}
       </InfiniteScroll>
 
-      {/* Not Found Text & Load More Button */}
-      {games.length < 1 && <NotFound />}
+      {/* Not Found Text */}
+      {loadMore === false && games.length < 1 ? (
+        <NotFound />
+      ) : (
+        <ReactLoading
+          className={styles.reactLoading}
+          type={"spinningBubbles"}
+          color={"#fff"}
+          height={"10%"}
+          width={"10%"}
+        />
+      )}
     </main>
   );
 };

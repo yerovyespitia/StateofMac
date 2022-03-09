@@ -1,6 +1,4 @@
 // next / react & redux / styles / external libraries / images / components
-import Head from "next/head";
-
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
@@ -14,9 +12,6 @@ export default function Home() {
 
   return (
     <div>
-      <Head>
-        <title>State of Mac</title>
-      </Head>
       <Cards />
     </div>
   );
