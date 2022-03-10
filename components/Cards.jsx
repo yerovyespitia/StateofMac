@@ -23,11 +23,10 @@ const Cards = () => {
   const [games, setGames] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
   const [selected, setSelected] = useState("All Games");
-  const [pagination, setPagination] = useState(1);
+  const [page, setPage] = useState(1);
   const [prevSearchGame, setPrevSearchGame] = useState("");
   const [loadMore, setLoadMore] = useState(false);
   const options = ["All Games"];
-  const gamesArray = [];
 
   // Filter game cards
   const handleFilterButtons = () => {
@@ -36,7 +35,7 @@ const Cards = () => {
 
   // Show more game cards
   const loadMoreGames = async () => {
-    setPagination((pagination += 1));
+    setPage((page += 1));
     setLoadMore(true);
   };
 
@@ -52,7 +51,7 @@ const Cards = () => {
     axios
       .get(`${process.env.API_URL}api/games?`, {
         params: {
-          page: pagination,
+          page,
           limit: 10,
           searchGame: gamesFiltered.searchGame,
         },
@@ -62,22 +61,20 @@ const Cards = () => {
           setPrevSearchGame(gamesFiltered.searchGame);
           if (!loadMore) {
             setGames(res.data);
-            setPagination(1);
+            setPage(1);
           } else {
-            gamesArray.push(...games, ...res.data);
-            setGames(gamesArray);
+            setGames([...games, ...res.data]);
           }
           setLoadMore(false);
         } else if (prevSearchGame != "" && gamesFiltered.searchGame === "") {
           setGames(res.data);
           setPrevSearchGame("");
-          setPagination(1);
+          setPage(1);
         } else {
-          gamesArray.push(...games, ...res.data);
-          setGames(gamesArray);
+          setGames([...games, ...res.data]);
         }
       });
-  }, [pagination, gamesFiltered]);
+  }, [page, gamesFiltered]);
 
   return (
     <main className={styles.cardsContainer}>
@@ -116,7 +113,7 @@ const Cards = () => {
         style={{ overflow: "visible" }}
         dataLength={games.length}
         next={loadMoreGames}
-        hasMore={true}
+        hasMore={gamesFiltered.searchGame != "" ? false : true}
         // loader={
         //   <ReactLoading
         //     type={"spinningBubbles"}

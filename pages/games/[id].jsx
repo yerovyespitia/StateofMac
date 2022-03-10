@@ -15,7 +15,6 @@ import { motion } from "framer-motion";
 
 import Comment from "../../components/Comment";
 import GameState from "../../components/GameState";
-import addIcon from "../../public/images/add-icon.svg";
 
 const GameName = ({ game, comments }) => {
   const user = useSelector((state) => state.user.value);
@@ -25,6 +24,7 @@ const GameName = ({ game, comments }) => {
   const [runThrough, setRunThrough] = useState("");
   const [state, setState] = useState("");
   const [launcher, setLauncher] = useState("");
+  const [macUsed, setMacUsed] = useState("")
   const dispatch = useDispatch();
   dispatch(search({ searchGame: "" }));
 
@@ -108,16 +108,7 @@ const GameName = ({ game, comments }) => {
             className={styles.addNewReportButton}
             onClick={() => setAddReportActive(!addReportActive)}
           >
-            <h2>
-              Add a New Report
-              <span>
-                <Image
-                  className={styles.addColor}
-                  src={addIcon}
-                  alt="add icon"
-                />
-              </span>
-            </h2>
+            <h2>Add a New Report</h2>
           </div>
         )}
         {addReportActive && (

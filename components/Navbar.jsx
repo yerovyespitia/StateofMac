@@ -7,11 +7,13 @@ import { userLogin } from "../redux/userSlice";
 
 import styles from "../styles/navbar.module.scss";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const games = useSelector((state) => state.games.value);
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleOnChange = (e) => {
     dispatch(search({ searchGame: e.target.value }));
@@ -27,11 +29,18 @@ const Navbar = () => {
     dispatch(search({ searchGame: "" }));
   };
 
+  const handleOnKeyDown = (e) => {
+    if (e.key === "Enter") {
+      router.replace(`/?searchGame=${games.searchGame}`);
+    }
+  };
+
   return (
     <motion.nav
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className={styles.navbar}
+      onKeyDown={handleOnKeyDown}
     >
       <div className={styles.navbarButton}>
         <Link href={"/"} passHref>
