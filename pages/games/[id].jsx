@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { search } from "../../redux/gamesSlice";
 
@@ -15,54 +14,41 @@ import { motion } from "framer-motion";
 
 import Comment from "../../components/Comment";
 import GameState from "../../components/GameState";
+import useSubmitComment from "../../customHooks/useSubmitComment";
 
 const GameName = ({ game, comments }) => {
   const user = useSelector((state) => state.user.value);
-  const [addReportActive, setAddReportActive] = useState(false);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [runThrough, setRunThrough] = useState("");
-  const [state, setState] = useState("");
-  const [launcher, setLauncher] = useState("");
-  const [macUsed, setMacUsed] = useState("")
+  const {
+    addReportState,
+    addTitle,
+    addDescription,
+    addRunThrough,
+    addState,
+    addLauncher,
+    addMacUsed,
+    reportStateToggle,
+    cancelSubmit,
+    newComment,
+  } = useSubmitComment();
   const dispatch = useDispatch();
   dispatch(search({ searchGame: "" }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newComment = {
-      username: user.user.username,
-      title,
-      description,
-      runThrough,
-      state,
-      launcher,
-      macUsed,
-    };
     try {
       await axios.post(
         `${process.env.API_URL}api/comments/${game.title}`,
         newComment
       );
-      setAddReportActive(!addReportActive);
+      reportStateToggle;
       window.location.replace("/");
     } catch (error) {}
-  };
-
-  const handleCancel = () => {
-    setAddReportActive(!addReportActive);
-    setTitle("");
-    setDescription("");
-    setRunThrough("");
-    setState("");
-    setLauncher("");
-    setMacUsed("");
   };
 
   return (
     <main className={styles.gamesContainer}>
       <NextSeo
-        title={game.title + " | State of Mac"}
+        title={game.title + " - State of Mac"}
         description={`Find if ${game.title} runs on Apple Silicon.`}
       />
       <motion.div
@@ -106,23 +92,23 @@ const GameName = ({ game, comments }) => {
         {user.user && (
           <div
             className={styles.addNewReportButton}
-            onClick={() => setAddReportActive(!addReportActive)}
+            onClick={reportStateToggle}
           >
             <h2>Add a New Report</h2>
           </div>
         )}
-        {addReportActive && (
+        {addReportState && (
           <form className={styles.addNewReport} onSubmit={handleSubmit}>
             <div className={styles.addNewReportTitle}>
               <input
                 type="text"
                 name="search"
                 placeholder="Title"
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={addTitle}
               />
             </div>
             <div className={styles.addNewReportOptions}>
-              <select onChange={(e) => setRunThrough(e.target.value)}>
+              <select onChange={addRunThrough}>
                 <option
                   disabled
                   selected={true}
@@ -139,7 +125,7 @@ const GameName = ({ game, comments }) => {
                 <option value="A Console Emulator">A Console Emulator</option>
                 <option value="Other">Other</option>
               </select>
-              <select onChange={(e) => setState(e.target.value)}>
+              <select onChange={addState}>
                 <option
                   disabled
                   selected={true}
@@ -151,7 +137,7 @@ const GameName = ({ game, comments }) => {
                 <option value="Playable">Playable</option>
                 <option value="Unplayable">Unplayable</option>
               </select>
-              <select onChange={(e) => setLauncher(e.target.value)}>
+              <select onChange={addLauncher}>
                 <option disabled selected={true} defaultValue={"Launcher"}>
                   Launcher
                 </option>
@@ -165,7 +151,7 @@ const GameName = ({ game, comments }) => {
                 <option value="Other">Other</option>
                 <option value="None">None</option>
               </select>
-              <select onChange={(e) => setMacUsed(e.target.value)}>
+              <select onChange={addMacUsed}>
                 <option disabled selected={true} defaultValue={"Mac"}>
                   Mac
                 </option>
@@ -188,12 +174,12 @@ const GameName = ({ game, comments }) => {
                 cols="30"
                 rows="10"
                 placeholder="Description"
-                onChange={(e) => setDescription(e.target.value)}
+                onChange={addDescription}
               ></textarea>
             </div>
             <div className={styles.addNewReportOptionButton}>
               <button type="submit">Send</button>
-              <button onClick={handleCancel}>Cancel</button>
+              <button onClick={cancelSubmit}>Cancel</button>
             </div>
           </form>
         )}

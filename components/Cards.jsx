@@ -1,5 +1,4 @@
 // next / react & redux / styles / external libraries / images / components
-
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
