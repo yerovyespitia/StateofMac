@@ -1,18 +1,13 @@
-// next / react & redux / styles / external libraries / images / components
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { skeletonLoading } from "../redux/loadingSlice";
-
 import styles from "../styles/cards.module.scss";
-
 import { nanoid } from "nanoid";
 import { motion } from "framer-motion";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import expand from "../public/images/expand.svg";
-
 import Card from "./Card";
 import NotFound from "./NotFound";
 
@@ -51,7 +46,7 @@ const Cards = () => {
       .get(`${process.env.API_URL}api/games?`, {
         params: {
           page,
-          limit: 10,
+          limit: 30,
           searchGame: gamesFiltered.searchGame,
         },
       })

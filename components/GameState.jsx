@@ -1,4 +1,3 @@
-// next / react & redux / styles / external libraries / images / components
 import styles from "../styles/gamestate.module.scss";
 
 const GameState = (props) => {

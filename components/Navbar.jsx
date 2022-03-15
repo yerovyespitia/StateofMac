@@ -1,10 +1,7 @@
-// next / react & redux / styles / external libraries / images / components
 import Link from "next/link";
-
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../redux/gamesSlice";
 import { userLogin } from "../redux/userSlice";
-
 import styles from "../styles/navbar.module.scss";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";

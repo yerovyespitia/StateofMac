@@ -1,12 +1,8 @@
-// next / react & redux / styles / external libraries / images / components
 import Router from "next/router";
 import { NextSeo } from "next-seo";
-
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
 import styles from "../styles/signin.module.scss";
-
 import axios from "axios";
 import { motion } from "framer-motion";
 

@@ -1,4 +1,3 @@
-// next / react & redux / styles / external libraries / images / components
 import styles from "../styles/notfound.module.scss";
 
 const NotFound = () => {

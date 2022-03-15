@@ -1,14 +1,12 @@
-
 # State of Mac
 
 State of Mac is the easiest way to know if your favorite game runs on Apple Silicon and the best to run that game. Also, you can add your own experience running a game on Apple Silicon.
 
-[Website]("https://www.stateofmac.com")
+[State of Mac](https://www.stateofmac.com)
 
+## How to use State of Mac
 
-## Start using State of Mac
-
-* Go to [State of Mac]("https://www.stateofmac.com").
+* Go to [State of Mac](https://www.stateofmac.com).
 * Create an account.
 * Log in.
 * Find the game you want to add a report and click on it.
@@ -21,7 +19,6 @@ State of Mac is the easiest way to know if your favorite game runs on Apple Sili
 
 If you're only interested to see if you will be able to run a game and the best to way to do it you don't need to create an account, just search for a game and see its state.
 
-
 ## Feedback
 
-If you have any feedback, please reach out to me on [twitter]("https://twitter.com/yerovyespitia")
+If you have any feedback, please reach out to me on [twitter](https://twitter.com/yerovyespitia)

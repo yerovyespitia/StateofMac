@@ -1,6 +1,4 @@
-// next / react & redux / styles / external libraries / images / components
 import Head from "next/head";
-
 import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {

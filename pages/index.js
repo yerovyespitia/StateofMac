@@ -1,7 +1,5 @@
-// next / react & redux / styles / external libraries / images / components
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-
 import Cards from "../components/Cards";
 
 export default function Home() {

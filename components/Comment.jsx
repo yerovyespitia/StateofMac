@@ -1,6 +1,4 @@
-// next / react & redux / styles / external libraries / images / components
 import styles from "../styles/comment.module.scss";
-
 import moment from "moment";
 import { motion } from "framer-motion";
 

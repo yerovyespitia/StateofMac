@@ -1,15 +1,10 @@
-// next / react & redux / styles / external libraries / images / components
 import Link from "next/link";
 import Image from "next/image";
-
 import { useSelector } from "react-redux";
-
 import styles from "../styles/card.module.scss";
 import "react-loading-skeleton/dist/skeleton.css";
-
 import moment from "moment";
 import { motion } from "framer-motion";
-
 import GameState from "./GameState";
 import Skeleton from "react-loading-skeleton";
 
