@@ -74,8 +74,11 @@
     &:first-child {
       order: 1;
     }
-    &:nth-child(3) {
+    &:nth-child(1) {
       margin-bottom: 10px;
+    }
+    &:nth-child(3) {
+      order: 2;
     }
   }
 }

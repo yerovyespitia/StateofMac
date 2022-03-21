@@ -43,12 +43,12 @@ const GameName = ({ game, comments }) => {
     <main className={styles.gamesContainer}>
       <NextSeo
         title={game.title + " - State of Mac"}
-        description={`Find if ${game.title} runs on Apple Silicon.`}
+        description={`Find out if ${game.title} runs on Apple Silicon.`}
       />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1 } }}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.013 }}
         className={styles.gamesImgContainer}
       >
         {game.wallpaper && (

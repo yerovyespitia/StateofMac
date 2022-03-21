@@ -1,0 +1,18 @@
+.container {
+  width: 300px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  top: calc(100vh - 10vh);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  background-color: white;
+  border-radius: 80px;
+}
+
+.user {
+  text-transform: capitalize;
+  font-weight: bold;
+}

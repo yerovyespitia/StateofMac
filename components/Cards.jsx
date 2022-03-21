@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { skeletonLoading } from "../redux/loadingSlice";
+import { useSelector } from "react-redux";
 import styles from "../styles/cards.module.scss";
 import { nanoid } from "nanoid";
 import { motion } from "framer-motion";
@@ -10,9 +9,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import expand from "../public/images/expand.svg";
 import Card from "./Card";
 import NotFound from "./NotFound";
+import ReactLoading from "react-loading";
+import WelcomeUser from "./WelcomeUser";
 
 const Cards = () => {
-  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
   const gamesFiltered = useSelector((state) => state.games.value);
   const [games, setGames] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
@@ -21,6 +22,7 @@ const Cards = () => {
   const [prevSearchGame, setPrevSearchGame] = useState("");
   const [loadMore, setLoadMore] = useState(false);
   const options = ["All Games"];
+  const [loading, setLoading] = useState(false);
 
   // Filter game cards
   const handleFilterButtons = () => {
@@ -33,20 +35,13 @@ const Cards = () => {
     setLoadMore(true);
   };
 
-  // Stop skeleton loading animation
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(skeletonLoading({ loading: false }));
-    }, 1500);
-  }, []);
-
   // Fetch game cards and search games
   useEffect(() => {
     axios
       .get(`${process.env.API_URL}api/games?`, {
         params: {
           page,
-          limit: 30,
+          limit: 50,
           searchGame: gamesFiltered.searchGame,
         },
       })
@@ -67,6 +62,7 @@ const Cards = () => {
         } else {
           setGames([...games, ...res.data]);
         }
+        setLoading(true);
       });
   }, [page, gamesFiltered]);
 
@@ -102,28 +98,30 @@ const Cards = () => {
         )}
       </div>
 
-      {/* Game Cards & Automatic Infinite Scroll */}
-      <InfiniteScroll
-        style={{ overflow: "visible" }}
-        dataLength={games.length}
-        next={loadMoreGames}
-        hasMore={gamesFiltered.searchGame != "" ? false : true}
-        // loader={
-        //   <ReactLoading
-        //     type={"spinningBubbles"}
-        //     color={"#fff"}
-        //     height={"10%"}
-        //     width={"10%"}
-        //   />
-        // }
-      >
-        {games.map((g) => (
-          <Card game={g} key={nanoid()} />
-        ))}
-      </InfiniteScroll>
-
-      {/* Not Found Text */}
-      {loadMore === false && games.length < 1 && <NotFound />}
+      {loading ? (
+        <InfiniteScroll
+          style={{ overflow: "visible" }}
+          dataLength={games.length}
+          next={loadMoreGames}
+          hasMore={gamesFiltered.searchGame != "" ? false : true}
+        >
+          {games.map((g) => (
+            <Card game={g} key={nanoid()} />
+          ))}
+        </InfiniteScroll>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <ReactLoading type={"spin"} color={"white"} height={50} width={50} />
+        </div>
+      )}
+      {(loading === true && user.user) && <WelcomeUser />}
+      {(loading === true && games.length < 1) && <NotFound />}
     </main>
   );
 };

@@ -10,6 +10,7 @@ import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url);
@@ -19,15 +20,16 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+
   return (
     <>
-      {/* Global Site Tag (gtag.js) - Google Analytics */}
       <DefaultSeo
         title={"State of Mac"}
-        description={`Find if favorite game runs on Apple Silicon.`}
+        description={`Find out if your favorite game runs on Apple Silicon.`}
         openGraph={{
           title: "State of Mac",
-          description: "Find the best way to run your favorite game on Mac.",
+          description:
+            "Discover if your favorite games run on your Mac and the find the best way to run them.",
           site_name: "State of Mac",
         }}
         twitter={{
@@ -35,6 +37,8 @@ function MyApp({ Component, pageProps }) {
           cardType: "summary_large_image",
         }}
       />
+
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
@@ -53,6 +57,7 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
+
       <Provider store={store}>
         <Layout>
           <Component {...pageProps} />
