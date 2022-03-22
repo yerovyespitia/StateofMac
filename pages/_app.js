@@ -29,8 +29,17 @@ function MyApp({ Component, pageProps }) {
         openGraph={{
           title: "State of Mac",
           description:
-            "Discover if your favorite games run on your Mac and the find the best way to run them.",
+            "Discover if your favorite games run on your Mac and the find out the best way to run them.",
           site_name: "State of Mac",
+          images: [
+            {
+              url: "https://res.cloudinary.com/duyusab1p/image/upload/v1647977915/opengraph_wdmvoz.png",
+              width: 1200,
+              height: 630,
+              alt: "Og Image",
+              type: "image/png",
+            },
+          ],
         }}
         twitter={{
           handle: "@yerovyespitia",
