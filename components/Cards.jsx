@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { load } from "../redux/loadingSlice";
 import styles from "../styles/cards.module.scss";
 import { nanoid } from "nanoid";
 import { motion } from "framer-motion";
@@ -14,6 +15,7 @@ import WelcomeUser from "./WelcomeUser";
 
 const Cards = () => {
   const user = useSelector((state) => state.user.value);
+  const loading = useSelector((state) => state.loading.value);
   const gamesFiltered = useSelector((state) => state.games.value);
   const [games, setGames] = useState([]);
   const [showButtons, setShowButtons] = useState(false);
@@ -22,7 +24,7 @@ const Cards = () => {
   const [prevSearchGame, setPrevSearchGame] = useState("");
   const [loadMore, setLoadMore] = useState(false);
   const options = ["All Games"];
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   // Filter game cards
   const handleFilterButtons = () => {
@@ -62,14 +64,13 @@ const Cards = () => {
         } else {
           setGames([...games, ...res.data]);
         }
-        setLoading(true);
+        dispatch(load({ loaded: true }));
       });
   }, [page, gamesFiltered]);
 
   return (
     <main className={styles.cardsContainer}>
       <div className={styles.cardsFilterButton}>
-        {/* Filter Button */}
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -81,7 +82,6 @@ const Cards = () => {
           </span>
         </motion.button>
 
-        {/* Filter Button Options */}
         {showButtons && (
           <>
             {options.map((option) => (
@@ -98,7 +98,7 @@ const Cards = () => {
         )}
       </div>
 
-      {loading ? (
+      {loading.loaded ? (
         <InfiniteScroll
           style={{ overflow: "visible" }}
           dataLength={games.length}
@@ -120,8 +120,8 @@ const Cards = () => {
           <ReactLoading type={"spin"} color={"white"} height={50} width={50} />
         </div>
       )}
-      {(loading === true && user.user) && <WelcomeUser />}
-      {(loading === true && games.length < 1) && <NotFound />}
+      {(loading.loaded === true && user.user) && <WelcomeUser />}
+      {(loading.loaded === true && games.length < 1) && <NotFound />}
     </main>
   );
 };
