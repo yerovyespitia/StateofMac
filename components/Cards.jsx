@@ -41,7 +41,7 @@ const Cards = () => {
       .get(`${process.env.API_URL}api/games?`, {
         params: {
           page,
-          limit: 50,
+          limit: 60,
           searchGame: gamesFiltered.searchGame,
         },
       })
