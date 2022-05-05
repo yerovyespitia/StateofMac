@@ -9,7 +9,7 @@ import { motion } from "framer-motion"
 import Comment from "../../components/Comment"
 import GameState from "../../components/GameState"
 import { NewReport } from "./../../components/NewReport"
-import useSubmitComment from "../../customHooks/useSubmitComment"
+import useSubmitComment from "../../hooks/useSubmitComment"
 
 const GameName = ({ game, comments }) => {
   const user = useSelector((state) => state.user.value)
