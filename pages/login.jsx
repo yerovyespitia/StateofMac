@@ -1,27 +1,27 @@
-import Link from "next/link";
-import Router from "next/router";
-import { NextSeo } from "next-seo";
-import { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { userLogin } from "../redux/userSlice";
-import styles from "../styles/signin.module.scss";
-import axios from "axios";
-import { motion } from "framer-motion";
+import Link from "next/link"
+import Router from "next/router"
+import { NextSeo } from "next-seo"
+import { useEffect, useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { userLogin } from "../redux/userSlice"
+import styles from "../styles/signin.module.scss"
+import axios from "axios"
+import { motion } from "framer-motion"
 
 const Login = () => {
-  const user = useSelector((state) => state.user.value);
-  const dispatch = useDispatch();
-  const useUserRef = useRef();
-  const usePasswordRef = useRef();
+  const user = useSelector((state) => state.user.value)
+  const dispatch = useDispatch()
+  const useUserRef = useRef()
+  const usePasswordRef = useRef()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    dispatch(userLogin({ user: null, isFetching: true, error: false }));
+    e.preventDefault()
+    dispatch(userLogin({ user: null, isFetching: true, error: false }))
     try {
       const res = await axios.post(`${process.env.API_URL}api/auth/login`, {
         username: useUserRef.current.value,
         password: usePasswordRef.current.value,
-      });
+      })
       dispatch(
         userLogin({
           user: res.data,
@@ -29,18 +29,18 @@ const Login = () => {
           error: false,
           login: true,
         })
-      );
-      res.data && Router.push("/");
+      )
+      res.data && Router.push("/")
     } catch (error) {
       dispatch(
         userLogin({ user: null, isFetching: false, error: true, login: false })
-      );
+      )
     }
-  };
+  }
 
   useEffect(() => {
-    user.user && Router.push("/");
-  }, []);
+    user.user && Router.push("/")
+  }, [])
 
   return (
     <div>
@@ -83,7 +83,7 @@ const Login = () => {
         </div>
       </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

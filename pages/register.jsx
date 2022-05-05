@@ -1,35 +1,35 @@
-import Router from "next/router";
-import { NextSeo } from "next-seo";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import styles from "../styles/signin.module.scss";
-import axios from "axios";
-import { motion } from "framer-motion";
+import Router from "next/router"
+import { NextSeo } from "next-seo"
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import styles from "../styles/signin.module.scss"
+import axios from "axios"
+import { motion } from "framer-motion"
 
 const Register = () => {
-  const user = useSelector((state) => state.user.value);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const user = useSelector((state) => state.user.value)
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState(false)
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(false);
+    e.preventDefault()
+    setError(false)
     try {
       const res = await axios.post(`${process.env.API_URL}api/auth/register`, {
         username,
         email,
         password,
-      });
-      res.data && window.location.replace("/login");
+      })
+      res.data && window.location.replace("/login")
     } catch (error) {
-      setError(true);
+      setError(true)
     }
-  };
+  }
 
   useEffect(() => {
-    user.user && Router.push("/");
-  }, []);
+    user.user && Router.push("/")
+  }, [])
   return (
     <div>
       <NextSeo title={"Register | State of Mac"} />
@@ -70,7 +70,7 @@ const Register = () => {
         {error && <span className={styles.error}>Something must be wrong</span>}
       </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register

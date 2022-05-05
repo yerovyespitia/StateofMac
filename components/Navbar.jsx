@@ -1,36 +1,36 @@
-import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { search } from "../redux/gamesSlice";
-import { userLogin } from "../redux/userSlice";
-import styles from "../styles/navbar.module.scss";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
+import Link from "next/link"
+import { useDispatch, useSelector } from "react-redux"
+import { search } from "../redux/gamesSlice"
+import { userLogin } from "../redux/userSlice"
+import styles from "../styles/navbar.module.scss"
+import { motion } from "framer-motion"
+import { useRouter } from "next/router"
 
 const Navbar = () => {
-  const games = useSelector((state) => state.games.value);
-  const user = useSelector((state) => state.user.value);
-  const dispatch = useDispatch();
-  const router = useRouter();
+  const games = useSelector((state) => state.games.value)
+  const user = useSelector((state) => state.user.value)
+  const dispatch = useDispatch()
+  const router = useRouter()
 
   const handleOnChange = (e) => {
-    dispatch(search({ searchGame: e.target.value }));
-  };
+    dispatch(search({ searchGame: e.target.value }))
+  }
 
   const handleLogOut = () => {
     dispatch(
       userLogin({ user: null, isFetching: false, error: false, login: false })
-    );
-  };
+    )
+  }
 
   const handleOnClick = () => {
-    dispatch(search({ searchGame: "" }));
-  };
+    dispatch(search({ searchGame: "" }))
+  }
 
   const handleOnKeyDown = (e) => {
     if (e.key === "Enter") {
-      router.replace(`/?searchGame=${games.searchGame}`);
+      router.replace(`/?searchGame=${games.searchGame}`)
     }
-  };
+  }
 
   return (
     <motion.nav
@@ -79,7 +79,7 @@ const Navbar = () => {
         </div>
       )}
     </motion.nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

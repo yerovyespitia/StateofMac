@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
 
 export const loadingSlice = createSlice({
   name: "loading",
@@ -7,10 +7,10 @@ export const loadingSlice = createSlice({
   },
   reducers: {
     load: (state, action) => {
-      state.value = action.payload;
+      state.value = action.payload
     },
   },
-});
+})
 
-export const { load } = loadingSlice.actions;
-export default loadingSlice.reducer;
+export const { load } = loadingSlice.actions
+export default loadingSlice.reducer

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
 
 export const gamesSlice = createSlice({
   name: "games",
@@ -7,10 +7,10 @@ export const gamesSlice = createSlice({
   },
   reducers: {
     search: (state, action) => {
-      state.value = action.payload;
+      state.value = action.payload
     },
   },
-});
+})
 
-export const { search } = gamesSlice.actions;
-export default gamesSlice.reducer;
+export const { search } = gamesSlice.actions
+export default gamesSlice.reducer

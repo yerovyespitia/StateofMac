@@ -1,7 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import gamesReducer from "./gamesSlice";
-import userReducer from "./userSlice";
-import loadingReducer from "./loadingSlice";
+import { configureStore } from "@reduxjs/toolkit"
+import gamesReducer from "./gamesSlice"
+import userReducer from "./userSlice"
+import loadingReducer from "./loadingSlice"
 
 export default configureStore({
   reducer: {
@@ -9,4 +9,4 @@ export default configureStore({
     user: userReducer,
     loading: loadingReducer,
   },
-});
+})

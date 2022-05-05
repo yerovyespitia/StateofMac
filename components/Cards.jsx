@@ -1,41 +1,41 @@
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { load } from "../redux/loadingSlice";
-import styles from "../styles/cards.module.scss";
-import { nanoid } from "nanoid";
-import { motion } from "framer-motion";
-import axios from "axios";
-import InfiniteScroll from "react-infinite-scroll-component";
-import expand from "../public/images/expand.svg";
-import Card from "./Card";
-import NotFound from "./NotFound";
-import ReactLoading from "react-loading";
-import WelcomeUser from "./WelcomeUser";
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { load } from "../redux/loadingSlice"
+import styles from "../styles/cards.module.scss"
+import { nanoid } from "nanoid"
+import { motion } from "framer-motion"
+import axios from "axios"
+import InfiniteScroll from "react-infinite-scroll-component"
+import expand from "../public/images/expand.svg"
+import Card from "./Card"
+import NotFound from "./NotFound"
+import ReactLoading from "react-loading"
+import WelcomeUser from "./WelcomeUser"
 
 const Cards = () => {
-  const user = useSelector((state) => state.user.value);
-  const loading = useSelector((state) => state.loading.value);
-  const gamesFiltered = useSelector((state) => state.games.value);
-  const [games, setGames] = useState([]);
-  const [showButtons, setShowButtons] = useState(false);
-  const [selected, setSelected] = useState("All Games");
-  const [page, setPage] = useState(1);
-  const [prevSearchGame, setPrevSearchGame] = useState("");
-  const [loadMore, setLoadMore] = useState(false);
-  const options = ["All Games"];
-  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value)
+  const loading = useSelector((state) => state.loading.value)
+  const gamesFiltered = useSelector((state) => state.games.value)
+  const [games, setGames] = useState([])
+  const [showButtons, setShowButtons] = useState(false)
+  const [selected, setSelected] = useState("All Games")
+  const [page, setPage] = useState(1)
+  const [prevSearchGame, setPrevSearchGame] = useState("")
+  const [loadMore, setLoadMore] = useState(false)
+  const options = ["All Games"]
+  const dispatch = useDispatch()
 
   // Filter game cards
   const handleFilterButtons = () => {
-    setShowButtons(!showButtons);
-  };
+    setShowButtons(!showButtons)
+  }
 
   // Show more game cards
   const loadMoreGames = async () => {
-    setPage((page += 1));
-    setLoadMore(true);
-  };
+    setPage((page += 1))
+    setLoadMore(true)
+  }
 
   // Fetch game cards and search games
   useEffect(() => {
@@ -49,24 +49,24 @@ const Cards = () => {
       })
       .then((res) => {
         if (gamesFiltered.searchGame != "") {
-          setPrevSearchGame(gamesFiltered.searchGame);
+          setPrevSearchGame(gamesFiltered.searchGame)
           if (!loadMore) {
-            setGames(res.data);
-            setPage(1);
+            setGames(res.data)
+            setPage(1)
           } else {
-            setGames([...games, ...res.data]);
+            setGames([...games, ...res.data])
           }
-          setLoadMore(false);
+          setLoadMore(false)
         } else if (prevSearchGame != "" && gamesFiltered.searchGame === "") {
-          setGames(res.data);
-          setPrevSearchGame("");
-          setPage(1);
+          setGames(res.data)
+          setPrevSearchGame("")
+          setPage(1)
         } else {
-          setGames([...games, ...res.data]);
+          setGames([...games, ...res.data])
         }
-        dispatch(load({ loaded: true }));
-      });
-  }, [page, gamesFiltered]);
+        dispatch(load({ loaded: true }))
+      })
+  }, [page, gamesFiltered])
 
   return (
     <main className={styles.cardsContainer}>
@@ -87,8 +87,8 @@ const Cards = () => {
             {options.map((option) => (
               <button
                 onClick={() => {
-                  setSelected(option);
-                  setShowButtons(!showButtons);
+                  setSelected(option)
+                  setShowButtons(!showButtons)
                 }}
               >
                 {option}
@@ -123,7 +123,7 @@ const Cards = () => {
       {(loading.loaded === true && user.user) && <WelcomeUser />}
       {(loading.loaded === true && games.length < 1) && <NotFound />}
     </main>
-  );
-};
+  )
+}
 
-export default Cards;
+export default Cards

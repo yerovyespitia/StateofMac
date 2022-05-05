@@ -1,6 +1,6 @@
-import styles from "../styles/comment.module.scss";
-import moment from "moment";
-import { motion } from "framer-motion";
+import styles from "../styles/comment.module.scss"
+import moment from "moment"
+import { motion } from "framer-motion"
 
 const Comment = ({ comment }) => {
   return (
@@ -37,7 +37,7 @@ const Comment = ({ comment }) => {
         </article>
       </motion.div>
     </>
-  );
-};
+  )
+}
 
-export default Comment;
+export default Comment

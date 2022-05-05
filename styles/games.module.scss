@@ -1,226 +1,221 @@
 .gamesContainer {
+  font-family: "Roboto", sans-serif;
   margin: 40px;
-  .gamesImgContainer {
-    text-align: center;
-    .gamesImg {
-      border-radius: 30px;
-    }
-  }
-  .gamesContactContainer {
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    h1 {
-      color: white;
-      margin-bottom: 0;
-    }
-    p {
-      font-size: 20px;
-      font-weight: bold;
-      color: #78bf58;
-    }
-  }
+}
 
-  .gamesCommentsContainer {
-    margin: 30px 20%;
-  }
+.gamesImgContainer {
+  text-align: center;
+}
 
-  .addNewReportButton {
-    font-size: 15px;
+.gamesImg {
+  border-radius: 40px;
+}
+
+.gamesContactContainer {
+  text-align: center;
+  h1 {
+    color: white;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #78bf58;
+  }
+}
+
+.gamesCommentsContainer {
+  margin: 30px 20%;
+}
+
+.addNewReportButton {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #292929;
+  margin-top: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  h2 {
+    margin: 0;
+    color: #dbdbdb;
+  }
+  span {
+    transform: translateY(4px);
+    margin-left: 5px;
+  }
+  &:hover {
+    background-color: #363636;
+  }
+}
+
+.gamesCommentsButtonsContainer {
+  display: flex;
+  justify-content: flex-end;
+  span {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    height: 60px;
-    background-color: #292929;
-    margin-top: 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    h2 {
-      margin: 0;
-      color: #dbdbdb;
-    }
-    span {
-      transform: translateY(4px);
-      margin-left: 5px;
-    }
-    .addColor {
-      filter: invert(98%) sepia(2%) saturate(33%) hue-rotate(315deg)
-        brightness(92%) contrast(89%);
-    }
-    &:hover {
-      background-color: #363636;
-    }
+    margin-left: 5px;
   }
+}
+.iconColor {
+  filter: invert(98%) sepia(2%) saturate(33%) hue-rotate(315deg) brightness(92%)
+    contrast(89%);
+}
 
-  .gamesCommentsButtonsContainer {
-    display: flex;
-    justify-content: flex-end;
-    span {
-      display: flex;
-      justify-content: right;
-      align-items: center;
-      margin-left: 5px;
-    }
-    .iconColor {
-      filter: invert(98%) sepia(2%) saturate(33%) hue-rotate(315deg)
-        brightness(92%) contrast(89%);
-    }
-    .filterButton {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 200px;
-      height: 60px;
-      font-family: "Roboto", sans-serif;
-      font-weight: bold;
-      font-size: 22px;
-      text-transform: capitalize;
-      background-color: #292929;
-      color: #dbdbdb;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-left: 15px;
-      &:hover {
-        background-color: #363636;
-      }
-    }
+.filterButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 60px;
+  font-weight: bold;
+  font-size: 22px;
+  text-transform: capitalize;
+  background-color: #292929;
+  color: #dbdbdb;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 15px;
+  &:hover {
+    background-color: #363636;
   }
 }
 
 .addNewReport {
   margin-top: 15px;
-  .addNewReportTitle {
-    input {
-      padding: 3px 0 0 20px;
-      font-size: 18px;
-      width: 100%;
-      height: 60px;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      background-color: #292929;
-      color: white;
-      &:focus {
-        outline: none;
-      }
+}
+
+.addNewReportTitle {
+  input {
+    padding: 3px 0 0 20px;
+    font-size: 18px;
+    width: 100%;
+    height: 60px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: #292929;
+    color: white;
+    &:focus {
+      outline: none;
     }
   }
+}
 
-  .addNewReportOptions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    select {
-      width: 100%;
-      text-align: center;
-      font-family: "Roboto", sans-serif;
-      font-weight: 500;
-      font-size: 18px;
-      margin-right: 15px;
-      height: 60px;
-      background-color: #292929;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      color: white;
-      &:nth-child(4) {
-        margin-right: 0;
-      }
-    }
-    *:focus {
-      outline: 0;
+.addNewReportOptions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  select {
+    width: 100%;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin-right: 15px;
+    height: 60px;
+    background-color: #292929;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: white;
+    &:nth-child(4) {
+      margin-right: 0;
     }
   }
+  *:focus {
+    outline: 0;
+  }
+}
 
-  .addNewReportDescription {
-    margin-top: 15px;
-    textarea {
-      font-family: "Roboto", sans-serif;
-      font-size: 18px;
-      padding: 20px 0 0 20px;
-      width: 100%;
-      height: 230px;
-      background-color: #292929;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      color: white;
-      &:focus {
-        outline: none;
-      }
+.addNewReportDescription {
+  margin-top: 15px;
+  textarea {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    padding: 20px 0 0 20px;
+    width: 100%;
+    height: 230px;
+    background-color: #292929;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: white;
+    &:focus {
+      outline: none;
     }
   }
+}
 
-  .addNewReportOptionButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 10px;
-    button {
-      width: 50%;
-      height: 60px;
-      font-size: 18px;
-      font-family: "Roboto", sans-serif;
-      font-weight: 600;
-      color: #dbdbdb;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      background-color: #292929;
-      cursor: pointer;
-      &:not(:first-child) {
-        margin-left: 10px;
-      }
+.addNewReportOptionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+  button {
+    width: 50%;
+    height: 60px;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    color: #dbdbdb;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: #292929;
+    cursor: pointer;
+    &:not(:first-child) {
+      margin-left: 10px;
     }
   }
 }
 
 @media (max-width: 1625px) {
-  .gamesContainer {
-    .gamesCommentsContainer {
-      margin: 30px 0;
-    }
+  .gamesCommentsContainer {
+    margin: 30px 0;
   }
 }
 
 @media (max-width: 1153px) {
-  .gamesContainer {
-    .gamesCommentsContainer {
-      margin: 0;
-    }
+  .gamesCommentsContainer {
+    margin: 0;
   }
 }
 
 @media (max-width: 845px) {
-  .addNewReport {
-    .addNewReportOptions {
-      flex-direction: column;
-      select {
-        margin: 0;
-        margin-bottom: 10px;
-      }
+  .addNewReportOptions {
+    flex-direction: column;
+    select {
+      margin: 0;
+      margin-bottom: 10px;
     }
-    .addNewReportDescription {
-      margin-top: 10px;
-    }
-    .addNewReportOptionButton {
-      flex-direction: column;
-      button {
-        width: 100%;
-        &:not(:first-child) {
-          margin-left: 0;
-          margin-top: 10px;
-        }
+  }
+
+  .addNewReportDescription {
+    margin-top: 10px;
+  }
+
+  .addNewReportOptionButton {
+    flex-direction: column;
+    button {
+      width: 100%;
+      &:not(:first-child) {
+        margin-left: 0;
+        margin-top: 10px;
       }
     }
   }
 }
 
-@media (max-width: 667px) {
+@media (max-width: 657px) {
   .gamesContainer {
     margin: 15px;
-    .gamesImgContainer {
-      .gamesImg {
-        border-radius: 15px;
-      }
-    }
+  }
+
+  .gamesImg {
+    border-radius: 15px;
   }
 }

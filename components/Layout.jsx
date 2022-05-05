@@ -1,5 +1,5 @@
-import Head from "next/head";
-import Navbar from "./Navbar";
+import Head from "next/head"
+import Navbar from "./Navbar"
 
 const Layout = ({ children }) => {
   return (
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
       <Navbar />
       <>{children}</>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

@@ -1,9 +1,9 @@
-import styles from "../styles/welcomeuser.module.scss";
-import { useSelector } from "react-redux";
-import { motion } from "framer-motion";
+import styles from "../styles/welcomeuser.module.scss"
+import { useSelector } from "react-redux"
+import { motion } from "framer-motion"
 
 const WelcomeUser = () => {
-  const user = useSelector((state) => state.user.value);
+  const user = useSelector((state) => state.user.value)
 
   return (
     <motion.div
@@ -15,7 +15,7 @@ const WelcomeUser = () => {
         Welcome back, <span className={styles.user}>{user.user.username}!</span>
       </p>
     </motion.div>
-  );
-};
+  )
+}
 
-export default WelcomeUser;
+export default WelcomeUser

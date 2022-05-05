@@ -1,4 +1,4 @@
-import styles from "../styles/gamestate.module.scss";
+import styles from "../styles/gamestate.module.scss"
 
 const GameState = (props) => {
   return (
@@ -29,7 +29,7 @@ const GameState = (props) => {
         </p>
       )}
     </>
-  );
-};
+  )
+}
 
-export default GameState;
+export default GameState

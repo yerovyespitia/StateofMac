@@ -1,25 +1,25 @@
-import Script from "next/script";
-import { useRouter } from "next/router";
-import { DefaultSeo } from "next-seo";
-import { useEffect } from "react";
-import { Provider } from "react-redux";
-import store from "../redux/store";
-import "../styles/globals.scss";
-import * as gtag from "../lib/gtag";
-import Layout from "../components/Layout";
+import Script from "next/script"
+import { useRouter } from "next/router"
+import { DefaultSeo } from "next-seo"
+import { useEffect } from "react"
+import { Provider } from "react-redux"
+import store from "../redux/store"
+import "../styles/globals.scss"
+import * as gtag from "../lib/gtag"
+import Layout from "../components/Layout"
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
+      gtag.pageview(url)
+    }
+    router.events.on("routeChangeComplete", handleRouteChange)
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
+      router.events.off("routeChangeComplete", handleRouteChange)
+    }
+  }, [router.events])
 
   return (
     <>
@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }) {
         </Layout>
       </Provider>
     </>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
