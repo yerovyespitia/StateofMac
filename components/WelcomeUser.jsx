@@ -9,7 +9,7 @@ const WelcomeUser = () => {
     <motion.div
       className={styles.container}
       initial={{ opacity: 1 }}
-      animate={{ opacity: 0, transition: { duration: 7 } }}
+      animate={{ opacity: 0, transition: { duration: 5 } }}
     >
       <p>
         Welcome back, <span className={styles.user}>{user.user.username}!</span>
