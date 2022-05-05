@@ -9,8 +9,8 @@ export default function Home() {
   }, [user]);
 
   return (
-    <div>
+    <>
       <Cards />
-    </div>
+    </>
   );
 }

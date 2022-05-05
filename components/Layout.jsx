@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" />
       </Head>
       <Navbar />
-      <main>{children}</main>
+      <>{children}</>
     </>
   );
 };
