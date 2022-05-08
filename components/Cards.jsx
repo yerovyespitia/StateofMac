@@ -19,6 +19,7 @@ const Cards = () => {
   const [showButtons, setShowButtons] = useState(false)
   const [selected, setSelected] = useState("All Games")
   const options = ["All Games"]
+  // Fetching Games with useFetchingGames
   const { games, handleFilterButtons, loadMoreGames } = useFetchingGames(
     `${process.env.API_URL}api/games?`
   )
@@ -26,6 +27,7 @@ const Cards = () => {
   return (
     <main className={styles.cardsContainer}>
       <div className={styles.cardsFilterButton}>
+        {/* Sort button */}
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -36,7 +38,7 @@ const Cards = () => {
             <Image src={expand} alt="expand icon" />
           </span>
         </motion.button>
-
+        {/* Sort button options */}
         {showButtons && (
           <>
             {options.map((option) => (
@@ -53,6 +55,7 @@ const Cards = () => {
         )}
       </div>
 
+      {/* Showing Games with Infinite Scroll */}
       {loading.loaded ? (
         <InfiniteScroll
           style={{ overflow: "visible" }}
