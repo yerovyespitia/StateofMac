@@ -7,7 +7,7 @@
   margin: 30px;
 }
 
-.cardsFilterButton {
+.cardsSortButton {
   display: flex;
   justify-content: flex-end;
   flex-flow: column wrap-reverse;
@@ -45,7 +45,7 @@
     grid-template-columns: repeat(1, minmax(430px, 630px));
     margin: 20px;
   }
-  .cardsFilterButton {
+  .cardsSortButton {
     width: 100%;
     justify-content: center;
     button {

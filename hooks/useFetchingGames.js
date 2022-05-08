@@ -11,11 +11,6 @@ const useFetchingGames = (url) => {
   const [loadMore, setLoadMore] = useState(false)
   const dispatch = useDispatch()
 
-  // Filter game cards
-  const handleFilterButtons = () => {
-    setShowButtons(!showButtons)
-  }
-
   // Show more game cards
   const loadMoreGames = async () => {
     setPage((page += 1))
@@ -54,7 +49,6 @@ const useFetchingGames = (url) => {
 
   return {
     games,
-    handleFilterButtons,
     loadMoreGames,
   }
 }

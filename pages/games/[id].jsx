@@ -5,7 +5,7 @@ import { search } from "../../redux/gamesSlice"
 import styles from "../../styles/games.module.scss"
 import axios from "axios"
 import { motion } from "framer-motion"
-// import settingsIcon from "../../public/images/settings-icon.svg";
+// import settingsIcon from "../../public/images/settings-icon.svg"
 import Comment from "../../components/Comment"
 import GameState from "../../components/GameState"
 import { NewReport } from "./../../components/NewReport"
