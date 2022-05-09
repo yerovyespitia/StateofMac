@@ -7,12 +7,7 @@ import GameState from "./GameState"
 
 const Card = ({ game }) => {
   return (
-    <motion.div
-      whileInView={{ opacity: 1, transition: { duration: 0.7 } }}
-      viewport={{ once: true }}
-      whileHover={{ scale: 1.013 }}
-      whileTap={{ scale: 0.9 }}
-    >
+    <motion.div whileHover={{ scale: 1.013 }} whileTap={{ scale: 0.9 }}>
       <Link href={`/games/${game.title}`} passHref>
         <div className={styles.container}>
           <div className={styles.cardImgContainer}>
@@ -24,21 +19,14 @@ const Card = ({ game }) => {
               alt={game.title}
             />
           </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: { duration: 0.7, staggerChildren: 0.5 },
-            }}
-            className={styles.cardContent}
-          >
+          <div className={styles.cardContent}>
             <p className={styles.cardContentTitle}>{game.title}</p>
             <p className={styles.cardContentUpdated}>
               Updated {moment(game.updatedAt).format("ll")}
             </p>
             <p className={styles.cardContentReports}>Reports {game.reports}</p>
             <GameState game={game.state} />
-          </motion.div>
+          </div>
         </div>
       </Link>
     </motion.div>

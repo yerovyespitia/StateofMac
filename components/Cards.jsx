@@ -1,9 +1,7 @@
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { useSelector } from "react-redux"
 import styles from "../styles/cards.module.scss"
-import { nanoid } from "nanoid"
-import { motion } from "framer-motion"
 import InfiniteScroll from "react-infinite-scroll-component"
 import expand from "../public/images/expand.svg"
 import Card from "./Card"
@@ -40,21 +38,18 @@ const Cards = () => {
     <main className={styles.cardsContainer}>
       <div className={styles.cardsSortButton}>
         {/* Sort button */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          onClick={handleSortButton}
-        >
+        <button onClick={handleSortButton}>
           {selected}
           <span className={styles.expandIcon}>
             <Image src={expand} alt="expand icon" />
           </span>
-        </motion.button>
+        </button>
         {/* Sort button options */}
         {showOptions && (
           <>
-            {options.map((option) => (
+            {options.map((option, i) => (
               <button
+                key={i}
                 onClick={() => {
                   sortOption(option)
                 }}
@@ -74,8 +69,8 @@ const Cards = () => {
           next={loadMoreGames}
           hasMore={gamesFiltered.searchGame != "" ? false : true}
         >
-          {games.map((g) => (
-            <Card game={g} key={nanoid()} />
+          {games.map((game, i) => (
+            <Card game={game} key={i} />
           ))}
         </InfiniteScroll>
       ) : (
