@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { useSelector } from "react-redux"
 import styles from "../styles/cards.module.scss"
 import InfiniteScroll from "react-infinite-scroll-component"
