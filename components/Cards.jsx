@@ -1,9 +1,7 @@
-import Image from "next/image"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import styles from "../styles/cards.module.scss"
 import InfiniteScroll from "react-infinite-scroll-component"
-import expand from "../public/images/expand.svg"
 import Card from "./Card"
 import NotFound from "./NotFound"
 import ReactLoading from "react-loading"
@@ -40,9 +38,15 @@ const Cards = () => {
         {/* Sort button */}
         <button onClick={handleSortButton}>
           {selected}
-          <span className={styles.expandIcon}>
-            <Image src={expand} alt="expand icon" />
-          </span>
+          <svg
+            className={styles.expand}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 21l-12-18h24z" />
+          </svg>
         </button>
         {/* Sort button options */}
         {showOptions && (

@@ -24,11 +24,10 @@
     color: #dbdbdb;
     border: 1px solid transparent;
     cursor: pointer;
-    .expandIcon {
+    .expand {
       width: 15px;
       margin-left: 5px;
-      filter: invert(98%) sepia(2%) saturate(33%) hue-rotate(315deg)
-        brightness(92%) contrast(89%);
+      fill: #dbdbdb;
     }
     &:first-child {
       margin-bottom: 5px;
@@ -45,6 +44,7 @@
     grid-template-columns: repeat(1, minmax(430px, 630px));
     margin: 20px;
   }
+
   .cardsSortButton {
     width: 100%;
     justify-content: center;
