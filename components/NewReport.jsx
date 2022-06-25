@@ -76,6 +76,8 @@ export function NewReport({
           <option value="MacBook Pro M1 Max 2021">
             Mac Studio M1 Ultra 2022
           </option>
+          <option value="MacBook Air M2 2022">MacBook Air M2 2022</option>
+          <option value="MacBook Pro M2 2022">MacBook Pro M2 2022</option>
         </select>
       </div>
       <div className={styles.addNewReportDescription}>
