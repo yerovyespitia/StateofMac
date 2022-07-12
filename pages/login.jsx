@@ -39,7 +39,7 @@ const Login = () => {
   }
 
   useEffect(() => {
-    user.user && Router.push("/")
+    if (user.user) Router.push("/")
   }, [])
 
   return (

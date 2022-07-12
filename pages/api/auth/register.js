@@ -4,7 +4,7 @@ import bcryptjs from "bcryptjs"
 
 connectToDatabase()
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const { method } = req
 
   switch (method) {
@@ -34,3 +34,5 @@ const hassedPass = async (conditions) => {
   const salt = await bcryptjs.genSalt(10)
   return bcryptjs.hash(conditions.password, salt)
 }
+
+export default handler

@@ -3,7 +3,7 @@ import Game from "../../../models/Game"
 
 connectToDatabase()
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const {
     method,
     query: { id },
@@ -28,3 +28,5 @@ export default async (req, res) => {
 export const updateGame = async (conditions, set, options) => {
   return Game.findOneAndUpdate(conditions, set, options)
 }
+
+export default handler

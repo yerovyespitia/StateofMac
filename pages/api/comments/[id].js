@@ -5,7 +5,7 @@ import { updateGame } from "../games/[id]"
 
 connectToDatabase()
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const {
     method,
     query: { id },
@@ -116,3 +116,5 @@ const visibleState = (states, _state) => {
     _state = "Tied"
   }
 }
+
+export default handler

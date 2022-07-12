@@ -4,7 +4,7 @@ import bcryptjs from "bcryptjs"
 
 connectToDatabase()
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const { method } = req
 
   switch (method) {
@@ -31,3 +31,5 @@ export default async (req, res) => {
 const validated = async (conditions, options) => {
   return bcryptjs.compare(conditions.password, options.password)
 }
+
+export default handler

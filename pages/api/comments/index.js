@@ -3,7 +3,7 @@ import Comment from "../../../models/Comment"
 
 connectToDatabase()
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const { method } = req
 
   switch (method) {
@@ -22,3 +22,5 @@ export default async (req, res) => {
       return res.status(400).json({ msg: "This method is not supported" })
   }
 }
+
+export default handler

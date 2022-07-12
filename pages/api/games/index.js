@@ -3,7 +3,7 @@ import Game from "../../../models/Game"
 
 connectToDatabase()
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const { method } = req
 
   switch (method) {
@@ -55,3 +55,5 @@ const findAllGames = async (options, sort, page, limit, isCount) => {
       .sort(sort)
   }
 }
+
+export default handler

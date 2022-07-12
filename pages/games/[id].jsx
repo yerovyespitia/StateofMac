@@ -12,6 +12,7 @@ import useSubmitComment from "../../hooks/useSubmitComment"
 
 const GameName = ({ game, comments }) => {
   const user = useSelector((state) => state.user.value)
+
   const {
     addReportState,
     addTitle,
@@ -24,6 +25,7 @@ const GameName = ({ game, comments }) => {
     cancelSubmit,
     newComment,
   } = useSubmitComment()
+
   const dispatch = useDispatch()
   dispatch(search({ searchGame: "" }))
 
@@ -121,7 +123,7 @@ const GameName = ({ game, comments }) => {
 export default GameName
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${process.env.API_URL}api/games?page=1&limit=0`)
+  const res = await fetch(`${process.env.API_URL}api/games`)
   const data = await res.json()
 
   const paths = data.map((id) => {

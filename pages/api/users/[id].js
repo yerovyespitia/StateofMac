@@ -5,7 +5,7 @@ import User from "../../../models/User"
 
 connectToDatabase()
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const {
     method,
     query: { id },
@@ -40,3 +40,5 @@ export default async (req, res) => {
 export const updateUser = async (conditions, set, options) => {
   return User.findOneAndUpdate(conditions, set, options)
 }
+
+export default handler
