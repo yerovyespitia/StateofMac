@@ -4,7 +4,7 @@ import { load } from "../redux/loadingSlice"
 import axios from "axios"
 
 const useFetchingGames = (url) => {
-  const gamesFiltered = useSelector((state) => state.games.value)
+  const gamesFiltered = useSelector((state) => state.games.value.searchGame)
   const [games, setGames] = useState([])
   const [page, setPage] = useState(1)
   const [prevSearchGame, setPrevSearchGame] = useState("")
@@ -22,27 +22,31 @@ const useFetchingGames = (url) => {
       .get(url, {
         params: {
           page,
-          limit: 60,
-          searchGame: gamesFiltered.searchGame,
+          limit: 40,
+          searchGame: gamesFiltered,
         },
       })
       .then((res) => {
-        if (gamesFiltered.searchGame != "") {
-          setPrevSearchGame(gamesFiltered.searchGame)
-          if (!loadMore) {
-            setGames(res.data)
-            setPage(1)
-          } else {
-            setGames([...games, ...res.data])
-          }
-          setLoadMore(false)
-        } else if (prevSearchGame != "" && gamesFiltered.searchGame === "") {
+        if (gamesFiltered === "") {
+          setGames([...games, ...res.data])
+        }
+
+        setPrevSearchGame(gamesFiltered)
+        setLoadMore(false)
+
+        if (!loadMore) {
           setGames(res.data)
-          setPrevSearchGame("")
           setPage(1)
         } else {
           setGames([...games, ...res.data])
         }
+
+        if (prevSearchGame != "" && gamesFiltered === "") {
+          setGames(res.data)
+          setPrevSearchGame("")
+          setPage(1)
+        }
+
         dispatch(load({ loaded: true }))
       })
   }, [page, gamesFiltered])

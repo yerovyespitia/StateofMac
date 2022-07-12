@@ -1,16 +1,16 @@
 .cardsContainer {
   display: grid;
-  grid-template-columns: repeat(1, minmax(730px, 920px));
+  grid-template-columns: minmax(430px, 920px);
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin: 20px;
+  gap: 10px;
 }
 
 .cardsSortButton {
   display: flex;
   justify-content: flex-end;
   flex-flow: column wrap-reverse;
+
   button {
     display: flex;
     justify-content: center;
@@ -24,15 +24,18 @@
     color: #dbdbdb;
     border: 1px solid transparent;
     cursor: pointer;
+
     .expand {
       width: 15px;
       margin-left: 5px;
       fill: #dbdbdb;
     }
+
     &:first-child {
       margin-bottom: 5px;
       border-radius: 8px;
     }
+
     &:hover {
       background-color: #363636;
     }
@@ -41,13 +44,14 @@
 
 @media (max-width: 950px) {
   .cardsContainer {
-    grid-template-columns: repeat(1, minmax(430px, 630px));
-    margin: 20px;
+    grid-template-columns: minmax(300px, 630px);
+    gap: 5px;
   }
 
   .cardsSortButton {
     width: 100%;
     justify-content: center;
+
     button {
       font-size: 20px;
       width: 100%;
@@ -59,12 +63,5 @@
 @media (max-width: 657px) {
   .cardsContainer {
     margin: 0 10px 20px 10px;
-  }
-}
-
-@media (max-width: 470px) {
-  .cardsContainer {
-    grid-template-columns: repeat(1, minmax(300px, 430px));
-    gap: 10px;
   }
 }

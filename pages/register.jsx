@@ -30,6 +30,7 @@ const Register = () => {
   useEffect(() => {
     user.user && Router.push("/")
   }, [])
+  
   return (
     <div>
       <NextSeo title={"Register | State of Mac"} />
