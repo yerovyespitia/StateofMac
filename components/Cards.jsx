@@ -1,8 +1,8 @@
-import { useState } from "react"
 import { useSelector } from "react-redux"
 import styles from "../styles/cards.module.scss"
 import InfiniteScroll from "react-infinite-scroll-component"
 import Card from "./Card"
+import SortButton from "./SortButton"
 import NotFound from "./NotFound"
 import ReactLoading from "react-loading"
 import WelcomeUser from "./WelcomeUser"
@@ -12,58 +12,15 @@ const Cards = () => {
   const user = useSelector((state) => state.user.value)
   const loading = useSelector((state) => state.loading.value)
   const gamesFiltered = useSelector((state) => state.games.value)
-  const [showOptions, setShowOptions] = useState(false)
-  const [selected, setSelected] = useState("All Games")
-  const options = ["All Games"]
 
   // Fetching Games with useFetchingGames
   const { games, loadMoreGames } = useFetchingGames(
     `${process.env.API_URL}api/games?`
   )
 
-  // Sort Game Cards
-  const handleSortButton = () => {
-    setShowOptions(!showOptions)
-  }
-
-  // Set Sort Option
-  const sortOption = (option) => {
-    setSelected(option)
-    setShowOptions(!showOptions)
-  }
-
   return (
     <main className={styles.cardsContainer}>
-      <div className={styles.cardsSortButton}>
-        {/* Sort button */}
-        <button onClick={handleSortButton}>
-          {selected}
-          <svg
-            className={styles.expand}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 21l-12-18h24z" />
-          </svg>
-        </button>
-        {/* Sort button options */}
-        {showOptions && (
-          <>
-            {options.map((option, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  sortOption(option)
-                }}
-              >
-                {option}
-              </button>
-            ))}
-          </>
-        )}
-      </div>
+      <SortButton />
 
       {/* Showing Games with Infinite Scroll */}
       {loading.loaded ? (
