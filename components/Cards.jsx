@@ -18,7 +18,7 @@ const Cards = () => {
 
   // Fetching Games with useFetchingGames
   const { games, loadMoreGames } = useFetchingGames(
-    `${process.env.API_URL}api/games?`
+    `api/games?`
   )
 
   // Sort Game Cards
