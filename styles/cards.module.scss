@@ -42,6 +42,11 @@
   }
 }
 
+.notFound {
+  margin: 0 auto;
+  color: white;
+}
+
 @media (max-width: 950px) {
   .cardsContainer {
     grid-template-columns: minmax(300px, 630px);

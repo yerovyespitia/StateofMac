@@ -19,7 +19,6 @@ const SortButton = () => {
 
   return (
     <div className={styles.cardsSortButton}>
-      {/* Button */}
       <button onClick={handleSortButton}>
         {selected}
         <svg
@@ -32,7 +31,6 @@ const SortButton = () => {
           <path d="M12 21l-12-18h24z" />
         </svg>
       </button>
-      {/* Button options */}
       {showOptions && (
         <>
           {options.map((option, i) => (

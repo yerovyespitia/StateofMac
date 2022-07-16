@@ -51,14 +51,12 @@ const GameName = ({ game, comments }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1 } }}
         whileHover={{ scale: 1.013 }}
-        className={styles.gamesImgContainer}
+        className={styles["game-wrapper"]}
       >
         {game.wallpaper && (
-          <Image
+          <img
+            className={styles["game-image"]}
             src={game.wallpaper}
-            width={1454}
-            height={813}
-            className={styles.gamesImg}
             alt={game.title}
           />
         )}

@@ -3,15 +3,12 @@ import styles from "../styles/cards.module.scss"
 import InfiniteScroll from "react-infinite-scroll-component"
 import Card from "./Card"
 import SortButton from "./SortButton"
-import NotFound from "./NotFound"
 import ReactLoading from "react-loading"
-import WelcomeUser from "./WelcomeUser"
 import useFetchingGames from "../hooks/useFetchingGames"
 
 const Cards = () => {
-  const user = useSelector((state) => state.user.value)
-  const loading = useSelector((state) => state.loading.value)
-  const gamesFiltered = useSelector((state) => state.games.value)
+  const loading = useSelector((state) => state.loading.value.loaded)
+  const gamesFiltered = useSelector((state) => state.games.value.searchGame)
 
   // Fetching Games with useFetchingGames
   const { games, loadMoreGames } = useFetchingGames(
@@ -21,14 +18,12 @@ const Cards = () => {
   return (
     <main className={styles.cardsContainer}>
       <SortButton />
-
-      {/* Showing Games with Infinite Scroll */}
-      {loading.loaded ? (
+      {loading ? (
         <InfiniteScroll
           style={{ overflow: "visible" }}
           dataLength={games.length}
           next={loadMoreGames}
-          hasMore={gamesFiltered.searchGame != "" ? false : true}
+          hasMore={gamesFiltered != "" ? false : true}
         >
           {games.map((game, i) => (
             <Card game={game} key={i} />
@@ -37,16 +32,15 @@ const Cards = () => {
       ) : (
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            margin: "0 auto",
           }}
         >
           <ReactLoading type={"spin"} color={"white"} height={50} width={50} />
         </div>
       )}
-      {loading.loaded === true && games.length < 1 && <NotFound />}
-      {loading.loaded === true && user.user && <WelcomeUser />}
+      <div className={styles.notFound}>
+        {loading == true && games.length < 1 && <h1>No games found...</h1>}
+      </div>
     </main>
   )
 }
