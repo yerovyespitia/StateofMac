@@ -27,9 +27,7 @@ const useFetchingGames = (url) => {
         },
       })
       .then((res) => {
-        if (gamesFiltered === "") {
-          setGames([...games, ...res.data])
-        }
+        if (gamesFiltered === "") setGames([...games, ...res.data])
 
         setPrevSearchGame(gamesFiltered)
         setLoadMore(false)
