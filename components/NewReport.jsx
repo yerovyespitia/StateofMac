@@ -10,6 +10,39 @@ export function NewReport({
   addDescription,
   cancelSubmit,
 }) {
+  const runThrough = [
+    "A Native Port",
+    "Rosetta 2",
+    "Crossover",
+    "Parallels",
+    "VMware",
+    "PlayCover",
+    "A Console Emulator",
+    "Other",
+  ]
+
+  const states = ["Perfect", "Playable", "Unplayable"]
+  const launchers = [
+    "Steam Launcher",
+    "Epic Games Launcher",
+    "Rockstar Games Launcher",
+    "Riot Client",
+    "Battle.net",
+    "Other",
+    "None",
+  ]
+  const macs = [
+    "MacBook Pro M1 2020",
+    "MacBook Air M1 2020",
+    "Mac mini M1 2020",
+    "iMac M1 2021",
+    "MacBook Pro M1 Pro 2021",
+    "Mac Studio M1 Max 2022",
+    "Mac Studio M1 Ultra 2022",
+    "MacBook Air M2 2022",
+    "MacBook Pro M2 2022",
+  ]
+
   return (
     <form className={styles.addNewReport} onSubmit={handleSubmit}>
       <div className={styles.addNewReportTitle}>
@@ -25,59 +58,33 @@ export function NewReport({
           <option disabled selected={true} defaultValue={"Game Run Through"}>
             Game Run Through
           </option>
-          <option value="A Native Port">A Native Port</option>
-          <option value="Rosetta 2">Rosetta 2</option>
-          <option value="Crossover">Crossover</option>
-          <option value="Parallels">Parallels</option>
-          <option value="VMware">VMware</option>
-          <option value="PlayCover">PlayCover</option>
-          <option value="A Console Emulator">A Console Emulator</option>
-          <option value="Other">Other</option>
+          {runThrough.map((run) => (
+            <option value={run}>{run}</option>
+          ))}
         </select>
         <select onChange={addState}>
           <option disabled selected={true} defaultValue={"State of the Game"}>
             State of the Game
           </option>
-          <option value="Perfect">Perfect</option>
-          <option value="Playable">Playable</option>
-          <option value="Unplayable">Unplayable</option>
+          {states.map((state) => (
+            <option value={state}>{state}</option>
+          ))}
         </select>
         <select onChange={addLauncher}>
           <option disabled selected={true} defaultValue={"Launcher"}>
             Launcher
           </option>
-          <option value="Steam Launcher">Steam Launcher</option>
-          <option value="Epic Games Launcher">Epic Games Launcher</option>
-          <option value="Rockstar Games Launcher">
-            Rockstar Games Launcher
-          </option>
-          <option value="Riot Client">Riot Client</option>
-          <option value="Battle.net">Battle.net</option>
-          <option value="Other">Other</option>
-          <option value="None">None</option>
+          {launchers.map((launcher) => (
+            <option value={launcher}>{launcher}</option>
+          ))}
         </select>
         <select onChange={addMacUsed}>
           <option disabled selected={true} defaultValue={"Mac"}>
             Mac
           </option>
-          <option value="MacBook Pro M1 2020">MacBook Pro M1 2020</option>
-          <option value="MacBook Air M1 2020">MacBook Air M1 2020</option>
-          <option value="Mac mini M1 2020">Mac mini M1 2020</option>
-          <option value="iMac M1 2021">iMac M1 2021</option>
-          <option value="MacBook Pro M1 Pro 2021">
-            MacBook Pro M1 Pro 2021
-          </option>
-          <option value="MacBook Pro M1 Max 2021">
-            MacBook Max M1 Pro 2021
-          </option>
-          <option value="MacBook Pro M1 Max 2021">
-            Mac Studio M1 Max 2022
-          </option>
-          <option value="MacBook Pro M1 Max 2021">
-            Mac Studio M1 Ultra 2022
-          </option>
-          <option value="MacBook Air M2 2022">MacBook Air M2 2022</option>
-          <option value="MacBook Pro M2 2022">MacBook Pro M2 2022</option>
+          {macs.map((mac) => (
+            <option value={mac}>{mac}</option>
+          ))}
         </select>
       </div>
       <div className={styles.addNewReportDescription}>
