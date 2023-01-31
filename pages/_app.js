@@ -4,7 +4,7 @@ import { DefaultSeo } from "next-seo"
 import { useEffect } from "react"
 import { Provider } from "react-redux"
 import store from "../redux/store"
-import "../styles/globals.scss"
+import "../styles/globals.css"
 import * as gtag from "../lib/gtag"
 import Layout from "../components/Layout"
 

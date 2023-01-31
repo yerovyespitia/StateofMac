@@ -38,8 +38,8 @@ const Cards = () => {
           <ReactLoading type={"spin"} color={"white"} height={50} width={50} />
         </div>
       )}
-      <div className={styles.notFound}>
-        {loading == true && games.length < 1 && <h1>No games found...</h1>}
+      <div className="my-0 mx-auto text-2xl font-bold text-white">
+        {loading == true && games.length < 1 && <h1>No games found</h1>}
       </div>
     </main>
   )

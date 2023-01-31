@@ -2,11 +2,11 @@
 
 State of Mac is the easiest way to know if your favorite game runs on Apple Silicon and the best to run that game. Also, you can add your own experience running a game on Apple Silicon.
 
-[State of Mac](https://www.stateofmac.com)
+[State of Mac](https://stateofmac.vercel.app)
 
 ## How to use State of Mac
 
-* Go to [State of Mac](https://www.stateofmac.com).
+* Go to [State of Mac](https://stateofmac.vercel.app).
 * Create an account.
 * Log in.
 * Find the game you want to add a report and click on it.
