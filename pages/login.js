@@ -4,7 +4,6 @@ import { NextSeo } from "next-seo"
 import { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { userLogin } from "../redux/userSlice"
-import styles from "../styles/signin.module.scss"
 import axios from "axios"
 import { motion } from "framer-motion"
 
@@ -48,27 +47,32 @@ const Login = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 0.8 } }}
-        className={styles.container}
+        className="my-[200px] mx-0 flex flex-col items-center justify-center"
       >
-        <h1>Login</h1>
-        <div className={styles.containerForm}>
-          <form className={styles.containerForm} onSubmit={handleSubmit}>
+        <h1 className="mb-5 text-center text-3xl font-bold text-white">
+          Login
+        </h1>
+        <div className="flex flex-col justify-center">
+          <form
+            className="flex flex-col justify-center"
+            onSubmit={handleSubmit}
+          >
             <input
-              className={styles.containerInput}
+              className="mb-4 h-14 w-[80vw] rounded-md bg-[#292929] pl-4 text-lg text-[#dbdbdb] focus:outline-none md:w-[460px]"
               type="text"
               placeholder="Username"
               ref={useUserRef}
               required
             />
             <input
-              className={styles.containerInput}
+              className="mb-4 h-14 w-[80vw] rounded-md bg-[#292929] pl-4 text-lg text-[#dbdbdb] focus:outline-none md:w-[460px]"
               type="password"
               placeholder="Password"
               ref={usePasswordRef}
               required
             />
             <button
-              className={styles.containerButton}
+              className="h-14 cursor-pointer rounded-md bg-[#292929] text-lg font-bold text-[#dbdbdb]"
               type="submit"
               disabled={user.isFetching}
             >
@@ -76,7 +80,7 @@ const Login = () => {
             </button>
           </form>
         </div>
-        <div className={styles.register}>
+        <div className="mt-5 text-center text-lg text-[#b358bf]">
           <Link href={"/register"}>
             Register if you don&apos;t have an account.
           </Link>

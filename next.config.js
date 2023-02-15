@@ -9,5 +9,4 @@ module.exports = {
     GOOGLE_ID: process.env.GOOGLE_ID,
     MONGO_URI: process.env.MONGO_URI,
   },
-  future: { webpack5: true },
 }

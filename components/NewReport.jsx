@@ -1,5 +1,4 @@
 import React from "react"
-import styles from "../styles/games.module.scss"
 export function NewReport({
   handleSubmit,
   addTitle,
@@ -44,17 +43,21 @@ export function NewReport({
   ]
 
   return (
-    <form className={styles.addNewReport} onSubmit={handleSubmit}>
-      <div className={styles.addNewReportTitle}>
+    <form className="mt-4" onSubmit={handleSubmit}>
+      <div className="text-lg text-white">
         <input
+          className="h-14 w-full rounded-lg bg-[#292929] pt-1 pr-0 pb-0 pl-4 focus:outline-none"
           type="text"
           name="search"
           placeholder="Title"
           onChange={addTitle}
         />
       </div>
-      <div className={styles.addNewReportOptions}>
-        <select onChange={addRunThrough}>
+      <div className="mt-5 flex flex-col items-center justify-center md:flex-row">
+        <select
+          onChange={addRunThrough}
+          className="m-0 mb-3 h-14 w-full rounded-lg bg-[#292929] text-center text-lg font-medium text-white focus:outline-0"
+        >
           <option disabled selected={true} defaultValue={"Game Run Through"}>
             Game Run Through
           </option>
@@ -62,7 +65,10 @@ export function NewReport({
             <option value={run}>{run}</option>
           ))}
         </select>
-        <select onChange={addState}>
+        <select
+          onChange={addState}
+          className="m-0 mb-3 h-14 w-full rounded-lg bg-[#292929] text-center text-lg font-medium text-white focus:outline-0"
+        >
           <option disabled selected={true} defaultValue={"State of the Game"}>
             State of the Game
           </option>
@@ -70,7 +76,10 @@ export function NewReport({
             <option value={state}>{state}</option>
           ))}
         </select>
-        <select onChange={addLauncher}>
+        <select
+          onChange={addLauncher}
+          className="m-0 mb-3 h-14 w-full rounded-lg bg-[#292929] text-center text-lg font-medium text-white focus:outline-0"
+        >
           <option disabled selected={true} defaultValue={"Launcher"}>
             Launcher
           </option>
@@ -78,7 +87,10 @@ export function NewReport({
             <option value={launcher}>{launcher}</option>
           ))}
         </select>
-        <select onChange={addMacUsed}>
+        <select
+          onChange={addMacUsed}
+          className="m-0 mb-3 h-14 w-full rounded-lg bg-[#292929] text-center text-lg font-medium text-white focus:outline-0"
+        >
           <option disabled selected={true} defaultValue={"Mac"}>
             Mac
           </option>
@@ -87,8 +99,9 @@ export function NewReport({
           ))}
         </select>
       </div>
-      <div className={styles.addNewReportDescription}>
+      <div className="mt-3">
         <textarea
+          className="w-full rounded-lg bg-[#292929] pt-5 pl-5 pb-0 pr-5 text-lg text-white focus:outline-none"
           name="description"
           id="textarea"
           cols="30"
@@ -97,9 +110,19 @@ export function NewReport({
           onChange={addDescription}
         ></textarea>
       </div>
-      <div className={styles.addNewReportOptionButton}>
-        <button type="submit">Send</button>
-        <button onClick={cancelSubmit}>Cancel</button>
+      <div className="mt-3 flex flex-col items-center justify-center md:flex-row">
+        <button
+          type="submit"
+          className="mb-3 h-14 w-full cursor-pointer rounded-lg bg-[#292929] text-lg font-bold text-[#dbdbdb] md:mr-2 md:w-1/2"
+        >
+          Send
+        </button>
+        <button
+          className="mb-3 h-14 w-full cursor-pointer rounded-lg bg-[#292929] text-lg font-bold text-[#dbdbdb] md:ml-2 md:w-1/2"
+          onClick={cancelSubmit}
+        >
+          Cancel
+        </button>
       </div>
     </form>
   )

@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux"
-import styles from "../styles/cards.module.scss"
 import InfiniteScroll from "react-infinite-scroll-component"
 import Card from "./Card"
-import SortButton from "./SortButton"
 import ReactLoading from "react-loading"
 import useFetchingGames from "../hooks/useFetchingGames"
 
@@ -16,8 +14,7 @@ const Cards = () => {
   )
 
   return (
-    <main className={styles.cardsContainer}>
-      <SortButton />
+    <main className="md:my-0 md:mx-auto md:max-w-fit">
       {loading ? (
         <InfiniteScroll
           style={{ overflow: "visible" }}

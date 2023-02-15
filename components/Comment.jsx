@@ -1,4 +1,3 @@
-import styles from "../styles/comment.module.scss"
 import moment from "moment"
 import { motion } from "framer-motion"
 
@@ -8,32 +7,35 @@ const Comment = ({ comment }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1 } }}
-        className={styles.comment}
+        className="mt-4 mb-6 flex flex-col justify-center rounded-lg bg-[#292929] p-12"
       >
-        <div className={styles.commentUser}>
-          <div className={styles.commentUserLeft}>
-            <p className={styles.author}>
-              {comment.comment.username}
-              {/* <span className={styles.authorReports}> → 250 reports</span> */}
-            </p>
-          </div>
-          <div className={styles.commentUserRight}>
-            <time className={styles.commentDate}>
-              {moment(comment.comment.date).format("ll")}
-            </time>
-          </div>
+        <div className="justify-space mb-3 flex items-center">
+          <p className="my-1 mr-3 text-2xl font-medium text-[#52a2d5]">
+            {comment.comment.username}
+          </p>
+          <time className="text-lg font-medium text-[#b7b7b7]">
+            {moment(comment.comment.date).format("ll")}
+          </time>
         </div>
-        <p className={styles.commentTitle}>{comment.comment.title}</p>
-        <article className={styles.commentDescription}>
+        <p className="mt-0 mr-0 mb-3 ml-0 text-2xl font-bold text-white">
+          {comment.comment.title}
+        </p>
+        <article className="mb-1 text-lg font-medium text-[#e6e6e6]">
           {comment.comment.description}
         </article>
-        <article className={styles.commentInfo}>
-          <p className={styles.commentRunThrough}>
-            ● {comment.comment.runThrough}
+        <article className="mt-4 flex flex-col font-medium md:flex-row">
+          <p className="mr-2 text-lg text-[#dbdbdb]">
+            ●{comment.comment.runThrough}
           </p>
-          <p className={styles.commentScore}>● {comment.comment.state}</p>
-          <p className={styles.commentPlatform}>● {comment.comment.launcher}</p>
-          <p className={styles.commentMac}>● {comment.comment.macUsed}</p>
+          <p className="mr-2 text-lg text-[#dbdbdb]">
+            ●{comment.comment.state}
+          </p>
+          <p className="mr-2 text-lg text-[#dbdbdb]">
+            ●{comment.comment.launcher}
+          </p>
+          <p className="mr-2 text-lg text-[#dbdbdb]">
+            ●{comment.comment.macUsed}
+          </p>
         </article>
       </motion.div>
     </>
