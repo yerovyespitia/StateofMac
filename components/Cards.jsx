@@ -17,7 +17,7 @@ const Cards = () => {
     <main className="md:my-0 md:mx-auto md:max-w-fit">
       {loading ? (
         <InfiniteScroll
-          style={{ overflow: "visible" }}
+          className="overflow-visible"
           dataLength={games.length}
           next={loadMoreGames}
           hasMore={gamesFiltered != "" ? false : true}
@@ -27,11 +27,7 @@ const Cards = () => {
           ))}
         </InfiniteScroll>
       ) : (
-        <div
-          style={{
-            margin: "0 auto",
-          }}
-        >
+        <div className="mt-5 flex justify-center">
           <ReactLoading type={"spin"} color={"white"} height={50} width={50} />
         </div>
       )}

@@ -35,13 +35,13 @@ const Navbar = () => {
     <motion.nav
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="m-3 flex flex-col items-center justify-center md:flex-row"
+      className="mx-3 mt-3 flex flex-col items-center justify-center md:flex-row"
       onKeyDown={handleOnKeyDown}
     >
       <div className="w-full md:w-[140px]">
         <Link href={"/"} passHref>
           <motion.button
-            className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:w-[140px] md:rounded-full"
+            className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
             whileTap={{ scale: 0.9 }}
             onClick={handleOnClick}
           >
@@ -51,7 +51,7 @@ const Navbar = () => {
       </div>
       <div className="m-3 w-full md:ml-4 md:mr-4 md:w-[450px]">
         <input
-          className="text-md h-14 w-full rounded-md bg-[#292929] pt-1 pr-0 pb-0 pl-4 text-center text-[#555555] focus:outline-none md:w-[450px] md:rounded-full"
+          className="text-md h-14 w-full rounded-md bg-[#292929] pt-1 pr-0 pb-0 pl-4 text-center font-bold text-[#555555] focus:outline-none md:w-[450px] md:rounded-full"
           type="text"
           name="search"
           placeholder="Search games"
@@ -62,7 +62,7 @@ const Navbar = () => {
       {user.user ? (
         <div className="w-full md:w-[140px]">
           <motion.button
-            className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:w-[140px] md:rounded-full"
+            className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
             whileTap={{ scale: 0.9 }}
             onClick={handleLogOut}
             suppressHydrationWarning={true}
@@ -74,7 +74,7 @@ const Navbar = () => {
         <div className="w-full md:w-[140px]">
           <Link href={"/login"} passHref>
             <motion.button
-              className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:w-[140px] md:rounded-full"
+              className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
               whileTap={{ scale: 0.9 }}
               onClick={handleOnClick}
               suppressHydrationWarning={true}

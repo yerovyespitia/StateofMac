@@ -9,12 +9,7 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      gridTemplateColumns: {
-        cards: "minmax(430, 920px)",
-        cardsMin: "minmax(300, 630px)",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
