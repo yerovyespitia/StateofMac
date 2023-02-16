@@ -1,19 +1,15 @@
 import Link from "next/link"
 import { useDispatch, useSelector } from "react-redux"
-import { search } from "../redux/gamesSlice"
 import { userLogin } from "../redux/userSlice"
 import { motion } from "framer-motion"
 import { useRouter } from "next/router"
+import { useSearchStore } from "../store/searchStore"
 
 const Navbar = () => {
-  const games = useSelector((state) => state.games.value)
+  const { cleanSearch, searching, search } = useSearchStore((state) => state)
   const user = useSelector((state) => state.user.value)
   const dispatch = useDispatch()
   const router = useRouter()
-
-  const handleOnChange = (e) => {
-    dispatch(search({ searchGame: e.target.value }))
-  }
 
   const handleLogOut = () => {
     dispatch(
@@ -21,13 +17,9 @@ const Navbar = () => {
     )
   }
 
-  const handleOnClick = () => {
-    dispatch(search({ searchGame: "" }))
-  }
-
   const handleOnKeyDown = (e) => {
     if (e.key === "Enter") {
-      router.replace(`/?searchGame=${games.searchGame}`)
+      router.replace(`/?searchGame=${search}`)
     }
   }
 
@@ -43,7 +35,7 @@ const Navbar = () => {
           <motion.button
             className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
             whileTap={{ scale: 0.9 }}
-            onClick={handleOnClick}
+            onClick={() => cleanSearch()}
           >
             Home
           </motion.button>
@@ -55,8 +47,8 @@ const Navbar = () => {
           type="text"
           name="search"
           placeholder="Search games"
-          value={games.searchGame}
-          onChange={handleOnChange}
+          value={search}
+          onChange={(e) => searching(e)}
         />
       </div>
       {user.user ? (
@@ -76,7 +68,7 @@ const Navbar = () => {
             <motion.button
               className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
               whileTap={{ scale: 0.9 }}
-              onClick={handleOnClick}
+              onClick={() => cleanSearch()}
               suppressHydrationWarning={true}
             >
               Login

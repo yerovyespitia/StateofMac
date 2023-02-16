@@ -7,7 +7,7 @@ const Comment = ({ comment }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1 } }}
-        className="mt-4 mb-6 flex flex-col justify-center rounded-lg bg-[#292929] p-12"
+        className="mt-4 mb-4 flex flex-col justify-center rounded-lg bg-[#292929] p-12"
       >
         <div className="justify-space mb-3 flex items-center">
           <p className="my-1 mr-3 text-2xl font-medium text-[#52a2d5]">
@@ -25,16 +25,16 @@ const Comment = ({ comment }) => {
         </article>
         <article className="mt-4 flex flex-col font-medium md:flex-row">
           <p className="mr-2 text-lg text-[#dbdbdb]">
-            ●{comment.comment.runThrough}
+            ● {comment.comment.runThrough}
           </p>
           <p className="mr-2 text-lg text-[#dbdbdb]">
-            ●{comment.comment.state}
+            ● {comment.comment.state}
           </p>
           <p className="mr-2 text-lg text-[#dbdbdb]">
-            ●{comment.comment.launcher}
+            ● {comment.comment.launcher}
           </p>
           <p className="mr-2 text-lg text-[#dbdbdb]">
-            ●{comment.comment.macUsed}
+            ● {comment.comment.macUsed}
           </p>
         </article>
       </motion.div>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { load } from "../redux/loadingSlice"
 import axios from "axios"
+import { useSearchStore } from "../store/searchStore"
 
 const useFetchingGames = (url) => {
-  const gamesFiltered = useSelector((state) => state.games.value.searchGame)
+  const search = useSearchStore((state) => state.search)
   const [games, setGames] = useState([])
   const [page, setPage] = useState(1)
   const [prevSearchGame, setPrevSearchGame] = useState("")
@@ -23,13 +24,13 @@ const useFetchingGames = (url) => {
         params: {
           page,
           limit: 40,
-          searchGame: gamesFiltered,
+          searchGame: search,
         },
       })
       .then((res) => {
-        if (gamesFiltered === "") setGames([...games, ...res.data])
+        if (search === "") setGames([...games, ...res.data])
 
-        setPrevSearchGame(gamesFiltered)
+        setPrevSearchGame(search)
         setLoadMore(false)
 
         if (!loadMore) {
@@ -39,7 +40,7 @@ const useFetchingGames = (url) => {
           setGames([...games, ...res.data])
         }
 
-        if (prevSearchGame != "" && gamesFiltered === "") {
+        if (prevSearchGame != "" && search === "") {
           setGames(res.data)
           setPrevSearchGame("")
           setPage(1)
@@ -47,7 +48,7 @@ const useFetchingGames = (url) => {
 
         dispatch(load({ loaded: true }))
       })
-  }, [page, gamesFiltered])
+  }, [page, search])
 
   return {
     games,

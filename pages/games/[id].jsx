@@ -1,14 +1,15 @@
 import { NextSeo } from "next-seo"
-import { useSelector, useDispatch } from "react-redux"
-import { search } from "../../redux/gamesSlice"
+import { useSelector } from "react-redux"
 import axios from "axios"
 import { motion } from "framer-motion"
 import Comment from "../../components/Comment"
 import GameState from "../../components/GameState"
 import { NewReport } from "./../../components/NewReport"
 import useSubmitComment from "../../hooks/useSubmitComment"
+import { useSearchStore } from "../../store/searchStore"
 
 const GameName = ({ game, comments }) => {
+  const cleanSearch = useSearchStore((state) => state.cleanSearch)
   const user = useSelector((state) => state.user.value)
 
   const {
@@ -24,8 +25,7 @@ const GameName = ({ game, comments }) => {
     newComment,
   } = useSubmitComment()
 
-  const dispatch = useDispatch()
-  dispatch(search({ searchGame: "" }))
+  cleanSearch()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -46,6 +46,7 @@ const GameName = ({ game, comments }) => {
         description={`Find out if ${game.title} runs on Apple Silicon.`}
       />
       <motion.div
+        className="mt-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1 } }}
         whileHover={{ scale: 1.013 }}
@@ -105,6 +106,7 @@ export const getStaticPaths = async () => {
       params: { id: id.title.toString() },
     }
   })
+
   return {
     paths,
     fallback: false,
