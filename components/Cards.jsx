@@ -33,7 +33,7 @@ const Cards = () => {
         </div>
       )}
       <div className="my-0 mx-auto text-2xl font-bold text-white">
-        {loading == true && games.length < 1 && (
+        {loading == true && games?.length < 1 && (
           <h1 className="mt-3 flex justify-center">No games found</h1>
         )}
       </div>

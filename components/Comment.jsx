@@ -9,7 +9,7 @@ const Comment = ({ comment }) => {
         animate={{ opacity: 1, transition: { duration: 1 } }}
         className="mt-4 mb-4 flex flex-col justify-center rounded-lg bg-[#292929] p-12"
       >
-        <div className="justify-space mb-3 flex items-center">
+        <div className="mb-3 flex flex-col">
           <p className="my-1 mr-3 text-2xl font-medium text-[#52a2d5]">
             {comment.comment.username}
           </p>

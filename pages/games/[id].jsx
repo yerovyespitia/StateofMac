@@ -9,7 +9,7 @@ import useSubmitComment from "../../hooks/useSubmitComment"
 import { useSearchStore } from "../../store/searchStore"
 
 const GameName = ({ game, comments }) => {
-  const cleanSearch = useSearchStore((state) => state.cleanSearch)
+  const searching = useSearchStore((state) => state.searching)
   const user = useSelector((state) => state.user.value)
 
   const {
@@ -25,7 +25,7 @@ const GameName = ({ game, comments }) => {
     newComment,
   } = useSubmitComment()
 
-  cleanSearch()
+  searching("")
 
   const handleSubmit = async (e) => {
     e.preventDefault()

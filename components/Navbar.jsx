@@ -6,7 +6,7 @@ import { useRouter } from "next/router"
 import { useSearchStore } from "../store/searchStore"
 
 const Navbar = () => {
-  const { cleanSearch, searching, search } = useSearchStore((state) => state)
+  const { searching, search } = useSearchStore((state) => state)
   const user = useSelector((state) => state.user.value)
   const dispatch = useDispatch()
   const router = useRouter()
@@ -18,9 +18,7 @@ const Navbar = () => {
   }
 
   const handleOnKeyDown = (e) => {
-    if (e.key === "Enter") {
-      router.replace(`/?searchGame=${search}`)
-    }
+    if (e.key === "Enter") router.replace(`/?searchGame=${search}`)
   }
 
   return (
@@ -35,7 +33,7 @@ const Navbar = () => {
           <motion.button
             className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
             whileTap={{ scale: 0.9 }}
-            onClick={() => cleanSearch()}
+            onClick={() => searching("")}
           >
             Home
           </motion.button>
@@ -48,7 +46,7 @@ const Navbar = () => {
           name="search"
           placeholder="Search games"
           value={search}
-          onChange={(e) => searching(e)}
+          onChange={(e) => searching(e.target.value)}
         />
       </div>
       {user.user ? (
@@ -68,7 +66,7 @@ const Navbar = () => {
             <motion.button
               className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
               whileTap={{ scale: 0.9 }}
-              onClick={() => cleanSearch()}
+              onClick={() => searching("")}
               suppressHydrationWarning={true}
             >
               Login

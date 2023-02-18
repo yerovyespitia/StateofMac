@@ -39,15 +39,15 @@ const Login = () => {
 
   useEffect(() => {
     if (user.user) Router.push("/")
-  }, [])
+  }, [user.user])
 
   return (
-    <div>
+    <>
       <NextSeo title={"Login | State of Mac"} />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 0.8 } }}
-        className="my-[200px] mx-0 flex flex-col items-center justify-center"
+        className="flex h-[calc(100vh-192px)] w-screen flex-col items-center justify-center"
       >
         <h1 className="mb-5 text-center text-3xl font-bold text-white">
           Login
@@ -58,14 +58,14 @@ const Login = () => {
             onSubmit={handleSubmit}
           >
             <input
-              className="mb-4 h-14 w-[80vw] rounded-md bg-[#292929] pl-4 text-lg text-[#dbdbdb] focus:outline-none md:w-[460px]"
+              className="mb-4 h-14 w-[94vw] rounded-md bg-[#292929] pl-4 text-lg text-[#dbdbdb] focus:outline-none md:w-[460px]"
               type="text"
               placeholder="Username"
               ref={useUserRef}
               required
             />
             <input
-              className="mb-4 h-14 w-[80vw] rounded-md bg-[#292929] pl-4 text-lg text-[#dbdbdb] focus:outline-none md:w-[460px]"
+              className="mb-4 h-14 w-[94vw] rounded-md bg-[#292929] pl-4 text-lg text-[#dbdbdb] focus:outline-none md:w-[460px]"
               type="password"
               placeholder="Password"
               ref={usePasswordRef}
@@ -86,7 +86,7 @@ const Login = () => {
           </Link>
         </div>
       </motion.div>
-    </div>
+    </>
   )
 }
 
