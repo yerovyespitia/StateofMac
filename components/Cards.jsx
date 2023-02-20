@@ -37,10 +37,10 @@ const Cards = () => {
               <div className="animate-pulse rounded-lg bg-[#363636] px-[170px] py-[110px]"></div>
             </div>
             <div className="flex flex-col items-center justify-center text-center md:mr-4 md:block md:text-left">
-              <p className="my-5 animate-pulse rounded-full bg-[#363636] py-2 px-52"></p>
-              <p className="my-5 animate-pulse rounded-full bg-[#363636] py-2 px-52"></p>
-              <p className="my-5 animate-pulse rounded-full bg-[#363636] py-2 px-52"></p>
-              <p className="my-5 animate-pulse rounded-full bg-[#363636] py-2 px-52"></p>
+              <p className="my-5 animate-pulse rounded-full bg-[#363636] py-2 px-44"></p>
+              <p className="my-5 animate-pulse rounded-full bg-[#363636] py-2 px-44"></p>
+              <p className="my-5 animate-pulse rounded-full bg-[#363636] py-2 px-44"></p>
+              <p className="my-5 animate-pulse rounded-full bg-[#363636] py-2 px-44"></p>
             </div>
           </div>
         ))
