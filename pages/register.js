@@ -1,16 +1,17 @@
 import Router from "next/router"
 import { NextSeo } from "next-seo"
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
 import axios from "axios"
 import { motion } from "framer-motion"
+import { useUserStore } from "../store/userStore"
 
 const Register = () => {
-  const user = useSelector((state) => state.user.value)
+  const user = useUserStore((state) => state.user)
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState(false)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError(false)
@@ -27,8 +28,8 @@ const Register = () => {
   }
 
   useEffect(() => {
-    if (user.user) Router.push("/")
-  }, [user.user])
+    if (user) Router.push("/")
+  }, [user])
 
   return (
     <>

@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
+import { useUserStore } from "../store/userStore"
 
 const useSubmitComment = () => {
-  const user = useSelector((state) => state.user.value)
+  const user = useUserStore((state) => state.user)
   const [addReportState, setAddReportState] = useState(false)
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -30,7 +30,7 @@ const useSubmitComment = () => {
   }
 
   const newComment = {
-    username: user.user != null && user.user.username,
+    username: user != null && user.username,
     title,
     description,
     runThrough,

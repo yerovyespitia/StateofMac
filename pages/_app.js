@@ -2,8 +2,6 @@ import Script from "next/script"
 import { useRouter } from "next/router"
 import { DefaultSeo } from "next-seo"
 import { useEffect } from "react"
-import { Provider } from "react-redux"
-import store from "../redux/store"
 import "../styles/globals.css"
 import * as gtag from "../lib/gtag"
 import Layout from "../components/Layout"
@@ -66,12 +64,9 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
-
-      <Provider store={store}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Provider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   )
 }

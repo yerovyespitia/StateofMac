@@ -1,5 +1,4 @@
 import { NextSeo } from "next-seo"
-import { useSelector } from "react-redux"
 import axios from "axios"
 import { motion } from "framer-motion"
 import Comment from "../../components/Comment"
@@ -7,10 +6,11 @@ import GameState from "../../components/GameState"
 import { NewReport } from "./../../components/NewReport"
 import useSubmitComment from "../../hooks/useSubmitComment"
 import { useSearchStore } from "../../store/searchStore"
+import { useUserStore } from "../../store/userStore"
 
 const GameName = ({ game, comments }) => {
+  const user = useUserStore((state) => state.user)
   const searching = useSearchStore((state) => state.searching)
-  const user = useSelector((state) => state.user.value)
 
   const {
     addReportState,
@@ -51,13 +51,11 @@ const GameName = ({ game, comments }) => {
         animate={{ opacity: 1, transition: { duration: 1 } }}
         whileHover={{ scale: 1.013 }}
       >
-        {game.wallpaper && (
-          <img
-            className="w-full rounded-lg"
-            src={game.wallpaper}
-            alt={game.title}
-          />
-        )}
+        <img
+          className="w-full rounded-lg"
+          src={game?.wallpaper}
+          alt={game?.title}
+        />
       </motion.div>
       <div className="text-center">
         <motion.h1
@@ -69,7 +67,7 @@ const GameName = ({ game, comments }) => {
         </motion.h1>
         <GameState game={game.state} />
       </div>
-      {user.user && (
+      {user && (
         <div
           className="flex h-14 cursor-pointer items-center justify-center rounded-md bg-[#292929] hover:bg-[#363636]"
           onClick={reportStateToggle}

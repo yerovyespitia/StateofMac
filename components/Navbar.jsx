@@ -1,20 +1,20 @@
 import Link from "next/link"
-import { useDispatch, useSelector } from "react-redux"
-import { userLogin } from "../redux/userSlice"
 import { motion } from "framer-motion"
 import { useRouter } from "next/router"
 import { useSearchStore } from "../store/searchStore"
+import { useUserStore } from "../store/userStore"
 
 const Navbar = () => {
+  const { user, userLogged, fetching, throwError } = useUserStore(
+    (state) => state
+  )
   const { searching, search } = useSearchStore((state) => state)
-  const user = useSelector((state) => state.user.value)
-  const dispatch = useDispatch()
   const router = useRouter()
 
-  const handleLogOut = () => {
-    dispatch(
-      userLogin({ user: null, isFetching: false, error: false, login: false })
-    )
+  const handleLogOut = (string, bool1, bool2) => {
+    userLogged(string)
+    fetching(bool1)
+    throwError(bool2)
   }
 
   const handleOnKeyDown = (e) => {
@@ -49,12 +49,12 @@ const Navbar = () => {
           onChange={(e) => searching(e.target.value)}
         />
       </div>
-      {user.user ? (
+      {user ? (
         <div className="w-full md:w-[140px]">
           <motion.button
             className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
             whileTap={{ scale: 0.9 }}
-            onClick={handleLogOut}
+            onClick={() => handleLogOut(null, false, false)}
             suppressHydrationWarning={true}
           >
             Logout

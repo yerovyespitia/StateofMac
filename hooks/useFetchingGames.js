@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
-import { load } from "../redux/loadingSlice"
 import axios from "axios"
 import { useSearchStore } from "../store/searchStore"
+import { useLoadingStore } from "../store/loadingStore"
 
 const useFetchingGames = (url) => {
+  const loading = useLoadingStore((state) => state.loading)
   const search = useSearchStore((state) => state.search)
   const [games, setGames] = useState([])
   const [page, setPage] = useState(1)
   const [prevSearchGame, setPrevSearchGame] = useState("")
   const [loadMore, setLoadMore] = useState(false)
-  const dispatch = useDispatch()
 
   // Show more game cards
   const loadMoreGames = async () => {
@@ -45,8 +44,7 @@ const useFetchingGames = (url) => {
           setPrevSearchGame("")
           setPage(1)
         }
-
-        dispatch(load({ loaded: true }))
+        loading(true)
       })
   }, [page, search])
 

@@ -61,8 +61,10 @@ export function NewReport({
           <option disabled selected={true} defaultValue={"Game Run Through"}>
             Game Run Through
           </option>
-          {runThrough.map((run) => (
-            <option value={run}>{run}</option>
+          {runThrough.map((run, i) => (
+            <option value={run} key={i}>
+              {run}
+            </option>
           ))}
         </select>
         <select
@@ -72,8 +74,10 @@ export function NewReport({
           <option disabled selected={true} defaultValue={"State of the Game"}>
             State of the Game
           </option>
-          {states.map((state) => (
-            <option value={state}>{state}</option>
+          {states.map((state, i) => (
+            <option value={state} key={i}>
+              {state}
+            </option>
           ))}
         </select>
         <select
@@ -83,8 +87,10 @@ export function NewReport({
           <option disabled selected={true} defaultValue={"Launcher"}>
             Launcher
           </option>
-          {launchers.map((launcher) => (
-            <option value={launcher}>{launcher}</option>
+          {launchers.map((launcher, i) => (
+            <option value={launcher} key={i}>
+              {launcher}
+            </option>
           ))}
         </select>
         <select
@@ -94,8 +100,10 @@ export function NewReport({
           <option disabled selected={true} defaultValue={"Mac"}>
             Mac
           </option>
-          {macs.map((mac) => (
-            <option value={mac}>{mac}</option>
+          {macs.map((mac, i) => (
+            <option value={mac} key={i}>
+              {mac}
+            </option>
           ))}
         </select>
       </div>

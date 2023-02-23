@@ -2,44 +2,41 @@ import Link from "next/link"
 import Router from "next/router"
 import { NextSeo } from "next-seo"
 import { useEffect, useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { userLogin } from "../redux/userSlice"
 import axios from "axios"
 import { motion } from "framer-motion"
+import { useUserStore } from "../store/userStore"
 
 const Login = () => {
-  const user = useSelector((state) => state.user.value)
-  const dispatch = useDispatch()
+  const { user, fetched, userLogged, fetching, throwError } = useUserStore(
+    (state) => state
+  )
   const useUserRef = useRef()
   const usePasswordRef = useRef()
 
+  const handleLogin = (string, bool1, bool2) => {
+    userLogged(string)
+    fetching(bool1)
+    throwError(bool2)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    dispatch(userLogin({ user: null, isFetching: true, error: false }))
+    handleLogin(null, true, false)
     try {
       const res = await axios.post(`${process.env.API_URL}api/auth/login`, {
         username: useUserRef.current.value,
         password: usePasswordRef.current.value,
       })
-      dispatch(
-        userLogin({
-          user: res.data,
-          isFetching: false,
-          error: false,
-          login: true,
-        })
-      )
+      handleLogin(res.data, false, false)
       res.data && Router.push("/")
     } catch (error) {
-      dispatch(
-        userLogin({ user: null, isFetching: false, error: true, login: false })
-      )
+      handleLogin(null, false, true)
     }
   }
 
   useEffect(() => {
-    if (user.user) Router.push("/")
-  }, [user.user])
+    if (user) Router.push("/")
+  }, [user])
 
   return (
     <>
@@ -74,7 +71,7 @@ const Login = () => {
             <button
               className="h-14 cursor-pointer rounded-md bg-[#292929] text-lg font-bold text-[#dbdbdb]"
               type="submit"
-              disabled={user.isFetching}
+              disabled={fetched}
             >
               Login
             </button>
