@@ -1,13 +1,10 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { useRouter } from "next/router"
 import { useSearchStore } from "../store/searchStore"
 import { useUserStore } from "../store/userStore"
-import { useState } from "react"
 
 const Navbar = () => {
-  const router = useRouter()
-  const { searching, search } = useSearchStore((state) => state)
+  const searching = useSearchStore((state) => state.searching)
   const { user, userLogged, fetching, throwError } = useUserStore(
     (state) => state
   )
