@@ -68,7 +68,7 @@ const Navbar = () => {
           </Link>
         </div>
       )}
-      <div className="w-full md:mr-3 md:w-[140px]">
+      <div className="mb-2 w-full md:mr-3 md:w-[140px]">
         <Link href={"/search"} passHref>
           <motion.button
             className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
