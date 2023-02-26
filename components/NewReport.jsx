@@ -1,5 +1,4 @@
-import React from "react"
-export function NewReport({
+const NewReport = ({
   handleSubmit,
   addTitle,
   addRunThrough,
@@ -8,7 +7,7 @@ export function NewReport({
   addMacUsed,
   addDescription,
   cancelSubmit,
-}) {
+}) => {
   const runThrough = [
     "A Native Port",
     "Rosetta 2",
@@ -135,3 +134,5 @@ export function NewReport({
     </form>
   )
 }
+
+export default NewReport
