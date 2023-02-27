@@ -4,10 +4,10 @@ import { useLoadingStore } from "../../store/loadingStore"
 import Card from "../../components/Card"
 import axios from "axios"
 
-const Search = () => {
+const useSearchFetching = () => {
   const [games, setGames] = useState([])
-  const { loaded, loading } = useLoadingStore((state) => state)
   const { searching, search } = useSearchStore((state) => state)
+  const { loaded, loading } = useLoadingStore((state) => state)
 
   useEffect(() => {
     axios
@@ -17,6 +17,12 @@ const Search = () => {
         loading(true)
       })
   }, [search])
+
+  return { games, searching, search, loaded }
+}
+
+const Search = () => {
+  const { games, searching, search, loaded } = useSearchFetching()
 
   return (
     <div className="mx-3 text-center md:pt-3">
