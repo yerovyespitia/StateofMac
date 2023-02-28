@@ -1,6 +1,10 @@
 import { useSearchStore } from "../../store/searchStore"
 import Card from "../../components/Card"
 
+const getFilteredGames = (games, search) => {
+  return games.filter((game) => game.title.toLowerCase().includes(search))
+}
+
 const Search = ({ games }) => {
   const { searching, search } = useSearchStore((state) => state)
 
@@ -15,9 +19,9 @@ const Search = ({ games }) => {
         onChange={(e) => searching(e.target.value)}
       />
       {search.length > 0
-        ? games
-            .filter((game) => game.title.toLowerCase().includes(search))
-            .map((game, i) => <Card games={game} key={i} />)
+        ? getFilteredGames(games, search).map((game, i) => (
+            <Card games={game} key={i} />
+          ))
         : ""}
       <div className="my-0 mx-auto text-2xl font-bold text-white">
         {games?.length < 1 && (

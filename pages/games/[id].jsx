@@ -7,6 +7,7 @@ import NewReport from "./../../components/NewReport"
 import useSubmitComment from "../../hooks/useSubmitComment"
 import { useSearchStore } from "../../store/searchStore"
 import { useUserStore } from "../../store/userStore"
+import Image from "next/image"
 
 const GameName = ({ game, comments }) => {
   const user = useUserStore((state) => state.user)
@@ -51,10 +52,13 @@ const GameName = ({ game, comments }) => {
         animate={{ opacity: 1, transition: { duration: 1 } }}
         whileHover={{ scale: 1.013 }}
       >
-        <img
+        <Image
           className="w-full rounded-lg"
           src={game?.wallpaper}
           alt={game?.title}
+          width={1315}
+          height={765}
+          layout="intrinsic"
         />
       </motion.div>
       <div className="text-center">
