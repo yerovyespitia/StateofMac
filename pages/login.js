@@ -41,48 +41,58 @@ const Login = () => {
   return (
     <>
       <NextSeo title={"Login | State of Mac"} />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { duration: 0.8 } }}
-        className="flex h-[calc(100vh-192px)] w-screen flex-col items-center justify-center"
-      >
-        <h1 className="mb-5 text-center text-3xl font-bold text-white">
+      <div className="flex h-[calc(100vh-192px)] w-screen flex-col items-center justify-center">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.4 } }}
+          className="mb-5 text-center text-3xl font-bold text-white"
+        >
           Login
-        </h1>
+        </motion.h1>
         <div className="flex flex-col justify-center">
           <form
             className="flex flex-col justify-center"
             onSubmit={handleSubmit}
           >
-            <input
+            <motion.input
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 0.7 } }}
               className="mb-4 h-14 w-[94vw] rounded-md bg-[#292929] pl-4 text-lg text-[#dbdbdb] focus:outline-none md:w-[460px]"
               type="text"
               placeholder="Username"
               ref={useUserRef}
               required
             />
-            <input
+            <motion.input
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 1 } }}
               className="mb-4 h-14 w-[94vw] rounded-md bg-[#292929] pl-4 text-lg text-[#dbdbdb] focus:outline-none md:w-[460px]"
               type="password"
               placeholder="Password"
               ref={usePasswordRef}
               required
             />
-            <button
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 1.3 } }}
               className="h-14 cursor-pointer rounded-md bg-[#292929] text-lg font-bold text-[#dbdbdb]"
               type="submit"
               disabled={fetched}
             >
               Login
-            </button>
+            </motion.button>
           </form>
         </div>
-        <div className="mt-5 text-center text-lg text-[#b358bf]">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1.6 } }}
+          className="mt-5 text-center text-lg text-[#b358bf]"
+        >
           <Link href={"/register"}>
             Register if you don&apos;t have an account.
           </Link>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </>
   )
 }

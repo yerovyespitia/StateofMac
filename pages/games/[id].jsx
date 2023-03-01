@@ -50,7 +50,8 @@ const GameName = ({ game, comments }) => {
         className="mt-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 1 } }}
-        whileHover={{ scale: 1.013 }}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.5 }}
       >
         <Image
           className="w-full rounded-lg"

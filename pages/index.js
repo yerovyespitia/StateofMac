@@ -8,8 +8,11 @@ export default function Home({ games }) {
         {games.map((game, i) => (
           <Link href={`/games/${game.title}`} key={i} passHref>
             <motion.img
-              whileHover={{ scale: 1.013 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.5 }}
               src={game.wallpaper}
               className="cursor-pointer rounded-lg"
             />

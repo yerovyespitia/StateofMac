@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { useSearchStore } from "../../store/searchStore"
 import Card from "../../components/Card"
 
@@ -10,7 +11,9 @@ const Search = ({ games }) => {
 
   return (
     <div className="mx-3 text-center md:pt-3">
-      <input
+      <motion.input
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.6 } }}
         className="text-md h-14 w-full rounded-md bg-[#292929] text-center font-bold text-gray-400 focus:outline-none"
         type="text"
         name="search"
