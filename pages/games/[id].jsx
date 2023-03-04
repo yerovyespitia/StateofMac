@@ -48,8 +48,8 @@ const GameName = ({ game, comments }) => {
       />
       <motion.div
         className="mt-3"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { duration: 1 } }}
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.5 }}
       >
@@ -66,11 +66,18 @@ const GameName = ({ game, comments }) => {
         <motion.h1
           className="mt-3 mb-3 text-3xl font-bold text-white"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 1 } }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
         >
           {game.title}
         </motion.h1>
-        <GameState game={game.state} />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+        >
+          <GameState game={game.state} />
+        </motion.div>
       </div>
       {user && (
         <div

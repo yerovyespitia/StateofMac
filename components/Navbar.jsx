@@ -21,7 +21,11 @@ const Navbar = () => {
       animate={{ opacity: 1 }}
       className="mx-3 mt-3 flex flex-col items-center justify-center md:flex-row"
     >
-      <div className="mb-2 w-full md:mr-3 md:w-[140px]">
+      <motion.div
+        initial={{ x: -50 }}
+        animate={{ x: 0 }}
+        className="mb-2 w-full md:mr-3 md:w-[140px]"
+      >
         <Link href={"/"} passHref>
           <motion.button
             className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
@@ -31,8 +35,12 @@ const Navbar = () => {
             Home
           </motion.button>
         </Link>
-      </div>
-      <div className="mb-2 w-full md:mr-3 md:w-[140px]">
+      </motion.div>
+      <motion.div
+        initial={{ y: -50 }}
+        animate={{ y: 0 }}
+        className="mb-2 w-full md:mr-3 md:w-[140px]"
+      >
         <Link href={"/games"} passHref>
           <motion.button
             className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
@@ -42,9 +50,13 @@ const Navbar = () => {
             Games
           </motion.button>
         </Link>
-      </div>
+      </motion.div>
       {user ? (
-        <div className="mb-2 w-full md:mr-3 md:w-[140px]">
+        <motion.div
+          initial={{ y: -50 }}
+          animate={{ y: 0 }}
+          className="mb-2 w-full md:mr-3 md:w-[140px]"
+        >
           <motion.button
             className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
             whileTap={{ scale: 0.9 }}
@@ -53,9 +65,13 @@ const Navbar = () => {
           >
             Logout
           </motion.button>
-        </div>
+        </motion.div>
       ) : (
-        <div className="mb-2 w-full md:mr-3 md:w-[140px]">
+        <motion.div
+          initial={{ y: -50 }}
+          animate={{ y: 0 }}
+          className="mb-2 w-full md:mr-3 md:w-[140px]"
+        >
           <Link href={"/login"} passHref>
             <motion.button
               className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
@@ -66,9 +82,13 @@ const Navbar = () => {
               Login
             </motion.button>
           </Link>
-        </div>
+        </motion.div>
       )}
-      <div className="mb-2 w-full md:mr-3 md:w-[140px]">
+      <motion.div
+        initial={{ x: 50 }}
+        animate={{ x: 0 }}
+        className="mb-2 w-full md:mr-3 md:w-[140px]"
+      >
         <Link href={"/search"} passHref>
           <motion.button
             className="text-md h-14 w-full rounded-md bg-[#292929] font-bold text-[#dbdbdb] hover:bg-[#363636] md:w-[140px] md:rounded-full"
@@ -78,7 +98,7 @@ const Navbar = () => {
             Search
           </motion.button>
         </Link>
-      </div>
+      </motion.div>
     </motion.nav>
   )
 }
