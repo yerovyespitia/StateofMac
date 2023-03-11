@@ -1,3 +1,6 @@
+import Select from "./Select"
+import { macs, runThrough, launchers, states } from "../data/data"
+
 const NewReport = ({
   handleSubmit,
   addTitle,
@@ -8,39 +11,6 @@ const NewReport = ({
   addDescription,
   cancelSubmit,
 }) => {
-  const runThrough = [
-    "A Native Port",
-    "Rosetta 2",
-    "Crossover",
-    "Parallels",
-    "VMware",
-    "PlayCover",
-    "A Console Emulator",
-    "Other",
-  ]
-
-  const states = ["Perfect", "Playable", "Unplayable"]
-  const launchers = [
-    "Steam Launcher",
-    "Epic Games Launcher",
-    "Rockstar Games Launcher",
-    "Riot Client",
-    "Battle.net",
-    "Other",
-    "None",
-  ]
-  const macs = [
-    "MacBook Pro M1 2020",
-    "MacBook Air M1 2020",
-    "Mac mini M1 2020",
-    "iMac M1 2021",
-    "MacBook Pro M1 Pro 2021",
-    "Mac Studio M1 Max 2022",
-    "Mac Studio M1 Ultra 2022",
-    "MacBook Air M2 2022",
-    "MacBook Pro M2 2022",
-  ]
-
   return (
     <form className="mt-4" onSubmit={handleSubmit}>
       <div className="text-lg text-white">
@@ -53,58 +23,18 @@ const NewReport = ({
         />
       </div>
       <div className="mt-5 flex flex-col items-center justify-center md:flex-row">
-        <select
+        <Select
           onChange={addRunThrough}
-          className="m-0 mb-3 h-14 w-full rounded-lg bg-[#292929] text-center text-lg font-medium text-white focus:outline-0"
-        >
-          <option disabled selected={true} defaultValue={"Game Run Through"}>
-            Game Run Through
-          </option>
-          {runThrough.map((run, i) => (
-            <option value={run} key={i}>
-              {run}
-            </option>
-          ))}
-        </select>
-        <select
+          title={"Game Run Through"}
+          options={runThrough}
+        />
+        <Select
           onChange={addState}
-          className="m-0 mb-3 h-14 w-full rounded-lg bg-[#292929] text-center text-lg font-medium text-white focus:outline-0"
-        >
-          <option disabled selected={true} defaultValue={"State of the Game"}>
-            State of the Game
-          </option>
-          {states.map((state, i) => (
-            <option value={state} key={i}>
-              {state}
-            </option>
-          ))}
-        </select>
-        <select
-          onChange={addLauncher}
-          className="m-0 mb-3 h-14 w-full rounded-lg bg-[#292929] text-center text-lg font-medium text-white focus:outline-0"
-        >
-          <option disabled selected={true} defaultValue={"Launcher"}>
-            Launcher
-          </option>
-          {launchers.map((launcher, i) => (
-            <option value={launcher} key={i}>
-              {launcher}
-            </option>
-          ))}
-        </select>
-        <select
-          onChange={addMacUsed}
-          className="m-0 mb-3 h-14 w-full rounded-lg bg-[#292929] text-center text-lg font-medium text-white focus:outline-0"
-        >
-          <option disabled selected={true} defaultValue={"Mac"}>
-            Mac
-          </option>
-          {macs.map((mac, i) => (
-            <option value={mac} key={i}>
-              {mac}
-            </option>
-          ))}
-        </select>
+          title={"State of the Game"}
+          options={states}
+        />
+        <Select onChange={addLauncher} title={"Launcher"} options={launchers} />
+        <Select onChange={addMacUsed} title={"Mac"} options={macs} />
       </div>
       <div className="mt-3">
         <textarea

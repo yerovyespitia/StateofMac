@@ -1,8 +1,10 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+
+const nextConfig = {
+  reactStrictMode: false,
+  swcMinify: true,
   images: {
-    domains: ["res.cloudinary.com"],
-    loader: "akamai",
-    path: "",
+    unoptimized: true,
   },
   env: {
     API_URL: process.env.API_URL,
@@ -10,3 +12,5 @@ module.exports = {
     MONGO_URI: process.env.MONGO_URI,
   },
 }
+
+module.exports = nextConfig

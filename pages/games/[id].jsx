@@ -48,8 +48,6 @@ const GameName = ({ game, comments }) => {
       />
       <motion.div
         className="mt-3"
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.5 }}
       >

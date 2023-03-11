@@ -40,7 +40,7 @@ const Card = ({ games }) => {
             <p className="my-1 mx-0 text-lg font-bold text-[#b358bf]">
               Reports {games.reports}
             </p>
-            <GameState game={games.state} />
+            <GameState state={games.state} />
           </div>
         </div>
       </Link>
