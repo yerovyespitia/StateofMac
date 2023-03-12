@@ -10,6 +10,7 @@ export const runThrough = [
 ]
 
 export const states = ["Perfect", "Playable", "Unplayable"]
+
 export const launchers = [
   "Steam Launcher",
   "Epic Games Launcher",
@@ -19,6 +20,7 @@ export const launchers = [
   "Other",
   "None",
 ]
+
 export const macs = [
   "MacBook Pro M1 2020",
   "MacBook Air M1 2020",

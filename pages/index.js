@@ -3,14 +3,14 @@ import Link from "next/link"
 
 export default function Home({ games }) {
   return (
-    <main className="mx-3 mb-5 md:mx-6 md:mt-3">
-      <div className="grid max-w-full grid-cols-app items-center justify-center gap-5">
+    <main className="flex h-auto flex-col items-center justify-center lg:h-[calc(100vh-76px)]">
+      <div className="mx-3 mt-1 grid grid-cols-1 gap-4 md:mt-0 md:grid-cols-2 lg:max-w-6xl lg:grid-cols-3">
         {games.map((game, i) => (
           <Link href={`/games/${game.title}`} key={i} passHref>
             <motion.img
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.9 }}
               transition={{ duration: 0.5 }}
               src={game.wallpaper}
