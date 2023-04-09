@@ -18,3 +18,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@layer components {
+  .state {
+    @apply mr-2 text-lg text-[#dbdbdb];
+  }
+}
