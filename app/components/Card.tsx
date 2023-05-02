@@ -24,7 +24,7 @@ const Card = ({ title, wallpaper, reports, state, updatedAt }) => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: 'easeOut' }}
-            className='mx-0 mt-6 mb-2 px-3 md:m-5 md:h-auto md:w-auto md:px-0'
+            className='mx-0 mb-2 mt-6 px-3 md:m-5 md:h-auto md:w-auto md:px-0'
           >
             <Image
               src={wallpaper}
@@ -34,12 +34,13 @@ const Card = ({ title, wallpaper, reports, state, updatedAt }) => {
               alt={title}
             />
           </motion.div>
+
           <div className='flex flex-col items-center justify-center text-center md:mr-4 md:block md:text-left'>
             <p className='my-1 text-2xl font-bold text-white'>{title}</p>
-            <p className='my-1 mx-0 text-lg font-bold text-[#52a2d5]'>
+            <p className='mx-0 my-1 text-lg font-bold text-[#52a2d5]'>
               Updated {moment(updatedAt).format('ll')}
             </p>
-            <p className='my-1 mx-0 text-lg font-bold text-[#b358bf]'>
+            <p className='mx-0 my-1 text-lg font-bold text-[#b358bf]'>
               Reports {reports}
             </p>
             <GameState state={state} />

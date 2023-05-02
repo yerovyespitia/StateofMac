@@ -54,12 +54,12 @@ async function getComments(id: string) {
 }
 
 const GameName = async ({ params: { id } }) => {
-  const title = id.replace('%20', ' ')
+  const title = decodeURIComponent(id)
   const games: Games[] = await getGames(title)
   const comments: Comments[] = await getComments(title)
 
   return (
-    <main className='my-0 mx-auto max-w-6xl px-4 py-1'>
+    <main className='mx-auto my-0 max-w-6xl px-4 py-1'>
       <GameCard games={games} />
       <ButtonReport />
       <AddReport title={title} />

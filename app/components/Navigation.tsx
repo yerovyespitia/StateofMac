@@ -6,10 +6,8 @@ import { useSearchStore } from '../store/searchStore'
 import { useUserStore } from '../store/userStore'
 
 const Navigation = () => {
-  const searching = useSearchStore((state) => state.searching)
-  const { user, userLogged, fetching, throwError } = useUserStore(
-    (state) => state
-  )
+  const { searching } = useSearchStore()
+  const { user, userLogged, fetching, throwError } = useUserStore()
 
   const handleLogOut = (string: any, bool1: boolean, bool2: boolean) => {
     userLogged(string)

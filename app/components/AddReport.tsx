@@ -10,10 +10,8 @@ import SelectOptions from './SelectOptions'
 
 const AddReport = ({ title }) => {
   const router = useRouter()
-  const user = useUserStore((state) => state.user)
-  const { reportToggle, setFalseReportToggle } = useReportStore(
-    (state) => state
-  )
+  const { user } = useUserStore()
+  const { reportToggle, setReportToggle } = useReportStore()
   const [comment, setComment] = useState({
     username: user !== null && user,
     title: '',
@@ -26,6 +24,7 @@ const AddReport = ({ title }) => {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
+
     try {
       await axios.post(`${process.env.API_URL}api/comments/${title}`, comment)
       router.push('/')
@@ -35,7 +34,8 @@ const AddReport = ({ title }) => {
   }
 
   const cancelSubmit = () => {
-    setFalseReportToggle()
+    setReportToggle()
+
     setComment({
       username: '',
       title: '',
@@ -53,7 +53,7 @@ const AddReport = ({ title }) => {
         <form className='mt-4' onSubmit={handleSubmit}>
           <div className='text-lg text-white'>
             <input
-              className='h-14 w-full rounded-lg bg-[#292929] pt-1 pr-0 pb-0 pl-4 focus:outline-none'
+              className='h-14 w-full rounded-lg bg-[#292929] pb-0 pl-4 pr-0 pt-1 focus:outline-none'
               type='text'
               name='search'
               placeholder='Title'
@@ -62,6 +62,7 @@ const AddReport = ({ title }) => {
               }
             />
           </div>
+
           <div className='mt-5 flex flex-col items-center justify-center md:flex-row'>
             <SelectOptions
               onChange={(e: { target: { value: string } }) =>
@@ -70,6 +71,7 @@ const AddReport = ({ title }) => {
               title={'Game Run Through'}
               options={runThrough}
             />
+
             <SelectOptions
               onChange={(e: { target: { value: string } }) =>
                 setComment({ ...comment, state: e.target.value })
@@ -77,6 +79,7 @@ const AddReport = ({ title }) => {
               title={'State of the Game'}
               options={states}
             />
+
             <SelectOptions
               onChange={(e: { target: { value: string } }) =>
                 setComment({ ...comment, launcher: e.target.value })
@@ -84,6 +87,7 @@ const AddReport = ({ title }) => {
               title={'Launcher'}
               options={launchers}
             />
+
             <SelectOptions
               onChange={(e: { target: { value: string } }) =>
                 setComment({ ...comment, macUsed: e.target.value })
@@ -92,9 +96,10 @@ const AddReport = ({ title }) => {
               options={macs}
             />
           </div>
+
           <div className='mt-3'>
             <textarea
-              className='w-full rounded-lg bg-[#292929] pt-5 pl-5 pb-0 pr-5 text-lg text-white focus:outline-none'
+              className='w-full rounded-lg bg-[#292929] pb-0 pl-5 pr-5 pt-5 text-lg text-white focus:outline-none'
               name='description'
               id='textarea'
               cols={30}
@@ -105,6 +110,7 @@ const AddReport = ({ title }) => {
               }
             />
           </div>
+
           <div className='mt-3 flex flex-col items-center justify-center md:flex-row'>
             <button
               type='submit'
@@ -112,6 +118,7 @@ const AddReport = ({ title }) => {
             >
               Send
             </button>
+
             <button
               className='mb-3 h-14 w-full cursor-pointer rounded-lg bg-[#292929] text-lg font-bold text-[#dbdbdb] md:ml-2 md:w-1/2'
               onClick={cancelSubmit}

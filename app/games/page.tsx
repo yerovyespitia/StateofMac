@@ -30,7 +30,7 @@ const Games = async () => {
   const games: Games[] = await getGames()
 
   return (
-    <div className='mx-3 md:my-0 md:mx-auto md:max-w-fit'>
+    <div className='mx-3 md:mx-auto md:my-0 md:max-w-fit'>
       {games.map((game, i) => (
         <Card {...game} key={i} />
       ))}

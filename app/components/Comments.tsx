@@ -8,7 +8,7 @@ const Comment = ({ comment }) => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 1 } }}
-      className='mt-4 mb-4 flex flex-col justify-center rounded-lg bg-[#292929] p-12'
+      className='mb-4 mt-4 flex flex-col justify-center rounded-lg bg-[#292929] p-12'
     >
       <div className='mb-3 flex flex-col'>
         <p className='my-1 mr-3 text-2xl font-medium text-[#52a2d5]'>
@@ -18,7 +18,7 @@ const Comment = ({ comment }) => {
           {moment(comment.date).format('ll')}
         </time>
       </div>
-      <p className='mt-0 mr-0 mb-3 ml-0 text-2xl font-bold text-white'>
+      <p className='mb-3 ml-0 mr-0 mt-0 text-2xl font-bold text-white'>
         {comment.title}
       </p>
       <div className='mb-1 text-lg font-medium text-[#e6e6e6]'>

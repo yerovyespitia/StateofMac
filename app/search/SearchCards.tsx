@@ -33,13 +33,15 @@ const SearchCards = ({ games }) => {
         value={search}
         onChange={(e) => searching(e.target.value)}
       />
+
       <div className='mx-auto my-0 max-w-4xl'>
         {search.length > 0 &&
           getFilteredGames(games, search).map((game, i) => (
             <Card {...game} key={i} />
           ))}
       </div>
-      <div className='my-0 mx-auto text-2xl font-bold text-white'>
+
+      <div className='mx-auto my-0 text-2xl font-bold text-white'>
         {games?.length < 1 && (
           <h1 className='mt-3 flex justify-center'>No games found</h1>
         )}

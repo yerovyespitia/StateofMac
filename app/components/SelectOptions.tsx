@@ -9,6 +9,7 @@ const SelectOptions = ({ onChange, title, options }) => {
       <option disabled selected={true} defaultValue={title}>
         {title}
       </option>
+
       {options.map((option, i) => (
         <option value={option} key={i}>
           {option}
