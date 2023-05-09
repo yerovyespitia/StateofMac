@@ -17,7 +17,7 @@ const Card = ({ title, wallpaper, reports, state, updatedAt }) => {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className='mb-4'
     >
-      <Link href={`/games/${title}`}>
+      <Link href={`/game/${title}`}>
         <div className='mt-3 flex cursor-pointer flex-col items-center rounded-lg bg-[#292929] hover:bg-[#363636] md:flex-row'>
           <motion.div
             initial={{ opacity: 0 }}

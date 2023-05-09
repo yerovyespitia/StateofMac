@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const LatestGames = ({ title, wallpaper }) => {
   return (
-    <Link href={`/games/${title}`}>
+    <Link href={`/game/${title}`}>
       <motion.img
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

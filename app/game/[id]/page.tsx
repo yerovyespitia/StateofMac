@@ -2,6 +2,7 @@ import AddReport from 'components/AddReport'
 import Comments from '../../components/Comments'
 import GameCard from './GameCard'
 import ButtonReport from 'components/ButtonReport'
+import LoadingGameCard from 'components/LoadingGameCard'
 
 interface Games {
   _id: string
@@ -32,7 +33,9 @@ export interface Comment {
 }
 
 async function getGames(id: string) {
-  const res = await fetch(`${process.env.API_URL}api/games/${id}`)
+  const res = await fetch(`${process.env.API_URL}api/games/${id}`, {
+    cache: 'no-store',
+  })
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
