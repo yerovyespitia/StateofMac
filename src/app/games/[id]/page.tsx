@@ -5,28 +5,8 @@ import { GameCard } from '@/components/GameInfo/GameCard'
 import { IComments } from '@/types/comments'
 import { IGames } from '@/types/games'
 import { IGameInfoParams } from '@/types/params'
-
-const getGames = async (id: string) => {
-  try {
-    const res = await fetch(
-      `https://stateofmacapi.onrender.com/api/games/${id}`
-    )
-    return res.json()
-  } catch (error) {
-    console.log('Failed to fetch data', error)
-  }
-}
-
-const getComments = async (id: string) => {
-  try {
-    const res = await fetch(
-      `https://stateofmacapi.onrender.com/api/comments/${id}?page=1&limit=25`
-    )
-    return res.json()
-  } catch (error) {
-    console.log('Failed to fetch data', error)
-  }
-}
+import { getComments } from '@/utils/comments'
+import { getGames } from '@/utils/games'
 
 export default async function GameInfo({ params: { id } }: IGameInfoParams) {
   const games: IGames = await getGames(decodeURIComponent(id))

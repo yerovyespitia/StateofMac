@@ -1,18 +1,10 @@
 import type { Metadata } from 'next'
 import { IGames } from '@/types/games'
 import { Card } from '@/components/Card'
+import { getGames } from '@/utils/games'
 
 export const metadata: Metadata = {
   title: 'Games',
-}
-
-const getGames = async () => {
-  try {
-    const res = await fetch(`https://stateofmacapi.onrender.com/api/games`)
-    return res.json()
-  } catch (error) {
-    console.log('Failed to fetch data', error)
-  }
 }
 
 export default async function Games() {

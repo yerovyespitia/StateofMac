@@ -1,14 +1,6 @@
 import { SearchCards } from '@/components/SearchCards'
 import { IGames } from '@/types/games'
-
-const getGames = async () => {
-  try {
-    const res = await fetch(`https://stateofmacapi.onrender.com/api/games`)
-    return res.json()
-  } catch (error) {
-    console.log('Failed to fetch data', error)
-  }
-}
+import { getGames } from '@/utils/games'
 
 export default async function Search() {
   const games: IGames[] = await getGames()
