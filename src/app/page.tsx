@@ -12,20 +12,8 @@ const getGames = async () => {
   }
 }
 
-const localAPI = async () => {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/hello`)
-    return res.json()
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 export default async function Home() {
   const games: IGames[] = await getGames()
-  const local = await localAPI()
-
-  console.log('local', local.message)
 
   return (
     <main className='flex w-full items-center justify-center'>
@@ -33,7 +21,6 @@ export default async function Home() {
         {games.map((game, i) => (
           <LatestGames {...game} key={i} />
         ))}
-        <p>{local.message}</p>
       </section>
     </main>
   )
